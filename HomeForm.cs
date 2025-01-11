@@ -26,11 +26,11 @@ namespace Umbrella_System
             sideBarPanel.Controls.Add(leftBorderBtn);
         }
 
-        // estructura para almacenar los colores de los botones (iconos)
+        // color de los botones (structura)
 
         private struct RGBColors
         {
-            public static Color color1 = Color.FromArgb(250, 146, 186);
+            public static Color colorPressing = Color.FromArgb(250, 146, 186);
         }
 
 
@@ -78,22 +78,27 @@ namespace Umbrella_System
 
         private void iconClientes_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
+            ActivateButton(sender, RGBColors.colorPressing);
         }
 
         private void iconInventario_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
+            ActivateButton(sender, RGBColors.colorPressing);
         }
 
         private void iconFacturas_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
+            ActivateButton(sender, RGBColors.colorPressing);
         }
 
         private void iconLogout_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
+            ActivateButton(sender, RGBColors.colorPressing);
+        }
+
+        private void logoUmbrella_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

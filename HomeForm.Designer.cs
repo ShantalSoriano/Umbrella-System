@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             iconDropDownButton1 = new FontAwesome.Sharp.IconDropDownButton();
             iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             panel1 = new Panel();
@@ -37,10 +38,12 @@
             iconInventario = new FontAwesome.Sharp.IconButton();
             iconClientes = new FontAwesome.Sharp.IconButton();
             panelLogo = new Panel();
+            logoUmbrella = new PictureBox();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             sideBarPanel.SuspendLayout();
             panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logoUmbrella).BeginInit();
             SuspendLayout();
             // 
             // iconDropDownButton1
@@ -115,7 +118,7 @@
             iconFacturas.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconFacturas.IconSize = 33;
             iconFacturas.ImageAlign = ContentAlignment.MiddleLeft;
-            iconFacturas.Location = new Point(0, 194);
+            iconFacturas.Location = new Point(0, 162);
             iconFacturas.Margin = new Padding(3, 50, 3, 50);
             iconFacturas.Name = "iconFacturas";
             iconFacturas.Padding = new Padding(10, 0, 20, 0);
@@ -138,7 +141,7 @@
             iconInventario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconInventario.IconSize = 38;
             iconInventario.ImageAlign = ContentAlignment.MiddleLeft;
-            iconInventario.Location = new Point(0, 134);
+            iconInventario.Location = new Point(0, 102);
             iconInventario.Margin = new Padding(3, 50, 3, 50);
             iconInventario.Name = "iconInventario";
             iconInventario.Padding = new Padding(10, 0, 20, 0);
@@ -161,7 +164,7 @@
             iconClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconClientes.IconSize = 40;
             iconClientes.ImageAlign = ContentAlignment.MiddleLeft;
-            iconClientes.Location = new Point(0, 74);
+            iconClientes.Location = new Point(0, 42);
             iconClientes.Margin = new Padding(3, 50, 3, 50);
             iconClientes.Name = "iconClientes";
             iconClientes.Padding = new Padding(10, 0, 20, 0);
@@ -175,13 +178,27 @@
             // 
             // panelLogo
             // 
+            panelLogo.BackColor = Color.White;
+            panelLogo.Controls.Add(logoUmbrella);
             panelLogo.Controls.Add(iconButton2);
             panelLogo.Controls.Add(iconButton1);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(181, 74);
+            panelLogo.Size = new Size(181, 42);
             panelLogo.TabIndex = 0;
+            // 
+            // logoUmbrella
+            // 
+            logoUmbrella.BackColor = Color.White;
+            logoUmbrella.Image = (Image)resources.GetObject("logoUmbrella.Image");
+            logoUmbrella.Location = new Point(3, 0);
+            logoUmbrella.Name = "logoUmbrella";
+            logoUmbrella.Size = new Size(153, 42);
+            logoUmbrella.SizeMode = PictureBoxSizeMode.Zoom;
+            logoUmbrella.TabIndex = 2;
+            logoUmbrella.TabStop = false;
+            logoUmbrella.Click += logoUmbrella_Click;
             // 
             // iconButton2
             // 
@@ -220,6 +237,7 @@
             Text = "Umbrella System";
             sideBarPanel.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)logoUmbrella).EndInit();
             ResumeLayout(false);
         }
 
@@ -236,5 +254,6 @@
         private FontAwesome.Sharp.IconButton iconLogout;
         private FontAwesome.Sharp.IconButton iconFacturas;
         private FontAwesome.Sharp.IconButton iconInventario;
+        private PictureBox logoUmbrella;
     }
 }
