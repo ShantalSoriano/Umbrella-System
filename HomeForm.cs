@@ -98,7 +98,8 @@ namespace Umbrella_System
 
         private void logoUmbrella_Click(object sender, EventArgs e)
         {
-
+            DisableButton();
+            leftBorderBtn.Visible = false;
         }
     }
 }
