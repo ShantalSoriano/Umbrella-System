@@ -41,9 +41,13 @@
             logoUmbrella = new PictureBox();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
+            panelTitleBar = new Panel();
+            iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             sideBarPanel.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).BeginInit();
+            panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconCurrentChildForm).BeginInit();
             SuspendLayout();
             // 
             // iconDropDownButton1
@@ -224,20 +228,48 @@
             iconButton1.Text = "iconButton1";
             iconButton1.UseVisualStyleBackColor = true;
             // 
+            // panelTitleBar
+            // 
+            panelTitleBar.BackColor = Color.White;
+            panelTitleBar.Controls.Add(iconCurrentChildForm);
+            panelTitleBar.Dock = DockStyle.Top;
+            panelTitleBar.Location = new Point(181, 0);
+            panelTitleBar.Name = "panelTitleBar";
+            panelTitleBar.Size = new Size(803, 42);
+            panelTitleBar.TabIndex = 2;
+            // 
+            // iconCurrentChildForm
+            // 
+            iconCurrentChildForm.BackColor = Color.White;
+            iconCurrentChildForm.ForeColor = Color.FromArgb(250, 146, 186);
+            iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconCurrentChildForm.IconColor = Color.FromArgb(250, 146, 186);
+            iconCurrentChildForm.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconCurrentChildForm.IconSize = 28;
+            iconCurrentChildForm.Location = new Point(395, 11);
+            iconCurrentChildForm.Name = "iconCurrentChildForm";
+            iconCurrentChildForm.Size = new Size(32, 28);
+            iconCurrentChildForm.TabIndex = 0;
+            iconCurrentChildForm.TabStop = false;
+            // 
             // HomeForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(984, 631);
+            Controls.Add(panelTitleBar);
             Controls.Add(sideBarPanel);
             Controls.Add(panel1);
             Font = new Font("Impact", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "HomeForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Umbrella System";
             sideBarPanel.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).EndInit();
+            panelTitleBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)iconCurrentChildForm).EndInit();
             ResumeLayout(false);
         }
 
@@ -255,5 +287,7 @@
         private FontAwesome.Sharp.IconButton iconFacturas;
         private FontAwesome.Sharp.IconButton iconInventario;
         private PictureBox logoUmbrella;
+        private Panel panelTitleBar;
+        private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
     }
 }
