@@ -1,8 +1,8 @@
 namespace Umbrella_System
 {
-    public partial class Form1 : Form
+    public partial class loginForm : Form
     {
-        public Form1()
+        public loginForm()
         {
             InitializeComponent();
         }
