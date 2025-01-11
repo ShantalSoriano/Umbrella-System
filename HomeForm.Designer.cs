@@ -102,6 +102,7 @@
             iconLogout.Text = "Logout";
             iconLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconLogout.UseVisualStyleBackColor = true;
+            iconLogout.Click += iconLogout_Click;
             // 
             // iconFacturas
             // 
@@ -124,6 +125,7 @@
             iconFacturas.TextAlign = ContentAlignment.MiddleLeft;
             iconFacturas.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconFacturas.UseVisualStyleBackColor = true;
+            iconFacturas.Click += iconFacturas_Click;
             // 
             // iconInventario
             // 
@@ -146,6 +148,7 @@
             iconInventario.TextAlign = ContentAlignment.MiddleLeft;
             iconInventario.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconInventario.UseVisualStyleBackColor = true;
+            iconInventario.Click += iconInventario_Click;
             // 
             // iconClientes
             // 
@@ -168,6 +171,7 @@
             iconClientes.TextAlign = ContentAlignment.MiddleLeft;
             iconClientes.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconClientes.UseVisualStyleBackColor = true;
+            iconClientes.Click += iconClientes_Click;
             // 
             // panelLogo
             // 
