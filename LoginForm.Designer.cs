@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
             greenPanel = new Panel();
             loginPanel = new Panel();
+            LinkLBLForgotPass = new LinkLabel();
             btnLogin = new Button();
             pictureBox2 = new PictureBox();
             txtPassword = new TextBox();
@@ -39,7 +40,6 @@
             lblUsuario = new Label();
             imgPanel = new Panel();
             pictureBox1 = new PictureBox();
-            LinkLBLForgotPass = new LinkLabel();
             greenPanel.SuspendLayout();
             loginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -49,18 +49,18 @@
             // 
             // greenPanel
             // 
-            greenPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            greenPanel.Anchor = AnchorStyles.None;
             greenPanel.BackColor = Color.FromArgb(22, 97, 58);
             greenPanel.Controls.Add(loginPanel);
             greenPanel.Controls.Add(imgPanel);
-            greenPanel.Location = new Point(33, 34);
+            greenPanel.Location = new Point(-31, -12);
             greenPanel.Name = "greenPanel";
             greenPanel.Size = new Size(761, 378);
             greenPanel.TabIndex = 0;
             // 
             // loginPanel
             // 
-            loginPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            loginPanel.Anchor = AnchorStyles.None;
             loginPanel.Controls.Add(LinkLBLForgotPass);
             loginPanel.Controls.Add(btnLogin);
             loginPanel.Controls.Add(pictureBox2);
@@ -72,6 +72,18 @@
             loginPanel.Name = "loginPanel";
             loginPanel.Size = new Size(367, 378);
             loginPanel.TabIndex = 1;
+            // 
+            // LinkLBLForgotPass
+            // 
+            LinkLBLForgotPass.AutoSize = true;
+            LinkLBLForgotPass.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            LinkLBLForgotPass.LinkColor = Color.FromArgb(250, 146, 186);
+            LinkLBLForgotPass.Location = new Point(136, 348);
+            LinkLBLForgotPass.Name = "LinkLBLForgotPass";
+            LinkLBLForgotPass.Size = new Size(126, 17);
+            LinkLBLForgotPass.TabIndex = 6;
+            LinkLBLForgotPass.TabStop = true;
+            LinkLBLForgotPass.Text = "Olvidé mi contraseña\r\n";
             // 
             // btnLogin
             // 
@@ -144,7 +156,7 @@
             // 
             // imgPanel
             // 
-            imgPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            imgPanel.Anchor = AnchorStyles.None;
             imgPanel.Controls.Add(pictureBox1);
             imgPanel.Location = new Point(0, 0);
             imgPanel.Name = "imgPanel";
@@ -162,24 +174,12 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // LinkLBLForgotPass
-            // 
-            LinkLBLForgotPass.AutoSize = true;
-            LinkLBLForgotPass.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            LinkLBLForgotPass.LinkColor = Color.FromArgb(250, 146, 186);
-            LinkLBLForgotPass.Location = new Point(136, 348);
-            LinkLBLForgotPass.Name = "LinkLBLForgotPass";
-            LinkLBLForgotPass.Size = new Size(126, 17);
-            LinkLBLForgotPass.TabIndex = 6;
-            LinkLBLForgotPass.TabStop = true;
-            LinkLBLForgotPass.Text = "Olvidé mi contraseña\r\n";
-            // 
             // loginForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(242, 247, 242);
-            ClientSize = new Size(838, 455);
+            ClientSize = new Size(711, 362);
             Controls.Add(greenPanel);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "loginForm";
