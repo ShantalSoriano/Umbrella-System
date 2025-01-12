@@ -42,6 +42,10 @@
             iconButton2 = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             panelTitleBar = new Panel();
+            panelControlsTitleBar = new Panel();
+            btnMinimize = new PictureBox();
+            btnMaximize = new PictureBox();
+            btnClose = new PictureBox();
             iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             panelDesktop = new Panel();
             pictureBox1 = new PictureBox();
@@ -49,6 +53,10 @@
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).BeginInit();
             panelTitleBar.SuspendLayout();
+            panelControlsTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnMinimize).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnMaximize).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconCurrentChildForm).BeginInit();
             panelDesktop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -236,6 +244,7 @@
             // panelTitleBar
             // 
             panelTitleBar.BackColor = Color.White;
+            panelTitleBar.Controls.Add(panelControlsTitleBar);
             panelTitleBar.Controls.Add(iconCurrentChildForm);
             panelTitleBar.Dock = DockStyle.Top;
             panelTitleBar.Location = new Point(181, 0);
@@ -243,6 +252,50 @@
             panelTitleBar.Size = new Size(803, 42);
             panelTitleBar.TabIndex = 2;
             panelTitleBar.MouseDown += panelTitleBar_MouseDown;
+            // 
+            // panelControlsTitleBar
+            // 
+            panelControlsTitleBar.Controls.Add(btnMinimize);
+            panelControlsTitleBar.Controls.Add(btnMaximize);
+            panelControlsTitleBar.Controls.Add(btnClose);
+            panelControlsTitleBar.Dock = DockStyle.Right;
+            panelControlsTitleBar.Location = new Point(700, 0);
+            panelControlsTitleBar.Name = "panelControlsTitleBar";
+            panelControlsTitleBar.Size = new Size(103, 42);
+            panelControlsTitleBar.TabIndex = 1;
+            // 
+            // btnMinimize
+            // 
+            btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
+            btnMinimize.Location = new Point(3, 0);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.Padding = new Padding(0, 0, 20, 0);
+            btnMinimize.Size = new Size(26, 26);
+            btnMinimize.SizeMode = PictureBoxSizeMode.Zoom;
+            btnMinimize.TabIndex = 2;
+            btnMinimize.TabStop = false;
+            // 
+            // btnMaximize
+            // 
+            btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
+            btnMaximize.Location = new Point(34, 12);
+            btnMaximize.Name = "btnMaximize";
+            btnMaximize.Padding = new Padding(0, 0, 20, 0);
+            btnMaximize.Size = new Size(27, 20);
+            btnMaximize.SizeMode = PictureBoxSizeMode.Zoom;
+            btnMaximize.TabIndex = 1;
+            btnMaximize.TabStop = false;
+            // 
+            // btnClose
+            // 
+            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Location = new Point(67, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Padding = new Padding(0, 0, 20, 0);
+            btnClose.Size = new Size(24, 20);
+            btnClose.SizeMode = PictureBoxSizeMode.Zoom;
+            btnClose.TabIndex = 0;
+            btnClose.TabStop = false;
             // 
             // iconCurrentChildForm
             // 
@@ -298,6 +351,10 @@
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).EndInit();
             panelTitleBar.ResumeLayout(false);
+            panelControlsTitleBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)btnMinimize).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnMaximize).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconCurrentChildForm).EndInit();
             panelDesktop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -322,5 +379,9 @@
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private Panel panelDesktop;
         private PictureBox pictureBox1;
+        private Panel panelControlsTitleBar;
+        private PictureBox btnClose;
+        private PictureBox btnMinimize;
+        private PictureBox btnMaximize;
     }
 }
