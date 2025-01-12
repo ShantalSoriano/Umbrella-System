@@ -43,6 +43,7 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             panelTitleBar = new Panel();
             iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
+            panelDesktop = new Panel();
             sideBarPanel.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).BeginInit();
@@ -253,16 +254,25 @@
             iconCurrentChildForm.TabIndex = 0;
             iconCurrentChildForm.TabStop = false;
             // 
+            // panelDesktop
+            // 
+            panelDesktop.Dock = DockStyle.Fill;
+            panelDesktop.Location = new Point(181, 42);
+            panelDesktop.Name = "panelDesktop";
+            panelDesktop.Size = new Size(803, 589);
+            panelDesktop.TabIndex = 3;
+            // 
             // HomeForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(984, 631);
+            Controls.Add(panelDesktop);
             Controls.Add(panelTitleBar);
             Controls.Add(sideBarPanel);
             Controls.Add(panel1);
             Font = new Font("Impact", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "HomeForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " ";
@@ -290,5 +300,6 @@
         private PictureBox logoUmbrella;
         private Panel panelTitleBar;
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
+        private Panel panelDesktop;
     }
 }

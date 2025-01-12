@@ -20,6 +20,7 @@ namespace Umbrella_System
         //Campos para mostrar una barra al presionar cada icono
         private IconButton currentBtn;
         private Panel leftBorderBtn;
+        private Form currentChildForm;
 
 
         public HomeForm()
@@ -28,6 +29,13 @@ namespace Umbrella_System
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             sideBarPanel.Controls.Add(leftBorderBtn);
+
+            // Eliminar la barra (borde) del formulario
+
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea; 
         }
 
         // color de los botones (structura)
@@ -78,6 +86,26 @@ namespace Umbrella_System
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }
+        }
+
+        private void OpenChildForm(Form childForm)
+        {
+            if(childForm != null)
+            {
+                // cierra el formulario abierto
+                currentChildForm.Close();
+            }
+
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            
+
         }
 
         private void iconClientes_Click(object sender, EventArgs e)
