@@ -274,6 +274,7 @@
             btnMinimize.SizeMode = PictureBoxSizeMode.Zoom;
             btnMinimize.TabIndex = 2;
             btnMinimize.TabStop = false;
+            btnMinimize.Click += btnMinimize_Click;
             // 
             // btnMaximize
             // 
@@ -285,6 +286,7 @@
             btnMaximize.SizeMode = PictureBoxSizeMode.Zoom;
             btnMaximize.TabIndex = 1;
             btnMaximize.TabStop = false;
+            btnMaximize.Click += btnMaximize_Click;
             // 
             // btnClose
             // 
@@ -296,9 +298,11 @@
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
             btnClose.TabIndex = 0;
             btnClose.TabStop = false;
+            btnClose.Click += btnClose_Click;
             // 
             // iconCurrentChildForm
             // 
+            iconCurrentChildForm.Anchor = AnchorStyles.None;
             iconCurrentChildForm.BackColor = Color.White;
             iconCurrentChildForm.ForeColor = Color.FromArgb(250, 146, 186);
             iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.House;
