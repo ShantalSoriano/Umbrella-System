@@ -35,7 +35,7 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.RosyBrown;
-            panel1.Location = new Point(407, 213);
+            panel1.Location = new Point(308, 173);
             panel1.Name = "panel1";
             panel1.Size = new Size(200, 172);
             panel1.TabIndex = 1;
@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(984, 631);
+            ClientSize = new Size(787, 550);
             Controls.Add(panel1);
             Name = "InventarioForm";
             Text = "Inventario";

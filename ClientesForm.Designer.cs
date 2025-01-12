@@ -35,7 +35,7 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.Red;
-            panel1.Location = new Point(441, 222);
+            panel1.Location = new Point(342, 182);
             panel1.Name = "panel1";
             panel1.Size = new Size(200, 172);
             panel1.TabIndex = 1;
@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(984, 631);
+            ClientSize = new Size(787, 550);
             Controls.Add(panel1);
             Name = "ClientesForm";
             Text = "Clientes";

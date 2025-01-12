@@ -35,7 +35,7 @@ namespace Umbrella_System
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea; 
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         // color de los botones (structura)
@@ -132,12 +132,18 @@ namespace Umbrella_System
 
         private void logoUmbrella_Click(object sender, EventArgs e)
         {
+            currentChildForm.Close();
+            Reset();
+
+        }
+
+        private void Reset()
+        {
             DisableButton();
             leftBorderBtn.Visible = false;
             iconCurrentChildForm.IconChar = IconChar.Home;
             iconCurrentChildForm.IconColor = Color.FromArgb(250, 146, 186);
         }
-
 
         // Mover el formulario sin bordes 
 
@@ -151,6 +157,21 @@ namespace Umbrella_System
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panelLogo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelDesktop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

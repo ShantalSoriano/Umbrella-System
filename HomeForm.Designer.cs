@@ -44,11 +44,14 @@
             panelTitleBar = new Panel();
             iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             panelDesktop = new Panel();
+            pictureBox1 = new PictureBox();
             sideBarPanel.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).BeginInit();
             panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconCurrentChildForm).BeginInit();
+            panelDesktop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // iconDropDownButton1
@@ -114,7 +117,7 @@
             // 
             // iconFacturas
             // 
-            iconFacturas.Dock = DockStyle.Top;
+            iconFacturas.Anchor = AnchorStyles.None;
             iconFacturas.FlatAppearance.BorderSize = 0;
             iconFacturas.FlatStyle = FlatStyle.Flat;
             iconFacturas.ForeColor = Color.White;
@@ -123,7 +126,7 @@
             iconFacturas.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconFacturas.IconSize = 33;
             iconFacturas.ImageAlign = ContentAlignment.MiddleLeft;
-            iconFacturas.Location = new Point(0, 162);
+            iconFacturas.Location = new Point(0, 298);
             iconFacturas.Margin = new Padding(3, 50, 3, 50);
             iconFacturas.Name = "iconFacturas";
             iconFacturas.Padding = new Padding(10, 0, 20, 0);
@@ -137,7 +140,7 @@
             // 
             // iconInventario
             // 
-            iconInventario.Dock = DockStyle.Top;
+            iconInventario.Anchor = AnchorStyles.None;
             iconInventario.FlatAppearance.BorderSize = 0;
             iconInventario.FlatStyle = FlatStyle.Flat;
             iconInventario.ForeColor = Color.White;
@@ -146,7 +149,7 @@
             iconInventario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconInventario.IconSize = 38;
             iconInventario.ImageAlign = ContentAlignment.MiddleLeft;
-            iconInventario.Location = new Point(0, 102);
+            iconInventario.Location = new Point(0, 215);
             iconInventario.Margin = new Padding(3, 50, 3, 50);
             iconInventario.Name = "iconInventario";
             iconInventario.Padding = new Padding(10, 0, 20, 0);
@@ -160,7 +163,7 @@
             // 
             // iconClientes
             // 
-            iconClientes.Dock = DockStyle.Top;
+            iconClientes.Anchor = AnchorStyles.None;
             iconClientes.FlatAppearance.BorderSize = 0;
             iconClientes.FlatStyle = FlatStyle.Flat;
             iconClientes.ForeColor = Color.White;
@@ -169,7 +172,7 @@
             iconClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconClientes.IconSize = 40;
             iconClientes.ImageAlign = ContentAlignment.MiddleLeft;
-            iconClientes.Location = new Point(0, 42);
+            iconClientes.Location = new Point(0, 138);
             iconClientes.Margin = new Padding(3, 50, 3, 50);
             iconClientes.Name = "iconClientes";
             iconClientes.Padding = new Padding(10, 0, 20, 0);
@@ -192,6 +195,7 @@
             panelLogo.Name = "panelLogo";
             panelLogo.Size = new Size(181, 42);
             panelLogo.TabIndex = 0;
+            panelLogo.Paint += panelLogo_Paint;
             // 
             // logoUmbrella
             // 
@@ -256,11 +260,24 @@
             // 
             // panelDesktop
             // 
+            panelDesktop.Controls.Add(pictureBox1);
             panelDesktop.Dock = DockStyle.Fill;
             panelDesktop.Location = new Point(181, 42);
             panelDesktop.Name = "panelDesktop";
             panelDesktop.Size = new Size(803, 589);
             panelDesktop.TabIndex = 3;
+            panelDesktop.Paint += panelDesktop_Paint;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.None;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(162, 130);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(518, 349);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // HomeForm
             // 
@@ -276,11 +293,14 @@
             Name = "HomeForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " ";
+            Load += HomeForm_Load;
             sideBarPanel.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).EndInit();
             panelTitleBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)iconCurrentChildForm).EndInit();
+            panelDesktop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -301,5 +321,6 @@
         private Panel panelTitleBar;
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private Panel panelDesktop;
+        private PictureBox pictureBox1;
     }
 }
