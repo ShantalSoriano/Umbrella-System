@@ -376,7 +376,7 @@
             button3.FlatStyle = FlatStyle.Popup;
             button3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(6, 479);
+            button3.Location = new Point(6, 477);
             button3.Name = "button3";
             button3.Size = new Size(90, 27);
             button3.TabIndex = 15;
@@ -390,7 +390,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(684, 479);
+            button1.Location = new Point(684, 477);
             button1.Name = "button1";
             button1.Size = new Size(90, 27);
             button1.TabIndex = 13;
@@ -401,7 +401,7 @@
             // 
             dgvClientes.Anchor = AnchorStyles.None;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(28, 22);
+            dgvClientes.Location = new Point(28, 20);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;
