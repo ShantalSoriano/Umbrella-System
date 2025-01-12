@@ -28,18 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.None;
+            panel1.BackColor = Color.Red;
+            panel1.Location = new Point(441, 222);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 172);
+            panel1.TabIndex = 1;
             // 
             // ClientesForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(984, 631);
+            Controls.Add(panel1);
             Name = "ClientesForm";
             Text = "Clientes";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
     }
 }

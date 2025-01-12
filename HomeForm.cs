@@ -90,9 +90,9 @@ namespace Umbrella_System
 
         private void OpenChildForm(Form childForm)
         {
-            if(childForm != null)
+            if (currentChildForm != null)
             {
-                // cierra el formulario abierto
+                // Close the currently open form
                 currentChildForm.Close();
             }
 
@@ -104,23 +104,25 @@ namespace Umbrella_System
             panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            
-
         }
+
 
         private void iconClientes_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.colorPressing);
+            OpenChildForm(new ClientesForm());
         }
 
         private void iconInventario_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.colorPressing);
+            OpenChildForm(new InventarioForm());
         }
 
         private void iconFacturas_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.colorPressing);
+            OpenChildForm(new FacturasForm());
         }
 
         private void iconLogout_Click(object sender, EventArgs e)

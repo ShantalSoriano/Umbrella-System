@@ -28,13 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.None;
+            panel1.BackColor = Color.Brown;
+            panel1.Location = new Point(420, 206);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 172);
+            panel1.TabIndex = 0;
             // 
             // FacturasForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(984, 631);
+            Controls.Add(panel1);
             Name = "FacturasForm";
             Text = "Facturas";
             Load += FacturasForm_Load;
@@ -42,5 +53,7 @@
         }
 
         #endregion
+
+        private Panel panel1;
     }
 }
