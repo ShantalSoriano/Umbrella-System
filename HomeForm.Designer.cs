@@ -246,9 +246,9 @@
             iconCurrentChildForm.IconColor = Color.FromArgb(250, 146, 186);
             iconCurrentChildForm.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconCurrentChildForm.IconSize = 28;
-            iconCurrentChildForm.Location = new Point(395, 11);
+            iconCurrentChildForm.Location = new Point(367, 12);
             iconCurrentChildForm.Name = "iconCurrentChildForm";
-            iconCurrentChildForm.Size = new Size(32, 28);
+            iconCurrentChildForm.Size = new Size(28, 28);
             iconCurrentChildForm.TabIndex = 0;
             iconCurrentChildForm.TabStop = false;
             // 
@@ -261,10 +261,10 @@
             Controls.Add(sideBarPanel);
             Controls.Add(panel1);
             Font = new Font("Impact", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "HomeForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Umbrella System";
+            Text = " ";
             sideBarPanel.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).EndInit();

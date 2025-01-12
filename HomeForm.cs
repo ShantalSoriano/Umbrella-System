@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 using FontAwesome.Sharp;
+using Color = System.Drawing.Color;
 
 namespace Umbrella_System
 {
@@ -58,8 +60,8 @@ namespace Umbrella_System
                 leftBorderBtn.BringToFront();
 
                 // Icono actual del formulario
-                //iconCurrentForm.IconChar = currentBtn.IconChar;
-                //iconCurrentForm.IconColor = color;
+                iconCurrentChildForm.IconChar = currentBtn.IconChar;
+                iconCurrentChildForm.IconColor = color;
             }
         }
 
@@ -100,6 +102,8 @@ namespace Umbrella_System
         {
             DisableButton();
             leftBorderBtn.Visible = false;
+            iconCurrentChildForm.IconChar = IconChar.Home;
+            iconCurrentChildForm.IconColor = Color.FromArgb(250, 146, 186);
         }
     }
 }
