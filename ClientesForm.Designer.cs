@@ -54,6 +54,9 @@
             panelPic = new Panel();
             picCliente = new PictureBox();
             tabTodosLosClientes = new TabPage();
+            button3 = new Button();
+            button1 = new Button();
+            dgvClientes = new DataGridView();
             tabctrlClientes.SuspendLayout();
             tabRegistrarCliente.SuspendLayout();
             MainPanel.SuspendLayout();
@@ -61,6 +64,8 @@
             panelServiciosPref.SuspendLayout();
             panelPic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCliente).BeginInit();
+            tabTodosLosClientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
             // tabctrlClientes
@@ -351,15 +356,55 @@
             // tabTodosLosClientes
             // 
             tabTodosLosClientes.BorderStyle = BorderStyle.Fixed3D;
+            tabTodosLosClientes.Controls.Add(button3);
+            tabTodosLosClientes.Controls.Add(button1);
+            tabTodosLosClientes.Controls.Add(dgvClientes);
             tabTodosLosClientes.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabTodosLosClientes.ForeColor = Color.FromArgb(250, 146, 186);
-            tabTodosLosClientes.Location = new Point(4, 24);
+            tabTodosLosClientes.Location = new Point(4, 27);
             tabTodosLosClientes.Name = "tabTodosLosClientes";
             tabTodosLosClientes.Padding = new Padding(3);
-            tabTodosLosClientes.Size = new Size(779, 522);
+            tabTodosLosClientes.Size = new Size(779, 519);
             tabTodosLosClientes.TabIndex = 1;
             tabTodosLosClientes.Text = "Todos los Clientes";
             tabTodosLosClientes.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Anchor = AnchorStyles.None;
+            button3.BackColor = Color.FromArgb(250, 146, 186);
+            button3.FlatStyle = FlatStyle.Popup;
+            button3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(6, 479);
+            button3.Name = "button3";
+            button3.Size = new Size(90, 27);
+            button3.TabIndex = 15;
+            button3.Text = "Eliminar";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.BackColor = Color.FromArgb(250, 146, 186);
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(684, 479);
+            button1.Name = "button1";
+            button1.Size = new Size(90, 27);
+            button1.TabIndex = 13;
+            button1.Text = "Modificar";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // dgvClientes
+            // 
+            dgvClientes.Anchor = AnchorStyles.None;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.Location = new Point(28, 22);
+            dgvClientes.Name = "dgvClientes";
+            dgvClientes.Size = new Size(730, 448);
+            dgvClientes.TabIndex = 0;
             // 
             // ClientesForm
             // 
@@ -380,6 +425,8 @@
             panelServiciosPref.PerformLayout();
             panelPic.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCliente).EndInit();
+            tabTodosLosClientes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
         }
 
@@ -410,5 +457,8 @@
         private CheckBox checkBox5;
         private Button btnCancelarRegistro;
         private Button btnRegistrarCliente;
+        private Button button3;
+        private Button button1;
+        private DataGridView dgvClientes;
     }
 }
