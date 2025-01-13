@@ -30,32 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnadirArticuloForm));
             panelAnadirArticulo = new Panel();
+            txtDescripArticulo_aa = new TextBox();
+            lblDescripArticulo_aa = new Label();
+            cmbUnidadMedidaArticulo_aa = new ComboBox();
+            lblUnidadMedida_aa = new Label();
+            dateFechaVencimiArticulo_aa = new DateTimePicker();
+            lblFechaVencimiArticulo_aa = new Label();
+            numCantidadArticulo_aa = new NumericUpDown();
+            dateFechaArticulo_aa = new DateTimePicker();
+            lblFechaAdquiArticulo_aa = new Label();
+            lblCantidadArticulo_aa = new Label();
+            cmbTipoArticulo_aa = new ComboBox();
+            lblTipoArticulo_aa = new Label();
             titleBar = new Panel();
             panelControlsTitleBar = new Panel();
             btnMinimize = new PictureBox();
             btnClose = new PictureBox();
             txtNombreArticulo_aa = new TextBox();
             lblNombreArticulo_aa = new Label();
-            btnAnadirArticulo_bb = new Button();
+            btnAnadirArticulo_aa = new Button();
             btnCancelarArticulo_aa = new Button();
-            lblTipoArticulo_aa = new Label();
-            cmbTipoArticulo_aa = new ComboBox();
-            lblCantidadArticulo_aa = new Label();
-            lblFechaAdquiArticulo_aa = new Label();
-            dateFechaArticulo_aa = new DateTimePicker();
-            numCantidadArticulo_aa = new NumericUpDown();
-            dateFechaVencimiArticulo_aa = new DateTimePicker();
-            lblFechaVencimiArticulo_aa = new Label();
-            lblUnidadMedida_aa = new Label();
-            cmbUnidadMedidaArticulo_aa = new ComboBox();
-            lblDescripArticulo_aa = new Label();
-            txtDescripArticulo_aa = new TextBox();
             panelAnadirArticulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numCantidadArticulo_aa).BeginInit();
             titleBar.SuspendLayout();
             panelControlsTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnMinimize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numCantidadArticulo_aa).BeginInit();
             SuspendLayout();
             // 
             // panelAnadirArticulo
@@ -75,7 +75,7 @@
             panelAnadirArticulo.Controls.Add(titleBar);
             panelAnadirArticulo.Controls.Add(txtNombreArticulo_aa);
             panelAnadirArticulo.Controls.Add(lblNombreArticulo_aa);
-            panelAnadirArticulo.Controls.Add(btnAnadirArticulo_bb);
+            panelAnadirArticulo.Controls.Add(btnAnadirArticulo_aa);
             panelAnadirArticulo.Controls.Add(btnCancelarArticulo_aa);
             panelAnadirArticulo.Dock = DockStyle.Fill;
             panelAnadirArticulo.Location = new Point(0, 0);
@@ -83,6 +83,129 @@
             panelAnadirArticulo.Size = new Size(533, 406);
             panelAnadirArticulo.TabIndex = 0;
             panelAnadirArticulo.Paint += panelAnadirArticulo_Paint;
+            // 
+            // txtDescripArticulo_aa
+            // 
+            txtDescripArticulo_aa.Location = new Point(219, 284);
+            txtDescripArticulo_aa.Multiline = true;
+            txtDescripArticulo_aa.Name = "txtDescripArticulo_aa";
+            txtDescripArticulo_aa.Size = new Size(171, 56);
+            txtDescripArticulo_aa.TabIndex = 40;
+            // 
+            // lblDescripArticulo_aa
+            // 
+            lblDescripArticulo_aa.Anchor = AnchorStyles.Right;
+            lblDescripArticulo_aa.AutoSize = true;
+            lblDescripArticulo_aa.Font = new Font("Impact", 13F);
+            lblDescripArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
+            lblDescripArticulo_aa.Location = new Point(115, 284);
+            lblDescripArticulo_aa.Name = "lblDescripArticulo_aa";
+            lblDescripArticulo_aa.Size = new Size(98, 22);
+            lblDescripArticulo_aa.TabIndex = 39;
+            lblDescripArticulo_aa.Text = "Descripción";
+            // 
+            // cmbUnidadMedidaArticulo_aa
+            // 
+            cmbUnidadMedidaArticulo_aa.FormattingEnabled = true;
+            cmbUnidadMedidaArticulo_aa.ItemHeight = 15;
+            cmbUnidadMedidaArticulo_aa.Location = new Point(260, 243);
+            cmbUnidadMedidaArticulo_aa.Name = "cmbUnidadMedidaArticulo_aa";
+            cmbUnidadMedidaArticulo_aa.Size = new Size(73, 23);
+            cmbUnidadMedidaArticulo_aa.TabIndex = 38;
+            // 
+            // lblUnidadMedida_aa
+            // 
+            lblUnidadMedida_aa.Anchor = AnchorStyles.Right;
+            lblUnidadMedida_aa.AutoSize = true;
+            lblUnidadMedida_aa.Font = new Font("Impact", 13F);
+            lblUnidadMedida_aa.ForeColor = Color.FromArgb(250, 146, 186);
+            lblUnidadMedida_aa.Location = new Point(115, 244);
+            lblUnidadMedida_aa.Name = "lblUnidadMedida_aa";
+            lblUnidadMedida_aa.Size = new Size(139, 22);
+            lblUnidadMedida_aa.TabIndex = 37;
+            lblUnidadMedida_aa.Text = "Unidad de Medida";
+            // 
+            // dateFechaVencimiArticulo_aa
+            // 
+            dateFechaVencimiArticulo_aa.Format = DateTimePickerFormat.Short;
+            dateFechaVencimiArticulo_aa.Location = new Point(284, 208);
+            dateFechaVencimiArticulo_aa.Name = "dateFechaVencimiArticulo_aa";
+            dateFechaVencimiArticulo_aa.Size = new Size(97, 23);
+            dateFechaVencimiArticulo_aa.TabIndex = 36;
+            // 
+            // lblFechaVencimiArticulo_aa
+            // 
+            lblFechaVencimiArticulo_aa.Anchor = AnchorStyles.Right;
+            lblFechaVencimiArticulo_aa.AutoSize = true;
+            lblFechaVencimiArticulo_aa.Font = new Font("Impact", 13F);
+            lblFechaVencimiArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
+            lblFechaVencimiArticulo_aa.Location = new Point(115, 208);
+            lblFechaVencimiArticulo_aa.Name = "lblFechaVencimiArticulo_aa";
+            lblFechaVencimiArticulo_aa.Size = new Size(168, 22);
+            lblFechaVencimiArticulo_aa.TabIndex = 35;
+            lblFechaVencimiArticulo_aa.Text = "Fecha de Vencimiento";
+            // 
+            // numCantidadArticulo_aa
+            // 
+            numCantidadArticulo_aa.Location = new Point(196, 133);
+            numCantidadArticulo_aa.Name = "numCantidadArticulo_aa";
+            numCantidadArticulo_aa.Size = new Size(66, 23);
+            numCantidadArticulo_aa.TabIndex = 34;
+            numCantidadArticulo_aa.TextAlign = HorizontalAlignment.Center;
+            numCantidadArticulo_aa.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // dateFechaArticulo_aa
+            // 
+            dateFechaArticulo_aa.Format = DateTimePickerFormat.Short;
+            dateFechaArticulo_aa.Location = new Point(284, 172);
+            dateFechaArticulo_aa.Name = "dateFechaArticulo_aa";
+            dateFechaArticulo_aa.Size = new Size(97, 23);
+            dateFechaArticulo_aa.TabIndex = 33;
+            // 
+            // lblFechaAdquiArticulo_aa
+            // 
+            lblFechaAdquiArticulo_aa.Anchor = AnchorStyles.Right;
+            lblFechaAdquiArticulo_aa.AutoSize = true;
+            lblFechaAdquiArticulo_aa.Font = new Font("Impact", 13F);
+            lblFechaAdquiArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
+            lblFechaAdquiArticulo_aa.Location = new Point(115, 172);
+            lblFechaAdquiArticulo_aa.Name = "lblFechaAdquiArticulo_aa";
+            lblFechaAdquiArticulo_aa.Size = new Size(163, 22);
+            lblFechaAdquiArticulo_aa.TabIndex = 20;
+            lblFechaAdquiArticulo_aa.Text = "Fecha de Adquisición";
+            // 
+            // lblCantidadArticulo_aa
+            // 
+            lblCantidadArticulo_aa.Anchor = AnchorStyles.Right;
+            lblCantidadArticulo_aa.AutoSize = true;
+            lblCantidadArticulo_aa.Font = new Font("Impact", 13F);
+            lblCantidadArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
+            lblCantidadArticulo_aa.Location = new Point(115, 133);
+            lblCantidadArticulo_aa.Name = "lblCantidadArticulo_aa";
+            lblCantidadArticulo_aa.Size = new Size(75, 22);
+            lblCantidadArticulo_aa.TabIndex = 27;
+            lblCantidadArticulo_aa.Text = "Cantidad";
+            // 
+            // cmbTipoArticulo_aa
+            // 
+            cmbTipoArticulo_aa.FormattingEnabled = true;
+            cmbTipoArticulo_aa.ItemHeight = 15;
+            cmbTipoArticulo_aa.Location = new Point(162, 95);
+            cmbTipoArticulo_aa.Name = "cmbTipoArticulo_aa";
+            cmbTipoArticulo_aa.Size = new Size(121, 23);
+            cmbTipoArticulo_aa.TabIndex = 26;
+            // 
+            // lblTipoArticulo_aa
+            // 
+            lblTipoArticulo_aa.Anchor = AnchorStyles.Right;
+            lblTipoArticulo_aa.AutoSize = true;
+            lblTipoArticulo_aa.Font = new Font("Impact", 13F);
+            lblTipoArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
+            lblTipoArticulo_aa.Location = new Point(115, 93);
+            lblTipoArticulo_aa.Name = "lblTipoArticulo_aa";
+            lblTipoArticulo_aa.Size = new Size(41, 22);
+            lblTipoArticulo_aa.TabIndex = 22;
+            lblTipoArticulo_aa.Text = "Tipo";
             // 
             // titleBar
             // 
@@ -152,19 +275,19 @@
             lblNombreArticulo_aa.TabIndex = 17;
             lblNombreArticulo_aa.Text = "Nombre de Articulo";
             // 
-            // btnAnadirArticulo_bb
+            // btnAnadirArticulo_aa
             // 
-            btnAnadirArticulo_bb.Anchor = AnchorStyles.None;
-            btnAnadirArticulo_bb.BackColor = Color.FromArgb(250, 146, 186);
-            btnAnadirArticulo_bb.FlatStyle = FlatStyle.Popup;
-            btnAnadirArticulo_bb.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            btnAnadirArticulo_bb.ForeColor = Color.White;
-            btnAnadirArticulo_bb.Location = new Point(431, 367);
-            btnAnadirArticulo_bb.Name = "btnAnadirArticulo_bb";
-            btnAnadirArticulo_bb.Size = new Size(90, 27);
-            btnAnadirArticulo_bb.TabIndex = 20;
-            btnAnadirArticulo_bb.Text = "Añadir";
-            btnAnadirArticulo_bb.UseVisualStyleBackColor = false;
+            btnAnadirArticulo_aa.Anchor = AnchorStyles.None;
+            btnAnadirArticulo_aa.BackColor = Color.FromArgb(250, 146, 186);
+            btnAnadirArticulo_aa.FlatStyle = FlatStyle.Popup;
+            btnAnadirArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnAnadirArticulo_aa.ForeColor = Color.White;
+            btnAnadirArticulo_aa.Location = new Point(431, 367);
+            btnAnadirArticulo_aa.Name = "btnAnadirArticulo_aa";
+            btnAnadirArticulo_aa.Size = new Size(90, 27);
+            btnAnadirArticulo_aa.TabIndex = 20;
+            btnAnadirArticulo_aa.Text = "Añadir";
+            btnAnadirArticulo_aa.UseVisualStyleBackColor = false;
             // 
             // btnCancelarArticulo_aa
             // 
@@ -181,129 +304,6 @@
             btnCancelarArticulo_aa.UseVisualStyleBackColor = false;
             btnCancelarArticulo_aa.Click += btnCancelarArticulo_aa_Click;
             // 
-            // lblTipoArticulo_aa
-            // 
-            lblTipoArticulo_aa.Anchor = AnchorStyles.Right;
-            lblTipoArticulo_aa.AutoSize = true;
-            lblTipoArticulo_aa.Font = new Font("Impact", 13F);
-            lblTipoArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
-            lblTipoArticulo_aa.Location = new Point(115, 93);
-            lblTipoArticulo_aa.Name = "lblTipoArticulo_aa";
-            lblTipoArticulo_aa.Size = new Size(41, 22);
-            lblTipoArticulo_aa.TabIndex = 22;
-            lblTipoArticulo_aa.Text = "Tipo";
-            // 
-            // cmbTipoArticulo_aa
-            // 
-            cmbTipoArticulo_aa.FormattingEnabled = true;
-            cmbTipoArticulo_aa.ItemHeight = 15;
-            cmbTipoArticulo_aa.Location = new Point(162, 95);
-            cmbTipoArticulo_aa.Name = "cmbTipoArticulo_aa";
-            cmbTipoArticulo_aa.Size = new Size(121, 23);
-            cmbTipoArticulo_aa.TabIndex = 26;
-            // 
-            // lblCantidadArticulo_aa
-            // 
-            lblCantidadArticulo_aa.Anchor = AnchorStyles.Right;
-            lblCantidadArticulo_aa.AutoSize = true;
-            lblCantidadArticulo_aa.Font = new Font("Impact", 13F);
-            lblCantidadArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
-            lblCantidadArticulo_aa.Location = new Point(115, 133);
-            lblCantidadArticulo_aa.Name = "lblCantidadArticulo_aa";
-            lblCantidadArticulo_aa.Size = new Size(75, 22);
-            lblCantidadArticulo_aa.TabIndex = 27;
-            lblCantidadArticulo_aa.Text = "Cantidad";
-            // 
-            // lblFechaAdquiArticulo_aa
-            // 
-            lblFechaAdquiArticulo_aa.Anchor = AnchorStyles.Right;
-            lblFechaAdquiArticulo_aa.AutoSize = true;
-            lblFechaAdquiArticulo_aa.Font = new Font("Impact", 13F);
-            lblFechaAdquiArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
-            lblFechaAdquiArticulo_aa.Location = new Point(115, 172);
-            lblFechaAdquiArticulo_aa.Name = "lblFechaAdquiArticulo_aa";
-            lblFechaAdquiArticulo_aa.Size = new Size(163, 22);
-            lblFechaAdquiArticulo_aa.TabIndex = 20;
-            lblFechaAdquiArticulo_aa.Text = "Fecha de Adquisición";
-            // 
-            // dateFechaArticulo_aa
-            // 
-            dateFechaArticulo_aa.Format = DateTimePickerFormat.Short;
-            dateFechaArticulo_aa.Location = new Point(284, 172);
-            dateFechaArticulo_aa.Name = "dateFechaArticulo_aa";
-            dateFechaArticulo_aa.Size = new Size(97, 23);
-            dateFechaArticulo_aa.TabIndex = 33;
-            // 
-            // numCantidadArticulo_aa
-            // 
-            numCantidadArticulo_aa.Location = new Point(196, 133);
-            numCantidadArticulo_aa.Name = "numCantidadArticulo_aa";
-            numCantidadArticulo_aa.Size = new Size(66, 23);
-            numCantidadArticulo_aa.TabIndex = 34;
-            numCantidadArticulo_aa.TextAlign = HorizontalAlignment.Center;
-            numCantidadArticulo_aa.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
-            // dateFechaVencimiArticulo_aa
-            // 
-            dateFechaVencimiArticulo_aa.Format = DateTimePickerFormat.Short;
-            dateFechaVencimiArticulo_aa.Location = new Point(284, 208);
-            dateFechaVencimiArticulo_aa.Name = "dateFechaVencimiArticulo_aa";
-            dateFechaVencimiArticulo_aa.Size = new Size(97, 23);
-            dateFechaVencimiArticulo_aa.TabIndex = 36;
-            // 
-            // lblFechaVencimiArticulo_aa
-            // 
-            lblFechaVencimiArticulo_aa.Anchor = AnchorStyles.Right;
-            lblFechaVencimiArticulo_aa.AutoSize = true;
-            lblFechaVencimiArticulo_aa.Font = new Font("Impact", 13F);
-            lblFechaVencimiArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
-            lblFechaVencimiArticulo_aa.Location = new Point(115, 208);
-            lblFechaVencimiArticulo_aa.Name = "lblFechaVencimiArticulo_aa";
-            lblFechaVencimiArticulo_aa.Size = new Size(168, 22);
-            lblFechaVencimiArticulo_aa.TabIndex = 35;
-            lblFechaVencimiArticulo_aa.Text = "Fecha de Vencimiento";
-            // 
-            // lblUnidadMedida_aa
-            // 
-            lblUnidadMedida_aa.Anchor = AnchorStyles.Right;
-            lblUnidadMedida_aa.AutoSize = true;
-            lblUnidadMedida_aa.Font = new Font("Impact", 13F);
-            lblUnidadMedida_aa.ForeColor = Color.FromArgb(250, 146, 186);
-            lblUnidadMedida_aa.Location = new Point(115, 244);
-            lblUnidadMedida_aa.Name = "lblUnidadMedida_aa";
-            lblUnidadMedida_aa.Size = new Size(139, 22);
-            lblUnidadMedida_aa.TabIndex = 37;
-            lblUnidadMedida_aa.Text = "Unidad de Medida";
-            // 
-            // cmbUnidadMedidaArticulo_aa
-            // 
-            cmbUnidadMedidaArticulo_aa.FormattingEnabled = true;
-            cmbUnidadMedidaArticulo_aa.ItemHeight = 15;
-            cmbUnidadMedidaArticulo_aa.Location = new Point(260, 243);
-            cmbUnidadMedidaArticulo_aa.Name = "cmbUnidadMedidaArticulo_aa";
-            cmbUnidadMedidaArticulo_aa.Size = new Size(73, 23);
-            cmbUnidadMedidaArticulo_aa.TabIndex = 38;
-            // 
-            // lblDescripArticulo_aa
-            // 
-            lblDescripArticulo_aa.Anchor = AnchorStyles.Right;
-            lblDescripArticulo_aa.AutoSize = true;
-            lblDescripArticulo_aa.Font = new Font("Impact", 13F);
-            lblDescripArticulo_aa.ForeColor = Color.FromArgb(250, 146, 186);
-            lblDescripArticulo_aa.Location = new Point(115, 284);
-            lblDescripArticulo_aa.Name = "lblDescripArticulo_aa";
-            lblDescripArticulo_aa.Size = new Size(98, 22);
-            lblDescripArticulo_aa.TabIndex = 39;
-            lblDescripArticulo_aa.Text = "Descripción";
-            // 
-            // txtDescripArticulo_aa
-            // 
-            txtDescripArticulo_aa.Location = new Point(219, 284);
-            txtDescripArticulo_aa.Multiline = true;
-            txtDescripArticulo_aa.Name = "txtDescripArticulo_aa";
-            txtDescripArticulo_aa.Size = new Size(171, 56);
-            txtDescripArticulo_aa.TabIndex = 40;
-            // 
             // AnadirArticuloForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -316,11 +316,11 @@
             Load += AnadirArticuloForm_Load;
             panelAnadirArticulo.ResumeLayout(false);
             panelAnadirArticulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numCantidadArticulo_aa).EndInit();
             titleBar.ResumeLayout(false);
             panelControlsTitleBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnMinimize).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numCantidadArticulo_aa).EndInit();
             ResumeLayout(false);
         }
 
@@ -329,7 +329,7 @@
         private Panel panelAnadirArticulo;
         private TextBox txtNombreArticulo_aa;
         private Label lblNombreArticulo_aa;
-        private Button btnAnadirArticulo_bb;
+        private Button btnAnadirArticulo_aa;
         private Button btnCancelarArticulo_aa;
         private Panel titleBar;
         private PictureBox btnMinimize;
