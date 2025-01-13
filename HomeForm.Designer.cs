@@ -41,7 +41,7 @@
             logoUmbrella = new PictureBox();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
-            panelTitleBar = new Panel();
+            titleBarHome = new Panel();
             panelControlsTitleBar = new Panel();
             btnMinimize = new PictureBox();
             btnMaximize = new PictureBox();
@@ -52,7 +52,7 @@
             sideBarPanel.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).BeginInit();
-            panelTitleBar.SuspendLayout();
+            titleBarHome.SuspendLayout();
             panelControlsTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnMinimize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMaximize).BeginInit();
@@ -241,17 +241,17 @@
             iconButton1.Text = "iconButton1";
             iconButton1.UseVisualStyleBackColor = true;
             // 
-            // panelTitleBar
+            // titleBarHome
             // 
-            panelTitleBar.BackColor = Color.White;
-            panelTitleBar.Controls.Add(panelControlsTitleBar);
-            panelTitleBar.Controls.Add(iconCurrentChildForm);
-            panelTitleBar.Dock = DockStyle.Top;
-            panelTitleBar.Location = new Point(181, 0);
-            panelTitleBar.Name = "panelTitleBar";
-            panelTitleBar.Size = new Size(803, 42);
-            panelTitleBar.TabIndex = 2;
-            panelTitleBar.MouseDown += panelTitleBar_MouseDown;
+            titleBarHome.BackColor = Color.White;
+            titleBarHome.Controls.Add(panelControlsTitleBar);
+            titleBarHome.Controls.Add(iconCurrentChildForm);
+            titleBarHome.Dock = DockStyle.Top;
+            titleBarHome.Location = new Point(181, 0);
+            titleBarHome.Name = "titleBarHome";
+            titleBarHome.Size = new Size(803, 42);
+            titleBarHome.TabIndex = 2;
+            titleBarHome.MouseDown += titleBarHome_MouseDown;
             // 
             // panelControlsTitleBar
             // 
@@ -342,11 +342,11 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(984, 631);
             Controls.Add(panelDesktop);
-            Controls.Add(panelTitleBar);
+            Controls.Add(titleBarHome);
             Controls.Add(sideBarPanel);
             Controls.Add(panel1);
             Font = new Font("Impact", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "HomeForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " ";
@@ -354,7 +354,7 @@
             sideBarPanel.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logoUmbrella).EndInit();
-            panelTitleBar.ResumeLayout(false);
+            titleBarHome.ResumeLayout(false);
             panelControlsTitleBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnMinimize).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnMaximize).EndInit();
@@ -379,7 +379,7 @@
         private FontAwesome.Sharp.IconButton iconFacturas;
         private FontAwesome.Sharp.IconButton iconInventario;
         private PictureBox logoUmbrella;
-        private Panel panelTitleBar;
+        private Panel titleBarHome;
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private Panel panelDesktop;
         private PictureBox pictureBox1;

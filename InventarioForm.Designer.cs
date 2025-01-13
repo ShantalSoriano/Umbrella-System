@@ -62,6 +62,7 @@
             btnAnadirInventario.TabIndex = 17;
             btnAnadirInventario.Text = "Anadir";
             btnAnadirInventario.UseVisualStyleBackColor = false;
+            btnAnadirInventario.Click += btnAnadirInventario_Click;
             // 
             // dgvInventario
             // 
