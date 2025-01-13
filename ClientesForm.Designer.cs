@@ -54,8 +54,8 @@
             panelPic = new Panel();
             picCliente = new PictureBox();
             tabTodosLosClientes = new TabPage();
-            button3 = new Button();
-            button1 = new Button();
+            btnEliminarCliente = new Button();
+            btnModificarCliente = new Button();
             dgvClientes = new DataGridView();
             tabctrlClientes.SuspendLayout();
             tabRegistrarCliente.SuspendLayout();
@@ -356,8 +356,8 @@
             // tabTodosLosClientes
             // 
             tabTodosLosClientes.BorderStyle = BorderStyle.Fixed3D;
-            tabTodosLosClientes.Controls.Add(button3);
-            tabTodosLosClientes.Controls.Add(button1);
+            tabTodosLosClientes.Controls.Add(btnEliminarCliente);
+            tabTodosLosClientes.Controls.Add(btnModificarCliente);
             tabTodosLosClientes.Controls.Add(dgvClientes);
             tabTodosLosClientes.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabTodosLosClientes.ForeColor = Color.FromArgb(250, 146, 186);
@@ -369,39 +369,39 @@
             tabTodosLosClientes.Text = "Todos los Clientes";
             tabTodosLosClientes.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnEliminarCliente
             // 
-            button3.Anchor = AnchorStyles.None;
-            button3.BackColor = Color.FromArgb(250, 146, 186);
-            button3.FlatStyle = FlatStyle.Popup;
-            button3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(6, 477);
-            button3.Name = "button3";
-            button3.Size = new Size(90, 27);
-            button3.TabIndex = 15;
-            button3.Text = "Eliminar";
-            button3.UseVisualStyleBackColor = false;
+            btnEliminarCliente.Anchor = AnchorStyles.None;
+            btnEliminarCliente.BackColor = Color.FromArgb(250, 146, 186);
+            btnEliminarCliente.FlatStyle = FlatStyle.Popup;
+            btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnEliminarCliente.ForeColor = Color.White;
+            btnEliminarCliente.Location = new Point(6, 475);
+            btnEliminarCliente.Name = "btnEliminarCliente";
+            btnEliminarCliente.Size = new Size(90, 27);
+            btnEliminarCliente.TabIndex = 15;
+            btnEliminarCliente.Text = "Eliminar";
+            btnEliminarCliente.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnModificarCliente
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.BackColor = Color.FromArgb(250, 146, 186);
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(684, 477);
-            button1.Name = "button1";
-            button1.Size = new Size(90, 27);
-            button1.TabIndex = 13;
-            button1.Text = "Modificar";
-            button1.UseVisualStyleBackColor = false;
+            btnModificarCliente.Anchor = AnchorStyles.None;
+            btnModificarCliente.BackColor = Color.FromArgb(250, 146, 186);
+            btnModificarCliente.FlatStyle = FlatStyle.Popup;
+            btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnModificarCliente.ForeColor = Color.White;
+            btnModificarCliente.Location = new Point(684, 475);
+            btnModificarCliente.Name = "btnModificarCliente";
+            btnModificarCliente.Size = new Size(90, 27);
+            btnModificarCliente.TabIndex = 13;
+            btnModificarCliente.Text = "Modificar";
+            btnModificarCliente.UseVisualStyleBackColor = false;
             // 
             // dgvClientes
             // 
             dgvClientes.Anchor = AnchorStyles.None;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(28, 20);
+            dgvClientes.Location = new Point(28, 18);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;
@@ -457,8 +457,8 @@
         private CheckBox checkBox5;
         private Button btnCancelarRegistro;
         private Button btnRegistrarCliente;
-        private Button button3;
-        private Button button1;
+        private Button btnEliminarCliente;
+        private Button btnModificarCliente;
         private DataGridView dgvClientes;
     }
 }
