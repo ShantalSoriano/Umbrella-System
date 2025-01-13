@@ -15,6 +15,15 @@ namespace Umbrella_System
         public FacturasForm()
         {
             InitializeComponent();
+            for (int i = 0; i < 10; i++)
+            {
+                dgvGestionarFacturas.Rows.Add(i, "Christina Matos ", "12/07/24 ", "1,200 ");
+            }
+
+            for(int i = 0; i < 10; i++)
+            {
+                dgvRecuentoServicios.Rows.Add("Manicura", "3", "100", "300");
+            }
         }
 
         private void FacturasForm_Load(object sender, EventArgs e)
@@ -43,6 +52,11 @@ namespace Umbrella_System
         }
 
         private void autoDevuelta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvGestionarFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

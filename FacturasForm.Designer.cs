@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturasForm));
             tabctrlFacturas = new TabControl();
             tabCrearFactura = new TabPage();
             Cancelar = new Button();
@@ -48,6 +49,10 @@
             autoTotal = new Label();
             lblTotal = new Label();
             dgvRecuentoServicios = new DataGridView();
+            nombreServicio = new DataGridViewTextBoxColumn();
+            cantidadServicio = new DataGridViewTextBoxColumn();
+            subtotalServicio = new DataGridViewTextBoxColumn();
+            totalServicio = new DataGridViewTextBoxColumn();
             btnEliminarServicio = new Button();
             numCantidadServicio = new NumericUpDown();
             btnAgregarServicio = new Button();
@@ -61,17 +66,13 @@
             cmbServicio = new ComboBox();
             tabGestionarFacturas = new TabPage();
             dgvGestionarFacturas = new DataGridView();
-            nombreServicio = new DataGridViewTextBoxColumn();
-            cantidadServicio = new DataGridViewTextBoxColumn();
-            subtotalServicio = new DataGridViewTextBoxColumn();
-            totalServicio = new DataGridViewTextBoxColumn();
             NumeroFactura = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
+            iconVerDetallesFactura = new DataGridViewImageColumn();
             iconEditar = new DataGridViewImageColumn();
             iconEliminarFactura = new DataGridViewImageColumn();
-            iconVerDetallesFactura = new DataGridViewImageColumn();
             tabctrlFacturas.SuspendLayout();
             tabCrearFactura.SuspendLayout();
             panel1.SuspendLayout();
@@ -290,7 +291,7 @@
             // 
             dgvRecuentoServicios.AllowUserToAddRows = false;
             dgvRecuentoServicios.AllowUserToDeleteRows = false;
-            dgvRecuentoServicios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRecuentoServicios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvRecuentoServicios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecuentoServicios.Columns.AddRange(new DataGridViewColumn[] { nombreServicio, cantidadServicio, subtotalServicio, totalServicio });
             dgvRecuentoServicios.Location = new Point(7, 168);
@@ -298,6 +299,34 @@
             dgvRecuentoServicios.ReadOnly = true;
             dgvRecuentoServicios.Size = new Size(483, 233);
             dgvRecuentoServicios.TabIndex = 16;
+            // 
+            // nombreServicio
+            // 
+            nombreServicio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombreServicio.HeaderText = "Servicio";
+            nombreServicio.Name = "nombreServicio";
+            nombreServicio.ReadOnly = true;
+            // 
+            // cantidadServicio
+            // 
+            cantidadServicio.HeaderText = "Cantidad";
+            cantidadServicio.Name = "cantidadServicio";
+            cantidadServicio.ReadOnly = true;
+            cantidadServicio.Width = 99;
+            // 
+            // subtotalServicio
+            // 
+            subtotalServicio.HeaderText = "Subtotal";
+            subtotalServicio.Name = "subtotalServicio";
+            subtotalServicio.ReadOnly = true;
+            subtotalServicio.Width = 95;
+            // 
+            // totalServicio
+            // 
+            totalServicio.HeaderText = "Total";
+            totalServicio.Name = "totalServicio";
+            totalServicio.ReadOnly = true;
+            totalServicio.Width = 71;
             // 
             // btnEliminarServicio
             // 
@@ -446,7 +475,9 @@
             // 
             dgvGestionarFacturas.AllowUserToAddRows = false;
             dgvGestionarFacturas.AllowUserToDeleteRows = false;
-            dgvGestionarFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGestionarFacturas.AllowUserToResizeColumns = false;
+            dgvGestionarFacturas.AllowUserToResizeRows = false;
+            dgvGestionarFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvGestionarFacturas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -458,7 +489,7 @@
             dgvGestionarFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvGestionarFacturas.ColumnHeadersHeight = 30;
             dgvGestionarFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvGestionarFacturas.Columns.AddRange(new DataGridViewColumn[] { NumeroFactura, Cliente, Fecha, Total, iconEditar, iconEliminarFactura, iconVerDetallesFactura });
+            dgvGestionarFacturas.Columns.AddRange(new DataGridViewColumn[] { NumeroFactura, Cliente, Fecha, Total, iconVerDetallesFactura, iconEditar, iconEliminarFactura });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
@@ -468,7 +499,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvGestionarFacturas.DefaultCellStyle = dataGridViewCellStyle2;
             dgvGestionarFacturas.EnableHeadersVisualStyles = false;
-            dgvGestionarFacturas.Location = new Point(8, 17);
+            dgvGestionarFacturas.Location = new Point(8, 6);
             dgvGestionarFacturas.Name = "dgvGestionarFacturas";
             dgvGestionarFacturas.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -480,63 +511,59 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvGestionarFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvGestionarFacturas.RowHeadersVisible = false;
-            dgvGestionarFacturas.Size = new Size(765, 235);
+            dgvGestionarFacturas.Size = new Size(765, 505);
             dgvGestionarFacturas.TabIndex = 0;
-            // 
-            // nombreServicio
-            // 
-            nombreServicio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nombreServicio.HeaderText = "Servicio";
-            nombreServicio.Name = "nombreServicio";
-            nombreServicio.ReadOnly = true;
-            // 
-            // cantidadServicio
-            // 
-            cantidadServicio.HeaderText = "Cantidad";
-            cantidadServicio.Name = "cantidadServicio";
-            cantidadServicio.ReadOnly = true;
-            // 
-            // subtotalServicio
-            // 
-            subtotalServicio.HeaderText = "Subtotal";
-            subtotalServicio.Name = "subtotalServicio";
-            subtotalServicio.ReadOnly = true;
-            // 
-            // totalServicio
-            // 
-            totalServicio.HeaderText = "Total";
-            totalServicio.Name = "totalServicio";
-            totalServicio.ReadOnly = true;
+            dgvGestionarFacturas.CellContentClick += dgvGestionarFacturas_CellContentClick;
             // 
             // NumeroFactura
             // 
+            NumeroFactura.FillWeight = 355.223877F;
             NumeroFactura.HeaderText = "Numero de Factura";
             NumeroFactura.Name = "NumeroFactura";
             NumeroFactura.ReadOnly = true;
+            NumeroFactura.Resizable = DataGridViewTriState.True;
+            NumeroFactura.Width = 136;
             // 
             // Cliente
             // 
             Cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Cliente.FillWeight = 14.925374F;
             Cliente.HeaderText = "Cliente";
             Cliente.Name = "Cliente";
             Cliente.ReadOnly = true;
             // 
             // Fecha
             // 
+            Fecha.FillWeight = 14.925374F;
             Fecha.HeaderText = "Fecha";
             Fecha.Name = "Fecha";
             Fecha.ReadOnly = true;
+            Fecha.Width = 65;
             // 
             // Total
             // 
+            Total.FillWeight = 14.925374F;
             Total.HeaderText = "Total";
             Total.Name = "Total";
             Total.ReadOnly = true;
+            Total.Width = 59;
+            // 
+            // iconVerDetallesFactura
+            // 
+            iconVerDetallesFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            iconVerDetallesFactura.FillWeight = 20F;
+            iconVerDetallesFactura.HeaderText = "";
+            iconVerDetallesFactura.Image = (Image)resources.GetObject("iconVerDetallesFactura.Image");
+            iconVerDetallesFactura.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            iconVerDetallesFactura.Name = "iconVerDetallesFactura";
+            iconVerDetallesFactura.ReadOnly = true;
+            iconVerDetallesFactura.Width = 5;
             // 
             // iconEditar
             // 
             iconEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             iconEditar.HeaderText = "";
+            iconEditar.Image = (Image)resources.GetObject("iconEditar.Image");
             iconEditar.Name = "iconEditar";
             iconEditar.ReadOnly = true;
             iconEditar.Width = 5;
@@ -545,18 +572,10 @@
             // 
             iconEliminarFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             iconEliminarFactura.HeaderText = "";
+            iconEliminarFactura.Image = (Image)resources.GetObject("iconEliminarFactura.Image");
             iconEliminarFactura.Name = "iconEliminarFactura";
             iconEliminarFactura.ReadOnly = true;
             iconEliminarFactura.Width = 5;
-            // 
-            // iconVerDetallesFactura
-            // 
-            iconVerDetallesFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            iconVerDetallesFactura.FillWeight = 20F;
-            iconVerDetallesFactura.HeaderText = "";
-            iconVerDetallesFactura.Name = "iconVerDetallesFactura";
-            iconVerDetallesFactura.ReadOnly = true;
-            iconVerDetallesFactura.Width = 5;
             // 
             // FacturasForm
             // 
@@ -619,8 +638,8 @@
         private DataGridViewTextBoxColumn Cliente;
         private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Total;
+        private DataGridViewImageColumn iconVerDetallesFactura;
         private DataGridViewImageColumn iconEditar;
         private DataGridViewImageColumn iconEliminarFactura;
-        private DataGridViewImageColumn iconVerDetallesFactura;
     }
 }
