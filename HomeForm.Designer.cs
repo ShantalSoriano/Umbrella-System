@@ -251,6 +251,7 @@
             titleBarHome.Name = "titleBarHome";
             titleBarHome.Size = new Size(803, 42);
             titleBarHome.TabIndex = 2;
+            titleBarHome.Paint += titleBarHome_Paint;
             titleBarHome.MouseDown += titleBarHome_MouseDown;
             // 
             // panelControlsTitleBar

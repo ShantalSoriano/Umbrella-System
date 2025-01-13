@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabctrlClientes = new TabControl();
             tabRegistrarCliente = new TabPage();
             MainPanel = new Panel();
@@ -361,10 +363,10 @@
             tabTodosLosClientes.Controls.Add(dgvClientes);
             tabTodosLosClientes.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabTodosLosClientes.ForeColor = Color.FromArgb(250, 146, 186);
-            tabTodosLosClientes.Location = new Point(4, 24);
+            tabTodosLosClientes.Location = new Point(4, 27);
             tabTodosLosClientes.Name = "tabTodosLosClientes";
             tabTodosLosClientes.Padding = new Padding(3);
-            tabTodosLosClientes.Size = new Size(779, 522);
+            tabTodosLosClientes.Size = new Size(779, 519);
             tabTodosLosClientes.TabIndex = 1;
             tabTodosLosClientes.Text = "Todos los Clientes";
             tabTodosLosClientes.UseVisualStyleBackColor = true;
@@ -376,7 +378,7 @@
             btnEliminarCliente.FlatStyle = FlatStyle.Popup;
             btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarCliente.ForeColor = Color.White;
-            btnEliminarCliente.Location = new Point(6, 475);
+            btnEliminarCliente.Location = new Point(6, 465);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(90, 27);
             btnEliminarCliente.TabIndex = 15;
@@ -390,7 +392,7 @@
             btnModificarCliente.FlatStyle = FlatStyle.Popup;
             btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarCliente.ForeColor = Color.White;
-            btnModificarCliente.Location = new Point(684, 475);
+            btnModificarCliente.Location = new Point(684, 465);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Size = new Size(90, 27);
             btnModificarCliente.TabIndex = 13;
@@ -401,8 +403,25 @@
             // 
             dgvClientes.Anchor = AnchorStyles.None;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(28, 18);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.25F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvClientes.Location = new Point(28, 8);
             dgvClientes.Name = "dgvClientes";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;
             // 
