@@ -126,6 +126,8 @@
             // 
             // dgvDetalleFactura
             // 
+            dgvDetalleFactura.AllowUserToAddRows = false;
+            dgvDetalleFactura.AllowUserToDeleteRows = false;
             dgvDetalleFactura.AllowUserToResizeColumns = false;
             dgvDetalleFactura.AllowUserToResizeRows = false;
             dgvDetalleFactura.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -162,7 +164,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvDetalleFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgvDetalleFactura.Size = new Size(569, 299);
+            dgvDetalleFactura.Size = new Size(569, 304);
             dgvDetalleFactura.TabIndex = 23;
             dgvDetalleFactura.CellContentClick += dgvDetalleFactura_CellContentClick;
             // 

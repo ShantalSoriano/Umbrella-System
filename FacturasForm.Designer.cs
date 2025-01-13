@@ -473,6 +473,7 @@
             // 
             // dgvGestionarFacturas
             // 
+            dgvGestionarFacturas.AllowUserToAddRows = false;
             dgvGestionarFacturas.AllowUserToDeleteRows = false;
             dgvGestionarFacturas.AllowUserToResizeColumns = false;
             dgvGestionarFacturas.AllowUserToResizeRows = false;
@@ -556,7 +557,7 @@
             iconVerDetallesFactura.ImageLayout = DataGridViewImageCellLayout.Zoom;
             iconVerDetallesFactura.Name = "iconVerDetallesFactura";
             iconVerDetallesFactura.ReadOnly = true;
-            iconVerDetallesFactura.Width = 21;
+            iconVerDetallesFactura.Width = 5;
             // 
             // iconEditar
             // 
@@ -565,7 +566,7 @@
             iconEditar.Image = (Image)resources.GetObject("iconEditar.Image");
             iconEditar.Name = "iconEditar";
             iconEditar.ReadOnly = true;
-            iconEditar.Width = 21;
+            iconEditar.Width = 5;
             // 
             // iconEliminarFactura
             // 
@@ -574,7 +575,7 @@
             iconEliminarFactura.Image = (Image)resources.GetObject("iconEliminarFactura.Image");
             iconEliminarFactura.Name = "iconEliminarFactura";
             iconEliminarFactura.ReadOnly = true;
-            iconEliminarFactura.Width = 21;
+            iconEliminarFactura.Width = 5;
             // 
             // FacturasForm
             // 
