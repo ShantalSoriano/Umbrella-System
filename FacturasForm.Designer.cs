@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             tabctrlFacturas = new TabControl();
             tabCrearFactura = new TabPage();
             Cancelar = new Button();
@@ -45,10 +48,6 @@
             autoTotal = new Label();
             lblTotal = new Label();
             dgvRecuentoServicios = new DataGridView();
-            nombreServicio = new DataGridViewTextBoxColumn();
-            cantidadServicio = new DataGridViewTextBoxColumn();
-            subtotalServicio = new DataGridViewTextBoxColumn();
-            totalServicio = new DataGridViewTextBoxColumn();
             btnEliminarServicio = new Button();
             numCantidadServicio = new NumericUpDown();
             btnAgregarServicio = new Button();
@@ -61,12 +60,26 @@
             lblServicioFactura = new Label();
             cmbServicio = new ComboBox();
             tabGestionarFacturas = new TabPage();
+            dgvGestionarFacturas = new DataGridView();
+            nombreServicio = new DataGridViewTextBoxColumn();
+            cantidadServicio = new DataGridViewTextBoxColumn();
+            subtotalServicio = new DataGridViewTextBoxColumn();
+            totalServicio = new DataGridViewTextBoxColumn();
+            NumeroFactura = new DataGridViewTextBoxColumn();
+            Cliente = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
+            iconEditar = new DataGridViewImageColumn();
+            iconEliminarFactura = new DataGridViewImageColumn();
+            iconVerDetallesFactura = new DataGridViewImageColumn();
             tabctrlFacturas.SuspendLayout();
             tabCrearFactura.SuspendLayout();
             panel1.SuspendLayout();
             innerPanelCrearFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecuentoServicios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCantidadServicio).BeginInit();
+            tabGestionarFacturas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvGestionarFacturas).BeginInit();
             SuspendLayout();
             // 
             // tabctrlFacturas
@@ -286,30 +299,6 @@
             dgvRecuentoServicios.Size = new Size(483, 233);
             dgvRecuentoServicios.TabIndex = 16;
             // 
-            // nombreServicio
-            // 
-            nombreServicio.HeaderText = "Servicio";
-            nombreServicio.Name = "nombreServicio";
-            nombreServicio.ReadOnly = true;
-            // 
-            // cantidadServicio
-            // 
-            cantidadServicio.HeaderText = "Cantidad";
-            cantidadServicio.Name = "cantidadServicio";
-            cantidadServicio.ReadOnly = true;
-            // 
-            // subtotalServicio
-            // 
-            subtotalServicio.HeaderText = "Subtotal";
-            subtotalServicio.Name = "subtotalServicio";
-            subtotalServicio.ReadOnly = true;
-            // 
-            // totalServicio
-            // 
-            totalServicio.HeaderText = "Total";
-            totalServicio.Name = "totalServicio";
-            totalServicio.ReadOnly = true;
-            // 
             // btnEliminarServicio
             // 
             btnEliminarServicio.Anchor = AnchorStyles.None;
@@ -444,6 +433,7 @@
             // 
             // tabGestionarFacturas
             // 
+            tabGestionarFacturas.Controls.Add(dgvGestionarFacturas);
             tabGestionarFacturas.Location = new Point(4, 27);
             tabGestionarFacturas.Name = "tabGestionarFacturas";
             tabGestionarFacturas.Padding = new Padding(3);
@@ -451,6 +441,122 @@
             tabGestionarFacturas.TabIndex = 1;
             tabGestionarFacturas.Text = "Gestionar Facturas";
             tabGestionarFacturas.UseVisualStyleBackColor = true;
+            // 
+            // dgvGestionarFacturas
+            // 
+            dgvGestionarFacturas.AllowUserToAddRows = false;
+            dgvGestionarFacturas.AllowUserToDeleteRows = false;
+            dgvGestionarFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGestionarFacturas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Impact", 10F);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvGestionarFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvGestionarFacturas.ColumnHeadersHeight = 30;
+            dgvGestionarFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvGestionarFacturas.Columns.AddRange(new DataGridViewColumn[] { NumeroFactura, Cliente, Fecha, Total, iconEditar, iconEliminarFactura, iconVerDetallesFactura });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvGestionarFacturas.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvGestionarFacturas.EnableHeadersVisualStyles = false;
+            dgvGestionarFacturas.Location = new Point(8, 17);
+            dgvGestionarFacturas.Name = "dgvGestionarFacturas";
+            dgvGestionarFacturas.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Impact", 11.25F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvGestionarFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvGestionarFacturas.RowHeadersVisible = false;
+            dgvGestionarFacturas.Size = new Size(765, 235);
+            dgvGestionarFacturas.TabIndex = 0;
+            // 
+            // nombreServicio
+            // 
+            nombreServicio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombreServicio.HeaderText = "Servicio";
+            nombreServicio.Name = "nombreServicio";
+            nombreServicio.ReadOnly = true;
+            // 
+            // cantidadServicio
+            // 
+            cantidadServicio.HeaderText = "Cantidad";
+            cantidadServicio.Name = "cantidadServicio";
+            cantidadServicio.ReadOnly = true;
+            // 
+            // subtotalServicio
+            // 
+            subtotalServicio.HeaderText = "Subtotal";
+            subtotalServicio.Name = "subtotalServicio";
+            subtotalServicio.ReadOnly = true;
+            // 
+            // totalServicio
+            // 
+            totalServicio.HeaderText = "Total";
+            totalServicio.Name = "totalServicio";
+            totalServicio.ReadOnly = true;
+            // 
+            // NumeroFactura
+            // 
+            NumeroFactura.HeaderText = "Numero de Factura";
+            NumeroFactura.Name = "NumeroFactura";
+            NumeroFactura.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            Cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Cliente.HeaderText = "Cliente";
+            Cliente.Name = "Cliente";
+            Cliente.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            Fecha.HeaderText = "Fecha";
+            Fecha.Name = "Fecha";
+            Fecha.ReadOnly = true;
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            // 
+            // iconEditar
+            // 
+            iconEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            iconEditar.HeaderText = "";
+            iconEditar.Name = "iconEditar";
+            iconEditar.ReadOnly = true;
+            iconEditar.Width = 5;
+            // 
+            // iconEliminarFactura
+            // 
+            iconEliminarFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            iconEliminarFactura.HeaderText = "";
+            iconEliminarFactura.Name = "iconEliminarFactura";
+            iconEliminarFactura.ReadOnly = true;
+            iconEliminarFactura.Width = 5;
+            // 
+            // iconVerDetallesFactura
+            // 
+            iconVerDetallesFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            iconVerDetallesFactura.FillWeight = 20F;
+            iconVerDetallesFactura.HeaderText = "";
+            iconVerDetallesFactura.Name = "iconVerDetallesFactura";
+            iconVerDetallesFactura.ReadOnly = true;
+            iconVerDetallesFactura.Width = 5;
             // 
             // FacturasForm
             // 
@@ -468,6 +574,8 @@
             innerPanelCrearFactura.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecuentoServicios).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCantidadServicio).EndInit();
+            tabGestionarFacturas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvGestionarFacturas).EndInit();
             ResumeLayout(false);
         }
 
@@ -501,10 +609,18 @@
         private ComboBox comboBox1;
         private Label lblClienteFactura;
         private Button Guardar;
+        private Button Cancelar;
+        private DataGridView dgvGestionarFacturas;
         private DataGridViewTextBoxColumn nombreServicio;
         private DataGridViewTextBoxColumn cantidadServicio;
         private DataGridViewTextBoxColumn subtotalServicio;
         private DataGridViewTextBoxColumn totalServicio;
-        private Button Cancelar;
+        private DataGridViewTextBoxColumn NumeroFactura;
+        private DataGridViewTextBoxColumn Cliente;
+        private DataGridViewTextBoxColumn Fecha;
+        private DataGridViewTextBoxColumn Total;
+        private DataGridViewImageColumn iconEditar;
+        private DataGridViewImageColumn iconEliminarFactura;
+        private DataGridViewImageColumn iconVerDetallesFactura;
     }
 }
