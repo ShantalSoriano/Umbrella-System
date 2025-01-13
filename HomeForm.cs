@@ -190,10 +190,16 @@ namespace Umbrella_System
             WindowState = FormWindowState.Minimized;
         }
 
+        // Mover el formulario sin bordes
         private void titleBarHome_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void titleBarHome_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

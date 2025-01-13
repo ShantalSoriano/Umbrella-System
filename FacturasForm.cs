@@ -58,7 +58,13 @@ namespace Umbrella_System
 
         private void dgvGestionarFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // Verifica si el índice de la columna corresponde a la columna de la imagen
+            if (e.ColumnIndex == dgvGestionarFacturas.Columns["iconVerDetallesFactura"].Index && e.RowIndex >= 0)
+            {
+                // Abre el formulario de detalles
+                FacturaDetallesForm facturaDetallesForm = new FacturaDetallesForm();
+                facturaDetallesForm.Show();
+            }
         }
     }
 }
