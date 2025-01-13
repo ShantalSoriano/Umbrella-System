@@ -21,5 +21,30 @@ namespace Umbrella_System
         {
 
         }
+
+        private void lblServicioFactura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void autoPrecioServicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void innerPanelCrearFactura_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void autoDevuelta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

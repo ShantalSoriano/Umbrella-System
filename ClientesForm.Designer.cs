@@ -376,7 +376,7 @@
             btnEliminarCliente.FlatStyle = FlatStyle.Popup;
             btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarCliente.ForeColor = Color.White;
-            btnEliminarCliente.Location = new Point(6, 473);
+            btnEliminarCliente.Location = new Point(6, 467);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(90, 27);
             btnEliminarCliente.TabIndex = 15;
@@ -390,7 +390,7 @@
             btnModificarCliente.FlatStyle = FlatStyle.Popup;
             btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarCliente.ForeColor = Color.White;
-            btnModificarCliente.Location = new Point(684, 473);
+            btnModificarCliente.Location = new Point(684, 467);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Size = new Size(90, 27);
             btnModificarCliente.TabIndex = 13;
@@ -401,7 +401,7 @@
             // 
             dgvClientes.Anchor = AnchorStyles.None;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(28, 16);
+            dgvClientes.Location = new Point(28, 10);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;

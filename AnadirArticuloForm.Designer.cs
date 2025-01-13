@@ -86,6 +86,8 @@
             // 
             // txtDescripArticulo_aa
             // 
+            txtDescripArticulo_aa.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            txtDescripArticulo_aa.ForeColor = Color.FromArgb(213, 70, 189);
             txtDescripArticulo_aa.Location = new Point(219, 284);
             txtDescripArticulo_aa.Multiline = true;
             txtDescripArticulo_aa.Name = "txtDescripArticulo_aa";
@@ -106,11 +108,13 @@
             // 
             // cmbUnidadMedidaArticulo_aa
             // 
+            cmbUnidadMedidaArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            cmbUnidadMedidaArticulo_aa.ForeColor = Color.FromArgb(213, 70, 189);
             cmbUnidadMedidaArticulo_aa.FormattingEnabled = true;
-            cmbUnidadMedidaArticulo_aa.ItemHeight = 15;
+            cmbUnidadMedidaArticulo_aa.ItemHeight = 16;
             cmbUnidadMedidaArticulo_aa.Location = new Point(260, 243);
             cmbUnidadMedidaArticulo_aa.Name = "cmbUnidadMedidaArticulo_aa";
-            cmbUnidadMedidaArticulo_aa.Size = new Size(73, 23);
+            cmbUnidadMedidaArticulo_aa.Size = new Size(73, 24);
             cmbUnidadMedidaArticulo_aa.TabIndex = 38;
             // 
             // lblUnidadMedida_aa
@@ -127,10 +131,11 @@
             // 
             // dateFechaVencimiArticulo_aa
             // 
+            dateFechaVencimiArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dateFechaVencimiArticulo_aa.Format = DateTimePickerFormat.Short;
             dateFechaVencimiArticulo_aa.Location = new Point(284, 208);
             dateFechaVencimiArticulo_aa.Name = "dateFechaVencimiArticulo_aa";
-            dateFechaVencimiArticulo_aa.Size = new Size(97, 23);
+            dateFechaVencimiArticulo_aa.Size = new Size(120, 23);
             dateFechaVencimiArticulo_aa.TabIndex = 36;
             // 
             // lblFechaVencimiArticulo_aa
@@ -147,19 +152,22 @@
             // 
             // numCantidadArticulo_aa
             // 
+            numCantidadArticulo_aa.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            numCantidadArticulo_aa.ForeColor = Color.FromArgb(213, 70, 189);
             numCantidadArticulo_aa.Location = new Point(196, 133);
             numCantidadArticulo_aa.Name = "numCantidadArticulo_aa";
-            numCantidadArticulo_aa.Size = new Size(66, 23);
+            numCantidadArticulo_aa.Size = new Size(66, 24);
             numCantidadArticulo_aa.TabIndex = 34;
             numCantidadArticulo_aa.TextAlign = HorizontalAlignment.Center;
             numCantidadArticulo_aa.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // dateFechaArticulo_aa
             // 
+            dateFechaArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dateFechaArticulo_aa.Format = DateTimePickerFormat.Short;
             dateFechaArticulo_aa.Location = new Point(284, 172);
             dateFechaArticulo_aa.Name = "dateFechaArticulo_aa";
-            dateFechaArticulo_aa.Size = new Size(97, 23);
+            dateFechaArticulo_aa.Size = new Size(120, 23);
             dateFechaArticulo_aa.TabIndex = 33;
             // 
             // lblFechaAdquiArticulo_aa
@@ -188,11 +196,13 @@
             // 
             // cmbTipoArticulo_aa
             // 
+            cmbTipoArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            cmbTipoArticulo_aa.ForeColor = Color.FromArgb(213, 70, 189);
             cmbTipoArticulo_aa.FormattingEnabled = true;
-            cmbTipoArticulo_aa.ItemHeight = 15;
+            cmbTipoArticulo_aa.ItemHeight = 16;
             cmbTipoArticulo_aa.Location = new Point(162, 95);
             cmbTipoArticulo_aa.Name = "cmbTipoArticulo_aa";
-            cmbTipoArticulo_aa.Size = new Size(121, 23);
+            cmbTipoArticulo_aa.Size = new Size(121, 24);
             cmbTipoArticulo_aa.TabIndex = 26;
             // 
             // lblTipoArticulo_aa
@@ -256,11 +266,11 @@
             // txtNombreArticulo_aa
             // 
             txtNombreArticulo_aa.Anchor = AnchorStyles.None;
-            txtNombreArticulo_aa.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtNombreArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             txtNombreArticulo_aa.ForeColor = Color.FromArgb(213, 70, 189);
             txtNombreArticulo_aa.Location = new Point(268, 53);
             txtNombreArticulo_aa.Name = "txtNombreArticulo_aa";
-            txtNombreArticulo_aa.Size = new Size(148, 27);
+            txtNombreArticulo_aa.Size = new Size(148, 23);
             txtNombreArticulo_aa.TabIndex = 18;
             // 
             // lblNombreArticulo_aa
