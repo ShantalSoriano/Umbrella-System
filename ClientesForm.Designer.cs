@@ -361,10 +361,10 @@
             tabTodosLosClientes.Controls.Add(dgvClientes);
             tabTodosLosClientes.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabTodosLosClientes.ForeColor = Color.FromArgb(250, 146, 186);
-            tabTodosLosClientes.Location = new Point(4, 27);
+            tabTodosLosClientes.Location = new Point(4, 24);
             tabTodosLosClientes.Name = "tabTodosLosClientes";
             tabTodosLosClientes.Padding = new Padding(3);
-            tabTodosLosClientes.Size = new Size(779, 519);
+            tabTodosLosClientes.Size = new Size(779, 522);
             tabTodosLosClientes.TabIndex = 1;
             tabTodosLosClientes.Text = "Todos los Clientes";
             tabTodosLosClientes.UseVisualStyleBackColor = true;

@@ -28,31 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            btnEliminarArticuloInventario = new Button();
+            btnNuevoArticuloInventario = new Button();
+            dgvInventario = new DataGridView();
+            btnModificarArticuloInventario = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // btnEliminarArticuloInventario
             // 
-            panel1.Anchor = AnchorStyles.None;
-            panel1.BackColor = Color.RosyBrown;
-            panel1.Location = new Point(308, 173);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(200, 172);
-            panel1.TabIndex = 1;
+            btnEliminarArticuloInventario.Anchor = AnchorStyles.None;
+            btnEliminarArticuloInventario.BackColor = Color.FromArgb(250, 146, 186);
+            btnEliminarArticuloInventario.FlatStyle = FlatStyle.Popup;
+            btnEliminarArticuloInventario.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnEliminarArticuloInventario.ForeColor = Color.White;
+            btnEliminarArticuloInventario.Location = new Point(9, 490);
+            btnEliminarArticuloInventario.Name = "btnEliminarArticuloInventario";
+            btnEliminarArticuloInventario.Size = new Size(90, 27);
+            btnEliminarArticuloInventario.TabIndex = 18;
+            btnEliminarArticuloInventario.Text = "Eliminar";
+            btnEliminarArticuloInventario.UseVisualStyleBackColor = false;
+            // 
+            // btnNuevoArticuloInventario
+            // 
+            btnNuevoArticuloInventario.Anchor = AnchorStyles.None;
+            btnNuevoArticuloInventario.BackColor = Color.FromArgb(250, 146, 186);
+            btnNuevoArticuloInventario.FlatStyle = FlatStyle.Popup;
+            btnNuevoArticuloInventario.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnNuevoArticuloInventario.ForeColor = Color.White;
+            btnNuevoArticuloInventario.Location = new Point(687, 490);
+            btnNuevoArticuloInventario.Name = "btnNuevoArticuloInventario";
+            btnNuevoArticuloInventario.Size = new Size(90, 27);
+            btnNuevoArticuloInventario.TabIndex = 17;
+            btnNuevoArticuloInventario.Text = "Nuevo";
+            btnNuevoArticuloInventario.UseVisualStyleBackColor = false;
+            btnNuevoArticuloInventario.Click += btnAnadirInventario_Click;
+            // 
+            // dgvInventario
+            // 
+            dgvInventario.Anchor = AnchorStyles.None;
+            dgvInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvInventario.Location = new Point(31, 33);
+            dgvInventario.Name = "dgvInventario";
+            dgvInventario.Size = new Size(730, 448);
+            dgvInventario.TabIndex = 16;
+            // 
+            // btnModificarArticuloInventario
+            // 
+            btnModificarArticuloInventario.Anchor = AnchorStyles.None;
+            btnModificarArticuloInventario.BackColor = Color.FromArgb(250, 146, 186);
+            btnModificarArticuloInventario.FlatStyle = FlatStyle.Popup;
+            btnModificarArticuloInventario.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnModificarArticuloInventario.ForeColor = Color.White;
+            btnModificarArticuloInventario.Location = new Point(591, 490);
+            btnModificarArticuloInventario.Name = "btnModificarArticuloInventario";
+            btnModificarArticuloInventario.Size = new Size(90, 27);
+            btnModificarArticuloInventario.TabIndex = 19;
+            btnModificarArticuloInventario.Text = "Modificar";
+            btnModificarArticuloInventario.UseVisualStyleBackColor = false;
             // 
             // InventarioForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(787, 550);
-            Controls.Add(panel1);
+            Controls.Add(btnModificarArticuloInventario);
+            Controls.Add(btnEliminarArticuloInventario);
+            Controls.Add(btnNuevoArticuloInventario);
+            Controls.Add(dgvInventario);
             Name = "InventarioForm";
             Text = "Inventario";
+            ((System.ComponentModel.ISupportInitialize)dgvInventario).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        private Button btnEliminarArticuloInventario;
+        private Button btnNuevoArticuloInventario;
+        private DataGridView dgvInventario;
+        private Button btnModificarArticuloInventario;
     }
 }

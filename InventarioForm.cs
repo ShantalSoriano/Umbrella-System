@@ -16,5 +16,11 @@ namespace Umbrella_System
         {
             InitializeComponent();
         }
+
+        private void btnAnadirInventario_Click(object sender, EventArgs e)
+        {
+            AnadirArticuloForm anadirArticuloForm = new AnadirArticuloForm();
+            anadirArticuloForm.Show();
+        }
     }
 }
