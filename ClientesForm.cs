@@ -15,6 +15,8 @@ namespace Umbrella_System
 
     public partial class ClientesForm : Form
     {
+        private int? clienteIdSeleccionado = null; // Variable para almacenar el id del cliente seleccionado
+                                                   // Null significa que no hay cliente seleccionado
         public ClientesForm()
         {
             InitializeComponent();
@@ -128,6 +130,7 @@ namespace Umbrella_System
                 txtNombreCliente.Text = filaSeleccionada.Cells["nombreCliente"].Value.ToString();
                 txtTelefonoCliente.Text = filaSeleccionada.Cells["telefonoCliente"].Value.ToString();
                 txtDireccionCliente.Text = filaSeleccionada.Cells["direccionCliente"].Value.ToString();
+                clienteIdSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["idCliente"].Value);
             }
         }
 
