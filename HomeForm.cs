@@ -127,7 +127,8 @@ namespace Umbrella_System
 
         private void iconLogout_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.colorPressing);
+            Application.Exit();
+
         }
 
         private void logoUmbrella_Click(object sender, EventArgs e)
