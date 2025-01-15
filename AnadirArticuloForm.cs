@@ -13,18 +13,7 @@ namespace Umbrella_System
 {
     public partial class AnadirArticuloForm : Form
     {
-        private InventarioForm inventarioForm;
-
-        public AnadirArticuloForm()
-        {
-            InitializeComponent();
-
-            // Eliminar la barra (borde) del formulario
-            this.Text = string.Empty;
-            this.ControlBox = false;
-            this.DoubleBuffered = true;
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-        }
+        private readonly InventarioForm inventarioForm;
 
         public AnadirArticuloForm(InventarioForm inventarioForm)
         {
@@ -98,36 +87,43 @@ namespace Umbrella_System
 
         private void btnAnadirArticulo_aa_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombreArticulo_aa.Text) ||
-                string.IsNullOrWhiteSpace(cmbTipoArticulo_aa.Text) ||
-                string.IsNullOrWhiteSpace(txtUnidadMedida_aa.Text))
+            try
             {
-                MessageBox.Show("Por favor, completa todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Crear una instancia de Articulo y asignar los valores del formulario
+                Articulo articulo = new Articulo
+                {
+                    nombreArticulo = txtNombreArticulo_aa.Text,
+                    cantidadArticulo = (int)numCantidadArticulo_aa.Value,
+                    fechaAdquiArticulo = dtpFechaAdquisicion_aa.Value,
+                    fechaVenciArticulo = dtpFechaVencimiento_aa.Value == DateTime.MinValue ? (DateTime?)null : dtpFechaVencimiento_aa.Value,
+                    descripcionArticulo = txtDescripArticulo_aa.Text,
+                    idTipoArticulo = (int)cmbTipoArticulo_aa.SelectedValue,
+                    UnidadMedidaArticulo = txtUnidadMedida_aa.Text
+                };
+
+                // Llamar al método AddArticulo para insertar en la base de datos
+                int filasAfectadas = ArticuloRepository.AddArticulo(articulo);
+
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("El artículo se ha agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Llamar al método para recargar el DataGridView con los datos actualizados
+                    inventarioForm.CargarArticulos();
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al agregar el artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                // Limpiar o cerrar el formulario según sea necesario
+                this.Close();  // O mantener el formulario abierto si deseas agregar más artículos
             }
-
-            Articulo articulo = new Articulo();
-            articulo.nombreArticulo = txtNombreArticulo_aa.Text;
-            articulo.cantidadArticulo = Convert.ToInt32(numCantidadArticulo_aa.Text);
-            articulo.fechaAdquiArticulo = dtpFechaAdquisicion_aa.Value;
-            articulo.fechaVenciArticulo = dtpFechaVencimiento_aa.Value;
-            articulo.UnidadMedidaArticulo = txtUnidadMedida_aa.Text;
-            articulo.descripcionArticulo = txtDescripArticulo_aa.Text;
-
-            int result = ArticuloRepository.AddArticulo(articulo);
-
-            if (result > 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("Artículo añadido correctamente");
-                inventarioForm.CargarDatos();
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("No se pudo añadir el artículo");
-            }
-
-            this.Close();
-            
         }
     }
 }
+

@@ -19,58 +19,34 @@ namespace Umbrella_System
 
         private void btnAnadirInventario_Click(object sender, EventArgs e)
         {
-            
-
-            AnadirArticuloForm anadirArticuloForm = new AnadirArticuloForm();
+            AnadirArticuloForm anadirArticuloForm = new AnadirArticuloForm(this);
             anadirArticuloForm.ShowDialog();
-            
         }
 
         private void InventarioForm_Load(object sender, EventArgs e)
         {
-            dgvInventario.DataSource = ArticuloRepository.ObtenerTodos();
-            CargarDatos();
+            // Cargar los artículos desde la base de datos y asignarlos al DataGridView
             ActualizarTabla();
         }
 
         private void ActualizarTabla()
         {
-            dgvInventario.DataSource = ArticuloRepository.ObtenerTodos();
+            // Obtener los artículos desde el repositorio y asignarlos al DataGridView
+            var articulos = ArticuloRepository.ObtenerTodos();
+            dgvInventario.DataSource = articulos;
         }
 
-        public void CargarDatos()
+        // Método para actualizar la tabla después de añadir un nuevo artículo
+        public void CargarArticulos()
         {
-            try
-            {
-                // Obtén la lista de artículos desde la base de datos
-                List<Articulo> listaArticulos = ArticuloRepository.ObtenerTodos();
-
-                // Asigna la lista al DataGridView
-                dgvInventario.DataSource = listaArticulos;
-
-                // Ajusta los valores nulos en las columnas de fechas
-                foreach (DataGridViewRow row in dgvInventario.Rows)
-                {
-                    if (row.Cells["fechaAdquiArticulo"].Value == null || row.Cells["fechaAdquiArticulo"].Value == DBNull.Value)
-                    {
-                        row.Cells["fechaAdquiArticulo"].Value = "Sin fecha";
-                    }
-                    if (row.Cells["fechaVenciArticulo"].Value == null || row.Cells["fechaVenciArticulo"].Value == DBNull.Value)
-                    {
-                        row.Cells["fechaVenciArticulo"].Value = "Sin fecha";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Después de añadir el artículo, actualizar el DataGridView
+            ActualizarTabla();
         }
-
 
         private void dgvInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // Aquí puedes manejar eventos relacionados con el clic en las celdas, si es necesario
         }
     }
+
 }

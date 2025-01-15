@@ -14,22 +14,40 @@ namespace Umbrella_System
         public static int AddArticulo(Articulo articulo)
         {
             int retorno = 0;
+
             using (SqlConnection conexion = DBConnection.ObtenerConexion())
             {
                 string query = "INSERT INTO Inventario (nombreArticulo, cantidadArticulo, fechaAdquiArticulo, fechaVenciArticulo, descripcionArticulo, idTipoArticulo, UnidadMedidaArticulo) " +
-                       "VALUES (@nombreArticulo, @cantidadArticulo, @fechaAdquiArticulo, @fechaVenciArticulo, @descripcionArticulo, @idTipoArticulo, @UnidadMedidaArticulo);";
+                               "VALUES (@nombreArticulo, @cantidadArticulo, @fechaAdquiArticulo, @fechaVenciArticulo, @descripcionArticulo, @idTipoArticulo, @UnidadMedidaArticulo);";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@nombreArticulo", articulo.nombreArticulo);
-                comando.Parameters.AddWithValue("@cantidadArticulo", articulo.cantidadArticulo);
-                comando.Parameters.AddWithValue("@fechaAdquiArticulo", articulo.fechaAdquiArticulo); // Fecha de adquisición
-                comando.Parameters.AddWithValue("@fechaVenciArticulo", articulo.fechaVenciArticulo); // Fecha de vencimiento
-                comando.Parameters.AddWithValue("@descripcionArticulo", articulo.descripcionArticulo);
-                comando.Parameters.AddWithValue("@idTipoArticulo", articulo.idTipoArticulo);
-                comando.Parameters.AddWithValue("@UnidadMedidaArticulo", articulo.UnidadMedidaArticulo);
+
+                // Agregar parámetros con los tipos de datos específicos
+                comando.Parameters.Add("@nombreArticulo", SqlDbType.NVarChar).Value = articulo.nombreArticulo;
+                comando.Parameters.Add("@cantidadArticulo", SqlDbType.Int).Value = articulo.cantidadArticulo;
+                comando.Parameters.Add("@fechaAdquiArticulo", SqlDbType.DateTime).Value = articulo.fechaAdquiArticulo;
+
+                // Si la fecha de vencimiento es null, insertarlo como DBNull.Value
+                if (articulo.fechaVenciArticulo == null)
+                {
+                    comando.Parameters.Add("@fechaVenciArticulo", SqlDbType.DateTime).Value = DBNull.Value;
+                }
+                else
+                {
+                    comando.Parameters.Add("@fechaVenciArticulo", SqlDbType.DateTime).Value = articulo.fechaVenciArticulo;
+                }
+
+                comando.Parameters.Add("@descripcionArticulo", SqlDbType.NVarChar).Value = articulo.descripcionArticulo;
+                comando.Parameters.Add("@idTipoArticulo", SqlDbType.Int).Value = articulo.idTipoArticulo;
+                comando.Parameters.Add("@UnidadMedidaArticulo", SqlDbType.NVarChar).Value = articulo.UnidadMedidaArticulo;
+
+                // Ejecutar el comando y obtener el número de filas afectadas
                 retorno = comando.ExecuteNonQuery();
             }
+
             return retorno;
         }
+
 
         public static List<Articulo> ObtenerTodos()
         {
