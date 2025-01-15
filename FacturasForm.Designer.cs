@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturasForm));
             tabctrlFacturas = new TabControl();
             tabCrearFactura = new TabPage();
             Cancelar = new Button();
             panel1 = new Panel();
             innerPanelCrearFactura = new Panel();
-            comboBox1 = new ComboBox();
+            cmbCliente_fa = new ComboBox();
             lblClienteFactura = new Label();
-            Guardar = new Button();
+            btnGuardarFac = new Button();
             lblDigito3 = new Label();
             lblDigito2 = new Label();
             autoDevuelta = new Label();
@@ -63,7 +63,7 @@
             autoPrecioServicio = new Label();
             lblPrecioServicio = new Label();
             lblServicioFactura = new Label();
-            cmbServicio = new ComboBox();
+            cmbServicio_fa = new ComboBox();
             tabGestionarFacturas = new TabPage();
             dgvGestionarFacturas = new DataGridView();
             NumeroFactura = new DataGridViewTextBoxColumn();
@@ -133,9 +133,9 @@
             // 
             // innerPanelCrearFactura
             // 
-            innerPanelCrearFactura.Controls.Add(comboBox1);
+            innerPanelCrearFactura.Controls.Add(cmbCliente_fa);
             innerPanelCrearFactura.Controls.Add(lblClienteFactura);
-            innerPanelCrearFactura.Controls.Add(Guardar);
+            innerPanelCrearFactura.Controls.Add(btnGuardarFac);
             innerPanelCrearFactura.Controls.Add(lblDigito3);
             innerPanelCrearFactura.Controls.Add(lblDigito2);
             innerPanelCrearFactura.Controls.Add(autoDevuelta);
@@ -155,22 +155,22 @@
             innerPanelCrearFactura.Controls.Add(autoPrecioServicio);
             innerPanelCrearFactura.Controls.Add(lblPrecioServicio);
             innerPanelCrearFactura.Controls.Add(lblServicioFactura);
-            innerPanelCrearFactura.Controls.Add(cmbServicio);
+            innerPanelCrearFactura.Controls.Add(cmbServicio_fa);
             innerPanelCrearFactura.Location = new Point(16, 18);
             innerPanelCrearFactura.Name = "innerPanelCrearFactura";
             innerPanelCrearFactura.Size = new Size(661, 408);
             innerPanelCrearFactura.TabIndex = 10;
             innerPanelCrearFactura.Paint += innerPanelCrearFactura_Paint;
             // 
-            // comboBox1
+            // cmbCliente_fa
             // 
-            comboBox1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
-            comboBox1.ForeColor = Color.FromArgb(22, 97, 58);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(234, 5);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 26);
-            comboBox1.TabIndex = 27;
+            cmbCliente_fa.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            cmbCliente_fa.ForeColor = Color.FromArgb(22, 97, 58);
+            cmbCliente_fa.FormattingEnabled = true;
+            cmbCliente_fa.Location = new Point(234, 5);
+            cmbCliente_fa.Name = "cmbCliente_fa";
+            cmbCliente_fa.Size = new Size(121, 26);
+            cmbCliente_fa.TabIndex = 27;
             // 
             // lblClienteFactura
             // 
@@ -184,19 +184,20 @@
             lblClienteFactura.TabIndex = 26;
             lblClienteFactura.Text = "Cliente";
             // 
-            // Guardar
+            // btnGuardarFac
             // 
-            Guardar.Anchor = AnchorStyles.None;
-            Guardar.BackColor = Color.FromArgb(250, 146, 186);
-            Guardar.FlatStyle = FlatStyle.Popup;
-            Guardar.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            Guardar.ForeColor = Color.White;
-            Guardar.Location = new Point(525, 364);
-            Guardar.Name = "Guardar";
-            Guardar.Size = new Size(90, 27);
-            Guardar.TabIndex = 25;
-            Guardar.Text = "Guardar";
-            Guardar.UseVisualStyleBackColor = false;
+            btnGuardarFac.Anchor = AnchorStyles.None;
+            btnGuardarFac.BackColor = Color.FromArgb(250, 146, 186);
+            btnGuardarFac.FlatStyle = FlatStyle.Popup;
+            btnGuardarFac.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnGuardarFac.ForeColor = Color.White;
+            btnGuardarFac.Location = new Point(525, 364);
+            btnGuardarFac.Name = "btnGuardarFac";
+            btnGuardarFac.Size = new Size(90, 27);
+            btnGuardarFac.TabIndex = 25;
+            btnGuardarFac.Text = "Guardar";
+            btnGuardarFac.UseVisualStyleBackColor = false;
+            btnGuardarFac.Click += Guardar_Click;
             // 
             // lblDigito3
             // 
@@ -449,16 +450,16 @@
             lblServicioFactura.Text = "Servicio";
             lblServicioFactura.Click += lblServicioFactura_Click;
             // 
-            // cmbServicio
+            // cmbServicio_fa
             // 
-            cmbServicio.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
-            cmbServicio.ForeColor = Color.FromArgb(22, 97, 58);
-            cmbServicio.FormattingEnabled = true;
-            cmbServicio.Location = new Point(241, 37);
-            cmbServicio.Name = "cmbServicio";
-            cmbServicio.Size = new Size(167, 26);
-            cmbServicio.TabIndex = 8;
-            cmbServicio.SelectedIndexChanged += cmbServicio_SelectedIndexChanged;
+            cmbServicio_fa.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            cmbServicio_fa.ForeColor = Color.FromArgb(22, 97, 58);
+            cmbServicio_fa.FormattingEnabled = true;
+            cmbServicio_fa.Location = new Point(241, 37);
+            cmbServicio_fa.Name = "cmbServicio_fa";
+            cmbServicio_fa.Size = new Size(167, 26);
+            cmbServicio_fa.TabIndex = 8;
+            cmbServicio_fa.SelectedIndexChanged += cmbServicio_SelectedIndexChanged;
             // 
             // tabGestionarFacturas
             // 
@@ -479,37 +480,37 @@
             dgvGestionarFacturas.AllowUserToResizeRows = false;
             dgvGestionarFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvGestionarFacturas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Impact", 10F);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvGestionarFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Impact", 10F);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvGestionarFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvGestionarFacturas.ColumnHeadersHeight = 30;
             dgvGestionarFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvGestionarFacturas.Columns.AddRange(new DataGridViewColumn[] { NumeroFactura, Cliente, Fecha, Total, iconVerDetallesFactura, iconEditar, iconEliminarFactura });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvGestionarFacturas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvGestionarFacturas.DefaultCellStyle = dataGridViewCellStyle5;
             dgvGestionarFacturas.EnableHeadersVisualStyles = false;
             dgvGestionarFacturas.Location = new Point(8, 6);
             dgvGestionarFacturas.Name = "dgvGestionarFacturas";
             dgvGestionarFacturas.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Impact", 11.25F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvGestionarFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Impact", 11.25F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvGestionarFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvGestionarFacturas.RowHeadersVisible = false;
             dgvGestionarFacturas.Size = new Size(765, 505);
             dgvGestionarFacturas.TabIndex = 0;
@@ -607,7 +608,7 @@
         private Label lblServicioFactura;
         private Button btnAgregarServicio;
         private Button btnEliminarServicio;
-        private ComboBox cmbServicio;
+        private ComboBox cmbServicio_fa;
         private Label lblPrecioServicio;
         private Panel innerPanelCrearFactura;
         private Label lblDigito1;
@@ -625,9 +626,9 @@
         private Label lblTotal;
         private Label lblDigito3;
         private Label lblDigito2;
-        private ComboBox comboBox1;
+        private ComboBox cmbCliente_fa;
         private Label lblClienteFactura;
-        private Button Guardar;
+        private Button btnGuardarFac;
         private Button Cancelar;
         private DataGridView dgvGestionarFacturas;
         private DataGridViewTextBoxColumn nombreServicio;

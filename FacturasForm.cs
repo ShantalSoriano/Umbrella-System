@@ -20,7 +20,7 @@ namespace Umbrella_System
                 dgvGestionarFacturas.Rows.Add(i, "Christina Matos ", "12/07/24 ", "1,200 ");
             }
 
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 dgvRecuentoServicios.Rows.Add("Manicura", "3", "100", "300");
             }
@@ -65,6 +65,11 @@ namespace Umbrella_System
                 FacturaDetallesForm facturaDetallesForm = new FacturaDetallesForm();
                 facturaDetallesForm.Show();
             }
+        }
+
+        private void Guardar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
