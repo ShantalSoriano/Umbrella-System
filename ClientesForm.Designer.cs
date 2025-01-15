@@ -37,7 +37,7 @@
             btnRegistrarCliente = new Button();
             btnCancelarRegistro = new Button();
             panelForm = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flPanelPrefServicios = new FlowLayoutPanel();
             cbPinturaReg = new CheckBox();
             cbRubber = new CheckBox();
             cbAcrilico = new CheckBox();
@@ -63,7 +63,7 @@
             tabRegistrarCliente.SuspendLayout();
             MainPanel.SuspendLayout();
             panelForm.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            flPanelPrefServicios.SuspendLayout();
             panelPic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCliente).BeginInit();
             tabTodosLosClientes.SuspendLayout();
@@ -141,7 +141,7 @@
             // 
             panelForm.Anchor = AnchorStyles.None;
             panelForm.BackColor = Color.FromArgb(22, 97, 58);
-            panelForm.Controls.Add(flowLayoutPanel1);
+            panelForm.Controls.Add(flPanelPrefServicios);
             panelForm.Controls.Add(lblServiciosPrefCliente);
             panelForm.Controls.Add(txtDireccionCliente);
             panelForm.Controls.Add(lblDireccionCliente);
@@ -154,20 +154,20 @@
             panelForm.Size = new Size(475, 429);
             panelForm.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // flPanelPrefServicios
             // 
-            flowLayoutPanel1.Controls.Add(cbPinturaReg);
-            flowLayoutPanel1.Controls.Add(cbRubber);
-            flowLayoutPanel1.Controls.Add(cbAcrilico);
-            flowLayoutPanel1.Controls.Add(cbManicura);
-            flowLayoutPanel1.Controls.Add(cbOtro);
-            flowLayoutPanel1.Controls.Add(cbPedicura);
-            flowLayoutPanel1.Controls.Add(cbFacial);
-            flowLayoutPanel1.Controls.Add(cbPinturaGel);
-            flowLayoutPanel1.Location = new Point(45, 346);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(394, 88);
-            flowLayoutPanel1.TabIndex = 13;
+            flPanelPrefServicios.Controls.Add(cbPinturaReg);
+            flPanelPrefServicios.Controls.Add(cbRubber);
+            flPanelPrefServicios.Controls.Add(cbAcrilico);
+            flPanelPrefServicios.Controls.Add(cbManicura);
+            flPanelPrefServicios.Controls.Add(cbOtro);
+            flPanelPrefServicios.Controls.Add(cbPedicura);
+            flPanelPrefServicios.Controls.Add(cbFacial);
+            flPanelPrefServicios.Controls.Add(cbPinturaGel);
+            flPanelPrefServicios.Location = new Point(45, 346);
+            flPanelPrefServicios.Name = "flPanelPrefServicios";
+            flPanelPrefServicios.Size = new Size(394, 88);
+            flPanelPrefServicios.TabIndex = 13;
             // 
             // cbPinturaReg
             // 
@@ -450,8 +450,8 @@
             MainPanel.ResumeLayout(false);
             panelForm.ResumeLayout(false);
             panelForm.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            flPanelPrefServicios.ResumeLayout(false);
+            flPanelPrefServicios.PerformLayout();
             panelPic.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCliente).EndInit();
             tabTodosLosClientes.ResumeLayout(false);
@@ -480,7 +480,7 @@
         private Button btnEliminarCliente;
         private Button btnModificarCliente;
         private DataGridView dgvClientes;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flPanelPrefServicios;
         private CheckBox cbPinturaReg;
         private CheckBox cbRubber;
         private CheckBox cbAcrilico;
