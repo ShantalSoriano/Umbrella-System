@@ -11,7 +11,7 @@ namespace Umbrella_System
     {
         public static SqlConnection ObtenerConexion()
         {
-            SqlConnection Conexion = new SqlConnection(@"Data Source = DESKTOP - HNT4E4U\SQLEXPRESS; Initial Catalog = UmbrellaSystemDB; Integrated Security = True; Trust Server Certificate = True");
+            SqlConnection Conexion = new SqlConnection(@"Data Source=DESKTOP-HNT4E4U\SQLEXPRESS;Initial Catalog=UmbrellaSystemDB;Integrated Security=True;Trust Server Certificate=True");
             Conexion.Open();
 
             return Conexion;

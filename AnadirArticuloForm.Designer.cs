@@ -347,13 +347,10 @@
         private PictureBox btnClose;
         private ComboBox cmbTipoArticulo_aa;
         private Label lblTipoArticulo_aa;
-        private TextBox textBox3;
-        private Label label3;
         private Label lblFechaAdquiArticulo_aa;
         private Label lblCantidadArticulo_aa;
         private NumericUpDown numCantidadArticulo_aa;
         private DateTimePicker dateFechaArticulo_aa;
-        private DateTimePicker dateTimePicker1;
         private Label lblFechaVencimiArticulo_aa;
         private ComboBox cmbUnidadMedidaArticulo_aa;
         private Label lblUnidadMedida_aa;
