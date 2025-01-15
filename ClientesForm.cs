@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Umbrella_System
 {
+
     public partial class ClientesForm : Form
     {
         public ClientesForm()
@@ -56,13 +59,9 @@ namespace Umbrella_System
             }
             ActualizarTabla();
 
-
             txtNombreCliente.Clear();
             txtTelefonoCliente.Clear();
             txtDireccionCliente.Clear();
-
-
-
         }
 
         private void tabTodosLosClientes_Click(object sender, EventArgs e)
@@ -76,7 +75,8 @@ namespace Umbrella_System
             ActualizarTabla();
         }
 
-        public void ActualizarTabla()
+
+        private void ActualizarTabla()
         {
             dgvClientes.DataSource = ClienteRepository.ObtenerTodos();
         }
@@ -86,16 +86,6 @@ namespace Umbrella_System
             txtNombreCliente.Clear();
             txtTelefonoCliente.Clear();
             txtDireccionCliente.Clear();
-            cbAcrilico.Checked = false;
-            cbFacial.Checked = false;
-            cbManicura.Checked = false;
-            cbOtro.Checked = false;
-            cbPedicura.Checked = false;
-            cbOtro.Checked = false;
-            cbPinturaGel.Checked = false;
-            cbPinturaReg.Checked = false;
-            cbRubber.Checked = false;
-            
         }
 
         private void checkBox6_CheckedChanged_1(object sender, EventArgs e)
@@ -107,5 +97,18 @@ namespace Umbrella_System
         {
 
         }
+
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+     
+        }
+
+        
+        
+
+
     }
 }
+
+
