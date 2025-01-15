@@ -37,15 +37,7 @@
             btnRegistrarCliente = new Button();
             btnCancelarRegistro = new Button();
             panelForm = new Panel();
-            flPanelPrefServicios = new FlowLayoutPanel();
-            cbPinturaReg = new CheckBox();
-            cbRubber = new CheckBox();
-            cbAcrilico = new CheckBox();
-            cbManicura = new CheckBox();
-            cbOtro = new CheckBox();
-            cbPedicura = new CheckBox();
-            cbFacial = new CheckBox();
-            cbPinturaGel = new CheckBox();
+            flowPanelServicios = new FlowLayoutPanel();
             lblServiciosPrefCliente = new Label();
             txtDireccionCliente = new TextBox();
             lblDireccionCliente = new Label();
@@ -63,7 +55,6 @@
             tabRegistrarCliente.SuspendLayout();
             MainPanel.SuspendLayout();
             panelForm.SuspendLayout();
-            flPanelPrefServicios.SuspendLayout();
             panelPic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCliente).BeginInit();
             tabTodosLosClientes.SuspendLayout();
@@ -141,7 +132,7 @@
             // 
             panelForm.Anchor = AnchorStyles.None;
             panelForm.BackColor = Color.FromArgb(22, 97, 58);
-            panelForm.Controls.Add(flPanelPrefServicios);
+            panelForm.Controls.Add(flowPanelServicios);
             panelForm.Controls.Add(lblServiciosPrefCliente);
             panelForm.Controls.Add(txtDireccionCliente);
             panelForm.Controls.Add(lblDireccionCliente);
@@ -154,104 +145,15 @@
             panelForm.Size = new Size(475, 429);
             panelForm.TabIndex = 0;
             // 
-            // flPanelPrefServicios
+            // flowPanelServicios
             // 
-            flPanelPrefServicios.Controls.Add(cbPinturaReg);
-            flPanelPrefServicios.Controls.Add(cbRubber);
-            flPanelPrefServicios.Controls.Add(cbAcrilico);
-            flPanelPrefServicios.Controls.Add(cbManicura);
-            flPanelPrefServicios.Controls.Add(cbOtro);
-            flPanelPrefServicios.Controls.Add(cbPedicura);
-            flPanelPrefServicios.Controls.Add(cbFacial);
-            flPanelPrefServicios.Controls.Add(cbPinturaGel);
-            flPanelPrefServicios.Location = new Point(45, 346);
-            flPanelPrefServicios.Name = "flPanelPrefServicios";
-            flPanelPrefServicios.Size = new Size(394, 88);
-            flPanelPrefServicios.TabIndex = 13;
-            // 
-            // cbPinturaReg
-            // 
-            cbPinturaReg.AutoSize = true;
-            cbPinturaReg.Location = new Point(3, 3);
-            cbPinturaReg.Name = "cbPinturaReg";
-            cbPinturaReg.Size = new Size(126, 23);
-            cbPinturaReg.TabIndex = 10;
-            cbPinturaReg.Text = "Pintura Regular";
-            cbPinturaReg.UseVisualStyleBackColor = true;
-            // 
-            // cbRubber
-            // 
-            cbRubber.AutoSize = true;
-            cbRubber.Location = new Point(135, 3);
-            cbRubber.Name = "cbRubber";
-            cbRubber.Size = new Size(73, 23);
-            cbRubber.TabIndex = 15;
-            cbRubber.Text = "Rubber";
-            cbRubber.UseVisualStyleBackColor = true;
-            // 
-            // cbAcrilico
-            // 
-            cbAcrilico.AutoSize = true;
-            cbAcrilico.Location = new Point(214, 3);
-            cbAcrilico.Name = "cbAcrilico";
-            cbAcrilico.Size = new Size(74, 23);
-            cbAcrilico.TabIndex = 13;
-            cbAcrilico.Text = "Acrilico";
-            cbAcrilico.UseVisualStyleBackColor = true;
-            cbAcrilico.CheckedChanged += checkBox6_CheckedChanged_1;
-            // 
-            // cbManicura
-            // 
-            cbManicura.AutoSize = true;
-            cbManicura.Location = new Point(294, 3);
-            cbManicura.Name = "cbManicura";
-            cbManicura.Size = new Size(87, 23);
-            cbManicura.TabIndex = 11;
-            cbManicura.Text = "Manicura";
-            cbManicura.UseVisualStyleBackColor = true;
-            // 
-            // cbOtro
-            // 
-            cbOtro.AutoSize = true;
-            cbOtro.Location = new Point(3, 32);
-            cbOtro.Name = "cbOtro";
-            cbOtro.Size = new Size(54, 23);
-            cbOtro.TabIndex = 12;
-            cbOtro.Text = "Otro";
-            cbOtro.UseVisualStyleBackColor = true;
-            // 
-            // cbPedicura
-            // 
-            cbPedicura.AutoSize = true;
-            cbPedicura.Location = new Point(63, 32);
-            cbPedicura.Name = "cbPedicura";
-            cbPedicura.Size = new Size(84, 23);
-            cbPedicura.TabIndex = 8;
-            cbPedicura.Text = "Pedicura";
-            cbPedicura.TextImageRelation = TextImageRelation.ImageBeforeText;
-            cbPedicura.UseVisualStyleBackColor = true;
-            // 
-            // cbFacial
-            // 
-            cbFacial.AutoSize = true;
-            cbFacial.Font = new Font("Impact", 10F);
-            cbFacial.Location = new Point(153, 32);
-            cbFacial.Name = "cbFacial";
-            cbFacial.Size = new Size(113, 22);
-            cbFacial.TabIndex = 14;
-            cbFacial.Text = "Limpieza Facial";
-            cbFacial.UseVisualStyleBackColor = true;
-            // 
-            // cbPinturaGel
-            // 
-            cbPinturaGel.AutoSize = true;
-            cbPinturaGel.Location = new Point(272, 32);
-            cbPinturaGel.Name = "cbPinturaGel";
-            cbPinturaGel.Size = new Size(97, 23);
-            cbPinturaGel.TabIndex = 9;
-            cbPinturaGel.Text = "Pintura Gel";
-            cbPinturaGel.UseVisualStyleBackColor = true;
-            cbPinturaGel.CheckedChanged += checkBox2_CheckedChanged;
+            flowPanelServicios.AutoScroll = true;
+            flowPanelServicios.FlowDirection = FlowDirection.TopDown;
+            flowPanelServicios.Location = new Point(45, 346);
+            flowPanelServicios.Name = "flowPanelServicios";
+            flowPanelServicios.Size = new Size(394, 88);
+            flowPanelServicios.TabIndex = 13;
+            flowPanelServicios.WrapContents = false;
             // 
             // lblServiciosPrefCliente
             // 
@@ -380,7 +282,7 @@
             btnEliminarCliente.FlatStyle = FlatStyle.Popup;
             btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarCliente.ForeColor = Color.White;
-            btnEliminarCliente.Location = new Point(6, 455);
+            btnEliminarCliente.Location = new Point(6, 453);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(90, 27);
             btnEliminarCliente.TabIndex = 15;
@@ -394,7 +296,7 @@
             btnModificarCliente.FlatStyle = FlatStyle.Popup;
             btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarCliente.ForeColor = Color.White;
-            btnModificarCliente.Location = new Point(684, 455);
+            btnModificarCliente.Location = new Point(684, 453);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Size = new Size(90, 27);
             btnModificarCliente.TabIndex = 13;
@@ -419,7 +321,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvClientes.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvClientes.Location = new Point(28, -2);
+            dgvClientes.Location = new Point(28, -4);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -433,6 +335,7 @@
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;
+            dgvClientes.CellContentClick += dgvClientes_CellContentClick;
             // 
             // ClientesForm
             // 
@@ -450,8 +353,6 @@
             MainPanel.ResumeLayout(false);
             panelForm.ResumeLayout(false);
             panelForm.PerformLayout();
-            flPanelPrefServicios.ResumeLayout(false);
-            flPanelPrefServicios.PerformLayout();
             panelPic.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCliente).EndInit();
             tabTodosLosClientes.ResumeLayout(false);
@@ -480,14 +381,6 @@
         private Button btnEliminarCliente;
         private Button btnModificarCliente;
         private DataGridView dgvClientes;
-        private FlowLayoutPanel flPanelPrefServicios;
-        private CheckBox cbPinturaReg;
-        private CheckBox cbRubber;
-        private CheckBox cbAcrilico;
-        private CheckBox cbManicura;
-        private CheckBox cbOtro;
-        private CheckBox cbPedicura;
-        private CheckBox cbFacial;
-        private CheckBox cbPinturaGel;
+        private FlowLayoutPanel flowPanelServicios;
     }
 }
