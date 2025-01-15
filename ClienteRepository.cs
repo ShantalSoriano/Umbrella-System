@@ -48,5 +48,26 @@ namespace Umbrella_System
             }
         }
     
+        public void ActualizarCliente(Cliente cliente)
+        {
+            try
+            {
+                using (SqlConnection conexion = DBConnection.ObtenerConexion())
+                {
+                    string query = "UPDATE Clientes SET nombreCliente = @nombreCliente, telefonoCliente = @telefonoCliente, direccionCliente = @direccionCliente WHERE idCliente = @idCliente;";
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@nombreCliente", cliente.nombre);
+                    comando.Parameters.AddWithValue("@telefonoCliente", cliente.telefono);
+                    comando.Parameters.AddWithValue("@direccionCliente", cliente.direccion);
+                    comando.Parameters.AddWithValue("@idCliente", cliente.idCliente);
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el cliente: " + ex.ToString());
+            }
+        }
+
     }
 }
