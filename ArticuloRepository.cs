@@ -172,6 +172,23 @@ namespace Umbrella_System
         }
 
 
+        public static int EliminarArticulo(int idArticulo)
+        {
+            int retorno = 0;
+
+            using (SqlConnection conexion = DBConnection.ObtenerConexion())
+            {
+                string query = "DELETE FROM Inventario WHERE idArticulo = @idArticulo";
+
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.Add("@idArticulo", SqlDbType.Int).Value = idArticulo;
+
+                retorno = comando.ExecuteNonQuery(); // Retorna el número de filas afectadas
+            }
+
+            return retorno;
+        }
+
 
 
 

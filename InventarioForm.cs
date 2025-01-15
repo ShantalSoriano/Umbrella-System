@@ -74,6 +74,37 @@ namespace Umbrella_System
             }
         }
 
+        private void btnEliminarArticuloInventario_Click(object sender, EventArgs e)
+        {
+            if (articuloIdSeleccionado != null)
+            {
+                // Mostrar mensaje de confirmación
+                var resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este artículo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (resultado == DialogResult.Yes)
+                {
+                    // Intentar eliminar el artículo
+                    int filasAfectadas = ArticuloRepository.EliminarArticulo(articuloIdSeleccionado.Value);
+
+                    if (filasAfectadas > 0)
+                    {
+                        // El artículo fue eliminado correctamente, actualizar el DataGridView
+                        MessageBox.Show("Artículo eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Refrescar el DataGridView para reflejar la eliminación
+                        ActualizarTabla();
+                        CargarArticulos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al eliminar el artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un artículo para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

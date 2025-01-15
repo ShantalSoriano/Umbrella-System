@@ -51,6 +51,7 @@
             btnEliminarArticuloInventario.TabIndex = 18;
             btnEliminarArticuloInventario.Text = "Eliminar";
             btnEliminarArticuloInventario.UseVisualStyleBackColor = false;
+            btnEliminarArticuloInventario.Click += btnEliminarArticuloInventario_Click;
             // 
             // btnNuevoArticuloInventario
             // 
