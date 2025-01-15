@@ -256,7 +256,7 @@
             btnEliminarCliente.FlatStyle = FlatStyle.Popup;
             btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarCliente.ForeColor = Color.White;
-            btnEliminarCliente.Location = new Point(6, 429);
+            btnEliminarCliente.Location = new Point(6, 423);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(90, 27);
             btnEliminarCliente.TabIndex = 15;
@@ -271,7 +271,7 @@
             btnModificarCliente.FlatStyle = FlatStyle.Popup;
             btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarCliente.ForeColor = Color.White;
-            btnModificarCliente.Location = new Point(684, 429);
+            btnModificarCliente.Location = new Point(684, 423);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Size = new Size(90, 27);
             btnModificarCliente.TabIndex = 13;
@@ -297,7 +297,7 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvClientes.DefaultCellStyle = dataGridViewCellStyle1;
-            dgvClientes.Location = new Point(19, -25);
+            dgvClientes.Location = new Point(19, -31);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
