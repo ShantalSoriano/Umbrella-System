@@ -14,8 +14,9 @@ namespace Umbrella_System
     public partial class AnadirArticuloForm : Form
     {
         private readonly InventarioForm inventarioForm;
+        private int? articuloId; // ID del artículo, null si es un nuevo artículo
 
-        public AnadirArticuloForm(InventarioForm inventarioForm)
+        public AnadirArticuloForm(InventarioForm inventarioForm, Articulo articulo = null)
         {
             InitializeComponent();
 
@@ -26,6 +27,18 @@ namespace Umbrella_System
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             this.inventarioForm = inventarioForm;
+
+            if (articulo != null)
+            {
+                articuloId = articulo.idArticulo;
+                txtNombreArticulo_aa.Text = articulo.nombreArticulo;
+                numCantidadArticulo_aa.Value = articulo.cantidadArticulo;
+                dtpFechaAdquisicion_aa.Value = articulo.fechaAdquiArticulo ?? DateTime.Now;
+                dtpFechaVencimiento_aa.Value = articulo.fechaVenciArticulo ?? DateTime.MinValue;
+                txtDescripArticulo_aa.Text = articulo.descripcionArticulo;
+                cmbTipoArticulo_aa.SelectedValue = articulo.idTipoArticulo;
+                txtUnidadMedida_aa.Text = articulo.UnidadMedidaArticulo;
+            }
         }
 
         // Mover el formulario sin bordes 
@@ -89,9 +102,9 @@ namespace Umbrella_System
         {
             try
             {
-                // Crear una instancia de Articulo y asignar los valores del formulario
                 Articulo articulo = new Articulo
                 {
+                    idArticulo = articuloId ?? 0,  // Si es un artículo nuevo, el ID será 0 (lo asignará la base de datos)
                     nombreArticulo = txtNombreArticulo_aa.Text,
                     cantidadArticulo = (int)numCantidadArticulo_aa.Value,
                     fechaAdquiArticulo = dtpFechaAdquisicion_aa.Value,
@@ -101,23 +114,28 @@ namespace Umbrella_System
                     UnidadMedidaArticulo = txtUnidadMedida_aa.Text
                 };
 
-                // Llamar al método AddArticulo para insertar en la base de datos
-                int filasAfectadas = ArticuloRepository.AddArticulo(articulo);
+                int filasAfectadas = 0;
+
+                if (articuloId == null) // Nuevo artículo
+                {
+                    filasAfectadas = ArticuloRepository.AddArticulo(articulo);
+                }
+                else // Modificar artículo existente
+                {
+                    filasAfectadas = ArticuloRepository.ActualizarArticulo(articulo);
+                }
 
                 if (filasAfectadas > 0)
                 {
-                    MessageBox.Show("El artículo se ha agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Llamar al método para recargar el DataGridView con los datos actualizados
+                    MessageBox.Show("El artículo se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     inventarioForm.CargarArticulos();
                 }
                 else
                 {
-                    MessageBox.Show("Hubo un error al agregar el artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Hubo un error al guardar el artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                // Limpiar o cerrar el formulario según sea necesario
-                this.Close();  // O mantener el formulario abierto si deseas agregar más artículos
+                this.Close();  // Cerrar el formulario
             }
             catch (Exception ex)
             {

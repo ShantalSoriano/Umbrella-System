@@ -106,6 +106,7 @@
             dgvInventario.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvInventario.Size = new Size(768, 500);
             dgvInventario.TabIndex = 16;
+            dgvInventario.CellClick += dgvInventario_CellClick;
             dgvInventario.CellContentClick += dgvInventario_CellContentClick;
             // 
             // btnModificarArticuloInventario
@@ -121,6 +122,7 @@
             btnModificarArticuloInventario.TabIndex = 19;
             btnModificarArticuloInventario.Text = "Modificar";
             btnModificarArticuloInventario.UseVisualStyleBackColor = false;
+            btnModificarArticuloInventario.Click += btnModificarArticuloInventario_Click;
             // 
             // InventarioForm
             // 

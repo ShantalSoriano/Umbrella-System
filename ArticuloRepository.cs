@@ -101,7 +101,79 @@ namespace Umbrella_System
             return tiposArticulo;
         }
 
-       
+        public static Articulo ObtenerPorId(int idArticulo)
+        {
+            using (SqlConnection conexion = DBConnection.ObtenerConexion())
+            {
+                string query = "SELECT * FROM Inventario WHERE idArticulo = @idArticulo";
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.Add("@idArticulo", SqlDbType.Int).Value = idArticulo;
+
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    Articulo articulo = new Articulo
+                    {
+                        idArticulo = reader.GetInt32(0),
+                        nombreArticulo = reader.GetString(1),
+                        cantidadArticulo = reader.GetInt32(2),
+                        fechaAdquiArticulo = reader.IsDBNull(3) ? (DateTime?)null : reader.GetDateTime(3),
+                        fechaVenciArticulo = reader.IsDBNull(4) ? (DateTime?)null : reader.GetDateTime(4),
+                        descripcionArticulo = reader.IsDBNull(5) ? null : reader.GetString(5),
+                        idTipoArticulo = reader.GetInt32(6),
+                        UnidadMedidaArticulo = reader.GetString(7)
+                    };
+                    return articulo;
+                }
+            }
+            return null; // Si no se encuentra
+        }
+
+        public static int ActualizarArticulo(Articulo articulo)
+        {
+            int retorno = 0;
+
+            using (SqlConnection conexion = DBConnection.ObtenerConexion())
+            {
+                string query = "UPDATE Inventario SET " +
+                               "nombreArticulo = @nombreArticulo, " +
+                               "cantidadArticulo = @cantidadArticulo, " +
+                               "fechaAdquiArticulo = @fechaAdquiArticulo, " +
+                               "fechaVenciArticulo = @fechaVenciArticulo, " +
+                               "descripcionArticulo = @descripcionArticulo, " +
+                               "idTipoArticulo = @idTipoArticulo, " +
+                               "UnidadMedidaArticulo = @UnidadMedidaArticulo " +
+                               "WHERE idArticulo = @idArticulo";
+
+                SqlCommand comando = new SqlCommand(query, conexion);
+
+                comando.Parameters.Add("@nombreArticulo", SqlDbType.NVarChar).Value = articulo.nombreArticulo;
+                comando.Parameters.Add("@cantidadArticulo", SqlDbType.Int).Value = articulo.cantidadArticulo;
+                comando.Parameters.Add("@fechaAdquiArticulo", SqlDbType.DateTime).Value = articulo.fechaAdquiArticulo;
+
+                if (articulo.fechaVenciArticulo == null)
+                {
+                    comando.Parameters.Add("@fechaVenciArticulo", SqlDbType.DateTime).Value = DBNull.Value;
+                }
+                else
+                {
+                    comando.Parameters.Add("@fechaVenciArticulo", SqlDbType.DateTime).Value = articulo.fechaVenciArticulo;
+                }
+
+                comando.Parameters.Add("@descripcionArticulo", SqlDbType.NVarChar).Value = articulo.descripcionArticulo;
+                comando.Parameters.Add("@idTipoArticulo", SqlDbType.Int).Value = articulo.idTipoArticulo;
+                comando.Parameters.Add("@UnidadMedidaArticulo", SqlDbType.NVarChar).Value = articulo.UnidadMedidaArticulo;
+                comando.Parameters.Add("@idArticulo", SqlDbType.Int).Value = articulo.idArticulo;
+
+                retorno = comando.ExecuteNonQuery(); // Retorna el número de filas afectadas
+            }
+
+            return retorno;
+        }
+
+
+
+
 
     }
 }

@@ -12,6 +12,8 @@ namespace Umbrella_System
 {
     public partial class InventarioForm : Form
     {
+        private int? articuloIdSeleccionado = null;  // Variable para almacenar el ID del artículo seleccionado
+
         public InventarioForm()
         {
             InitializeComponent();
@@ -47,6 +49,31 @@ namespace Umbrella_System
         {
             // Aquí puedes manejar eventos relacionados con el clic en las celdas, si es necesario
         }
-    }
 
+        private void btnModificarArticuloInventario_Click(object sender, EventArgs e)
+        {
+            if (articuloIdSeleccionado != null)
+            {
+                Articulo articulo = ArticuloRepository.ObtenerPorId(articuloIdSeleccionado.Value);
+
+                AnadirArticuloForm anadirArticuloForm = new AnadirArticuloForm(this, articulo);
+                anadirArticuloForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un artículo para modificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvInventario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener el ID del artículo seleccionado
+                articuloIdSeleccionado = Convert.ToInt32(dgvInventario.Rows[e.RowIndex].Cells["idArticulo"].Value);
+            }
+        }
+
+
+    }
 }
