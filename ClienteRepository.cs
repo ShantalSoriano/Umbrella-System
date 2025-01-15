@@ -75,6 +75,32 @@ namespace Umbrella_System
                 return -1; // Devuelve -1 en caso de error
             }
         }
+        
+        public int EliminarCliente(int idCliente)
+        {
+            try
+            {
+                using (SqlConnection conexion = DBConnection.ObtenerConexion())
+                {
+                    string query = "DELETE FROM Clientes WHERE idCliente = @idCliente;";
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@idCliente", idCliente);
+
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    
+                    if (filasAfectadas == 0)
+                    {
+                        MessageBox.Show("No se encontró un cliente con el ID proporcionado para eliminar.");
+                    }
+                    return filasAfectadas;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar el cliente: {ex.Message}");
+                return -1; // Devuelve -1 en caso de error
+            }
+        }
 
     }
 }

@@ -65,8 +65,8 @@ namespace Umbrella_System
             }
             else // Actualización de un cliente existente
             {
-                cliente.idCliente = clienteIdSeleccionado.Value; 
-                result = new ClienteRepository().ActualizarCliente(cliente); 
+                cliente.idCliente = clienteIdSeleccionado.Value;
+                result = new ClienteRepository().ActualizarCliente(cliente);
                 if (result > 0)
                 {
                     MessageBox.Show("Cliente actualizado correctamente");
@@ -138,7 +138,7 @@ namespace Umbrella_System
 
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow filaSeleccionada = this.dgvClientes.Rows[e.RowIndex];
 
@@ -160,7 +160,39 @@ namespace Umbrella_System
             clienteIdSeleccionado = null; // Reinicia el estado de selección
         }
 
+        private void btnEliminarCliente_Click(object sender, EventArgs e)
+        {
+            var valor = MessageBox.Show("¿Está seguro de que desea eliminar este cliente?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+            if (valor == DialogResult.Yes)
+            {
+                if (clienteIdSeleccionado != null)
+                {
+                    int result = new ClienteRepository().EliminarCliente(clienteIdSeleccionado.Value);
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Cliente eliminado correctamente");
+                    }
+                    else if (result == 0)
+                    {
+                        MessageBox.Show("No se encontró un cliente con el ID proporcionado.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrió un error al intentar eliminar el cliente.");
+                    }
+
+                    ActualizarTabla();
+                    LimpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, seleccione un cliente para eliminar.");
+                }
+            }
+        }
     }
 }
+    
+
 
 
