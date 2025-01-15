@@ -49,21 +49,37 @@ namespace Umbrella_System
             cliente.telefono = txtTelefonoCliente.Text;
             cliente.direccion = txtDireccionCliente.Text;
 
-            int result = ClienteRepository.AgregarCliente(cliente);
+            int result;
 
-            if (result > 0)
+            if (clienteIdSeleccionado == null) // Registro de un nuevo cliente
             {
-                MessageBox.Show("Cliente registrado correctamente");
+                result = ClienteRepository.AgregarCliente(cliente);
+                if (result > 0)
+                {
+                    MessageBox.Show("Cliente registrado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo registrar el cliente");
+                }
             }
-            else
+            else // Actualización de un cliente existente
             {
-                MessageBox.Show("No se pudo registrar el cliente");
+                cliente.idCliente = clienteIdSeleccionado.Value; 
+                result = new ClienteRepository().ActualizarCliente(cliente); 
+                if (result > 0)
+                {
+                    MessageBox.Show("Cliente actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el cliente");
+                }
+                clienteIdSeleccionado = null;
             }
+
             ActualizarTabla();
-
-            txtNombreCliente.Clear();
-            txtTelefonoCliente.Clear();
-            txtDireccionCliente.Clear();
+            LimpiarCampos();
         }
 
         private void tabTodosLosClientes_Click(object sender, EventArgs e)
@@ -109,32 +125,41 @@ namespace Umbrella_System
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
 
-            // Verifica si se ha seleccionado un cliente
-            if (dgvClientes.SelectedRows.Count == 1)
+            if (clienteIdSeleccionado != null)
             {
+                // Cambia a la tab "Registrar Cliente"
                 tabctrlClientes.SelectedTab = tabRegistrarCliente;
-
             }
             else
             {
-                MessageBox.Show("Seleccione un cliente para modificar");
+                MessageBox.Show("Por favor, seleccione un cliente para modificar.");
             }
         }
 
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verifica si se ha seleccionado un cliente
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0) 
             {
-                DataGridViewRow filaSeleccionada = dgvClientes.Rows[e.RowIndex];
-                txtNombreCliente.Text = filaSeleccionada.Cells["nombreCliente"].Value.ToString();
-                txtTelefonoCliente.Text = filaSeleccionada.Cells["telefonoCliente"].Value.ToString();
-                txtDireccionCliente.Text = filaSeleccionada.Cells["direccionCliente"].Value.ToString();
-                clienteIdSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["idCliente"].Value);
+                DataGridViewRow filaSeleccionada = this.dgvClientes.Rows[e.RowIndex];
+
+
+
+                // Obtener los datos del cliente seleccionado
+                clienteIdSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["idCliente"].Value); // Ajusta el nombre de la columna al de tu base de datos
+                txtNombreCliente.Text = filaSeleccionada.Cells["nombre"].Value.ToString();
+                txtTelefonoCliente.Text = filaSeleccionada.Cells["telefono"].Value.ToString();
+                txtDireccionCliente.Text = filaSeleccionada.Cells["direccion"].Value.ToString();
             }
         }
 
-       
+        private void LimpiarCampos()
+        {
+            txtNombreCliente.Clear();
+            txtTelefonoCliente.Clear();
+            txtDireccionCliente.Clear();
+            clienteIdSeleccionado = null; // Reinicia el estado de selección
+        }
+
     }
 }
 

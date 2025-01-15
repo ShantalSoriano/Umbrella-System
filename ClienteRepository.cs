@@ -47,8 +47,8 @@ namespace Umbrella_System
                 return listaClientes;
             }
         }
-    
-        public void ActualizarCliente(Cliente cliente)
+
+        public int ActualizarCliente(Cliente cliente)
         {
             try
             {
@@ -60,12 +60,19 @@ namespace Umbrella_System
                     comando.Parameters.AddWithValue("@telefonoCliente", cliente.telefono);
                     comando.Parameters.AddWithValue("@direccionCliente", cliente.direccion);
                     comando.Parameters.AddWithValue("@idCliente", cliente.idCliente);
-                    comando.ExecuteNonQuery();
+
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    if (filasAfectadas == 0)
+                    {
+                        MessageBox.Show("No se encontró un cliente con el ID proporcionado para actualizar.");
+                    }
+                    return filasAfectadas;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al actualizar el cliente: " + ex.ToString());
+                MessageBox.Show($"Error al actualizar el cliente: {ex.Message}");
+                return -1; // Devuelve -1 en caso de error
             }
         }
 
