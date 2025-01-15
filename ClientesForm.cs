@@ -36,5 +36,25 @@ namespace Umbrella_System
         {
 
         }
+
+        private void btnRegistrarCliente_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new Cliente();
+            cliente.nombre = txtNombreCliente.Text;
+            cliente.telefono = txtTelefonoCliente.Text;
+            cliente.direccion = txtDireccionCliente.Text;
+
+            int result = ClienteRepository.AgregarCliente(cliente);
+
+            if (result > 0)
+            {
+                MessageBox.Show("Cliente registrado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo registrar el cliente");
+            }
+
+        }
     }
 }
