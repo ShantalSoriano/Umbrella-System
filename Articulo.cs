@@ -11,8 +11,8 @@ namespace Umbrella_System
         public int idArticulo { get; set; }
         public string nombreArticulo { get; set; }
         public int cantidadArticulo { get; set; }
-        public DateBoldEventArgs fechaAdquiArticulo { get; set; }
-        public DateBoldEventArgs fechaVenciArticulo { get; set; }
+        public DateTime? fechaAdquiArticulo { get; set; }
+        public DateTime? fechaVenciArticulo { get; set; }
         public string descripcionArticulo { get; set; }
         public int idTipoArticulo { get; set; }
         public string UnidadMedidaArticulo { get; set; }

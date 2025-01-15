@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnEliminarArticuloInventario = new Button();
             btnNuevoArticuloInventario = new Button();
             dgvInventario = new DataGridView();
@@ -42,7 +45,7 @@
             btnEliminarArticuloInventario.FlatStyle = FlatStyle.Popup;
             btnEliminarArticuloInventario.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarArticuloInventario.ForeColor = Color.White;
-            btnEliminarArticuloInventario.Location = new Point(9, 490);
+            btnEliminarArticuloInventario.Location = new Point(12, 511);
             btnEliminarArticuloInventario.Name = "btnEliminarArticuloInventario";
             btnEliminarArticuloInventario.Size = new Size(90, 27);
             btnEliminarArticuloInventario.TabIndex = 18;
@@ -56,7 +59,7 @@
             btnNuevoArticuloInventario.FlatStyle = FlatStyle.Popup;
             btnNuevoArticuloInventario.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnNuevoArticuloInventario.ForeColor = Color.White;
-            btnNuevoArticuloInventario.Location = new Point(687, 490);
+            btnNuevoArticuloInventario.Location = new Point(687, 511);
             btnNuevoArticuloInventario.Name = "btnNuevoArticuloInventario";
             btnNuevoArticuloInventario.Size = new Size(90, 27);
             btnNuevoArticuloInventario.TabIndex = 17;
@@ -66,12 +69,44 @@
             // 
             // dgvInventario
             // 
+            dgvInventario.AllowUserToAddRows = false;
+            dgvInventario.AllowUserToDeleteRows = false;
             dgvInventario.Anchor = AnchorStyles.None;
+            dgvInventario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvInventario.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgvInventario.CausesValidation = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Impact", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(161, 0, 113);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvInventario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInventario.Location = new Point(31, 33);
+            dgvInventario.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvInventario.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvInventario.Location = new Point(9, 5);
             dgvInventario.Name = "dgvInventario";
-            dgvInventario.Size = new Size(730, 448);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvInventario.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvInventario.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvInventario.Size = new Size(768, 500);
             dgvInventario.TabIndex = 16;
+            dgvInventario.CellContentClick += dgvInventario_CellContentClick;
             // 
             // btnModificarArticuloInventario
             // 
@@ -80,7 +115,7 @@
             btnModificarArticuloInventario.FlatStyle = FlatStyle.Popup;
             btnModificarArticuloInventario.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarArticuloInventario.ForeColor = Color.White;
-            btnModificarArticuloInventario.Location = new Point(591, 490);
+            btnModificarArticuloInventario.Location = new Point(591, 511);
             btnModificarArticuloInventario.Name = "btnModificarArticuloInventario";
             btnModificarArticuloInventario.Size = new Size(90, 27);
             btnModificarArticuloInventario.TabIndex = 19;
@@ -98,6 +133,7 @@
             Controls.Add(dgvInventario);
             Name = "InventarioForm";
             Text = "Inventario";
+            Load += InventarioForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvInventario).EndInit();
             ResumeLayout(false);
         }

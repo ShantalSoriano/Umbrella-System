@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnadirArticuloForm));
             panelAnadirArticulo = new Panel();
+            txtUnidadMedida_aa = new TextBox();
             txtDescripArticulo_aa = new TextBox();
             lblDescripArticulo_aa = new Label();
-            cmbUnidadMedidaArticulo_aa = new ComboBox();
             lblUnidadMedida_aa = new Label();
-            dateFechaVencimiArticulo_aa = new DateTimePicker();
+            dtpFechaVencimiento_aa = new DateTimePicker();
             lblFechaVencimiArticulo_aa = new Label();
             numCantidadArticulo_aa = new NumericUpDown();
-            dateFechaArticulo_aa = new DateTimePicker();
+            dtpFechaAdquisicion_aa = new DateTimePicker();
             lblFechaAdquiArticulo_aa = new Label();
             lblCantidadArticulo_aa = new Label();
             cmbTipoArticulo_aa = new ComboBox();
@@ -60,14 +60,14 @@
             // 
             // panelAnadirArticulo
             // 
+            panelAnadirArticulo.Controls.Add(txtUnidadMedida_aa);
             panelAnadirArticulo.Controls.Add(txtDescripArticulo_aa);
             panelAnadirArticulo.Controls.Add(lblDescripArticulo_aa);
-            panelAnadirArticulo.Controls.Add(cmbUnidadMedidaArticulo_aa);
             panelAnadirArticulo.Controls.Add(lblUnidadMedida_aa);
-            panelAnadirArticulo.Controls.Add(dateFechaVencimiArticulo_aa);
+            panelAnadirArticulo.Controls.Add(dtpFechaVencimiento_aa);
             panelAnadirArticulo.Controls.Add(lblFechaVencimiArticulo_aa);
             panelAnadirArticulo.Controls.Add(numCantidadArticulo_aa);
-            panelAnadirArticulo.Controls.Add(dateFechaArticulo_aa);
+            panelAnadirArticulo.Controls.Add(dtpFechaAdquisicion_aa);
             panelAnadirArticulo.Controls.Add(lblFechaAdquiArticulo_aa);
             panelAnadirArticulo.Controls.Add(lblCantidadArticulo_aa);
             panelAnadirArticulo.Controls.Add(cmbTipoArticulo_aa);
@@ -83,6 +83,16 @@
             panelAnadirArticulo.Size = new Size(533, 406);
             panelAnadirArticulo.TabIndex = 0;
             panelAnadirArticulo.Paint += panelAnadirArticulo_Paint;
+            // 
+            // txtUnidadMedida_aa
+            // 
+            txtUnidadMedida_aa.Anchor = AnchorStyles.None;
+            txtUnidadMedida_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            txtUnidadMedida_aa.ForeColor = Color.FromArgb(213, 70, 189);
+            txtUnidadMedida_aa.Location = new Point(260, 245);
+            txtUnidadMedida_aa.Name = "txtUnidadMedida_aa";
+            txtUnidadMedida_aa.Size = new Size(148, 23);
+            txtUnidadMedida_aa.TabIndex = 41;
             // 
             // txtDescripArticulo_aa
             // 
@@ -106,17 +116,6 @@
             lblDescripArticulo_aa.TabIndex = 39;
             lblDescripArticulo_aa.Text = "Descripción";
             // 
-            // cmbUnidadMedidaArticulo_aa
-            // 
-            cmbUnidadMedidaArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            cmbUnidadMedidaArticulo_aa.ForeColor = Color.FromArgb(213, 70, 189);
-            cmbUnidadMedidaArticulo_aa.FormattingEnabled = true;
-            cmbUnidadMedidaArticulo_aa.ItemHeight = 16;
-            cmbUnidadMedidaArticulo_aa.Location = new Point(260, 243);
-            cmbUnidadMedidaArticulo_aa.Name = "cmbUnidadMedidaArticulo_aa";
-            cmbUnidadMedidaArticulo_aa.Size = new Size(73, 24);
-            cmbUnidadMedidaArticulo_aa.TabIndex = 38;
-            // 
             // lblUnidadMedida_aa
             // 
             lblUnidadMedida_aa.Anchor = AnchorStyles.Right;
@@ -129,14 +128,14 @@
             lblUnidadMedida_aa.TabIndex = 37;
             lblUnidadMedida_aa.Text = "Unidad de Medida";
             // 
-            // dateFechaVencimiArticulo_aa
+            // dtpFechaVencimiento_aa
             // 
-            dateFechaVencimiArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dateFechaVencimiArticulo_aa.Format = DateTimePickerFormat.Short;
-            dateFechaVencimiArticulo_aa.Location = new Point(284, 208);
-            dateFechaVencimiArticulo_aa.Name = "dateFechaVencimiArticulo_aa";
-            dateFechaVencimiArticulo_aa.Size = new Size(120, 23);
-            dateFechaVencimiArticulo_aa.TabIndex = 36;
+            dtpFechaVencimiento_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dtpFechaVencimiento_aa.Format = DateTimePickerFormat.Short;
+            dtpFechaVencimiento_aa.Location = new Point(284, 208);
+            dtpFechaVencimiento_aa.Name = "dtpFechaVencimiento_aa";
+            dtpFechaVencimiento_aa.Size = new Size(120, 23);
+            dtpFechaVencimiento_aa.TabIndex = 36;
             // 
             // lblFechaVencimiArticulo_aa
             // 
@@ -161,14 +160,14 @@
             numCantidadArticulo_aa.TextAlign = HorizontalAlignment.Center;
             numCantidadArticulo_aa.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // dateFechaArticulo_aa
+            // dtpFechaAdquisicion_aa
             // 
-            dateFechaArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dateFechaArticulo_aa.Format = DateTimePickerFormat.Short;
-            dateFechaArticulo_aa.Location = new Point(284, 172);
-            dateFechaArticulo_aa.Name = "dateFechaArticulo_aa";
-            dateFechaArticulo_aa.Size = new Size(120, 23);
-            dateFechaArticulo_aa.TabIndex = 33;
+            dtpFechaAdquisicion_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dtpFechaAdquisicion_aa.Format = DateTimePickerFormat.Short;
+            dtpFechaAdquisicion_aa.Location = new Point(284, 172);
+            dtpFechaAdquisicion_aa.Name = "dtpFechaAdquisicion_aa";
+            dtpFechaAdquisicion_aa.Size = new Size(120, 23);
+            dtpFechaAdquisicion_aa.TabIndex = 33;
             // 
             // lblFechaAdquiArticulo_aa
             // 
@@ -196,6 +195,7 @@
             // 
             // cmbTipoArticulo_aa
             // 
+            cmbTipoArticulo_aa.DisplayMember = "idTipoArticulo";
             cmbTipoArticulo_aa.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             cmbTipoArticulo_aa.ForeColor = Color.FromArgb(213, 70, 189);
             cmbTipoArticulo_aa.FormattingEnabled = true;
@@ -204,6 +204,7 @@
             cmbTipoArticulo_aa.Name = "cmbTipoArticulo_aa";
             cmbTipoArticulo_aa.Size = new Size(121, 24);
             cmbTipoArticulo_aa.TabIndex = 26;
+            cmbTipoArticulo_aa.ValueMember = "idTipoArticulo";
             // 
             // lblTipoArticulo_aa
             // 
@@ -298,6 +299,7 @@
             btnAnadirArticulo_aa.TabIndex = 20;
             btnAnadirArticulo_aa.Text = "Añadir";
             btnAnadirArticulo_aa.UseVisualStyleBackColor = false;
+            btnAnadirArticulo_aa.Click += btnAnadirArticulo_aa_Click;
             // 
             // btnCancelarArticulo_aa
             // 
@@ -350,12 +352,12 @@
         private Label lblFechaAdquiArticulo_aa;
         private Label lblCantidadArticulo_aa;
         private NumericUpDown numCantidadArticulo_aa;
-        private DateTimePicker dateFechaArticulo_aa;
+        private DateTimePicker dtpFechaAdquisicion_aa;
         private Label lblFechaVencimiArticulo_aa;
-        private ComboBox cmbUnidadMedidaArticulo_aa;
         private Label lblUnidadMedida_aa;
         private TextBox txtDescripArticulo_aa;
         private Label lblDescripArticulo_aa;
-        private DateTimePicker dateFechaVencimiArticulo_aa;
+        private DateTimePicker dtpFechaVencimiento_aa;
+        private TextBox txtUnidadMedida_aa;
     }
 }
