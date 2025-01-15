@@ -36,5 +36,76 @@ namespace Umbrella_System
         {
 
         }
+
+        private void btnRegistrarCliente_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new Cliente();
+            cliente.nombre = txtNombreCliente.Text;
+            cliente.telefono = txtTelefonoCliente.Text;
+            cliente.direccion = txtDireccionCliente.Text;
+
+            int result = ClienteRepository.AgregarCliente(cliente);
+
+            if (result > 0)
+            {
+                MessageBox.Show("Cliente registrado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo registrar el cliente");
+            }
+            ActualizarTabla();
+
+
+            txtNombreCliente.Clear();
+            txtTelefonoCliente.Clear();
+            txtDireccionCliente.Clear();
+
+
+
+        }
+
+        private void tabTodosLosClientes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClientesForm_Load(object sender, EventArgs e)
+        {
+            dgvClientes.DataSource = ClienteRepository.ObtenerTodos();
+            ActualizarTabla();
+        }
+
+        public void ActualizarTabla()
+        {
+            dgvClientes.DataSource = ClienteRepository.ObtenerTodos();
+        }
+
+        private void btnCancelarRegistro_Click(object sender, EventArgs e)
+        {
+            txtNombreCliente.Clear();
+            txtTelefonoCliente.Clear();
+            txtDireccionCliente.Clear();
+            cbAcrilico.Checked = false;
+            cbFacial.Checked = false;
+            cbManicura.Checked = false;
+            cbOtro.Checked = false;
+            cbPedicura.Checked = false;
+            cbOtro.Checked = false;
+            cbPinturaGel.Checked = false;
+            cbPinturaReg.Checked = false;
+            cbRubber.Checked = false;
+            
+        }
+
+        private void checkBox6_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

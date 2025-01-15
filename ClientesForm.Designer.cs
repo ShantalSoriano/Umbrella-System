@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tabctrlClientes = new TabControl();
             tabRegistrarCliente = new TabPage();
             MainPanel = new Panel();
             btnRegistrarCliente = new Button();
             btnCancelarRegistro = new Button();
             panelForm = new Panel();
-            panelServiciosPref = new Panel();
-            checkBox8 = new CheckBox();
-            checkBox7 = new CheckBox();
-            checkBox6 = new CheckBox();
-            checkBox5 = new CheckBox();
-            checkBox4 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            cbPinturaReg = new CheckBox();
+            cbRubber = new CheckBox();
+            cbAcrilico = new CheckBox();
+            cbManicura = new CheckBox();
+            cbOtro = new CheckBox();
+            cbPedicura = new CheckBox();
+            cbFacial = new CheckBox();
+            cbPinturaGel = new CheckBox();
             lblServiciosPrefCliente = new Label();
-            textBox2 = new TextBox();
+            txtDireccionCliente = new TextBox();
             lblDireccionCliente = new Label();
-            textBox1 = new TextBox();
+            txtTelefonoCliente = new TextBox();
             lblTelefonoCliente = new Label();
             txtNombreCliente = new TextBox();
             lblNombreCliente = new Label();
@@ -63,7 +63,7 @@
             tabRegistrarCliente.SuspendLayout();
             MainPanel.SuspendLayout();
             panelForm.SuspendLayout();
-            panelServiciosPref.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             panelPic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCliente).BeginInit();
             tabTodosLosClientes.SuspendLayout();
@@ -120,6 +120,7 @@
             btnRegistrarCliente.TabIndex = 12;
             btnRegistrarCliente.Text = "Registrar";
             btnRegistrarCliente.UseVisualStyleBackColor = false;
+            btnRegistrarCliente.Click += btnRegistrarCliente_Click;
             // 
             // btnCancelarRegistro
             // 
@@ -134,16 +135,17 @@
             btnCancelarRegistro.TabIndex = 11;
             btnCancelarRegistro.Text = "Cancelar";
             btnCancelarRegistro.UseVisualStyleBackColor = false;
+            btnCancelarRegistro.Click += btnCancelarRegistro_Click;
             // 
             // panelForm
             // 
             panelForm.Anchor = AnchorStyles.None;
             panelForm.BackColor = Color.FromArgb(22, 97, 58);
-            panelForm.Controls.Add(panelServiciosPref);
+            panelForm.Controls.Add(flowLayoutPanel1);
             panelForm.Controls.Add(lblServiciosPrefCliente);
-            panelForm.Controls.Add(textBox2);
+            panelForm.Controls.Add(txtDireccionCliente);
             panelForm.Controls.Add(lblDireccionCliente);
-            panelForm.Controls.Add(textBox1);
+            panelForm.Controls.Add(txtTelefonoCliente);
             panelForm.Controls.Add(lblTelefonoCliente);
             panelForm.Controls.Add(txtNombreCliente);
             panelForm.Controls.Add(lblNombreCliente);
@@ -152,105 +154,104 @@
             panelForm.Size = new Size(475, 429);
             panelForm.TabIndex = 0;
             // 
-            // panelServiciosPref
+            // flowLayoutPanel1
             // 
-            panelServiciosPref.Controls.Add(checkBox8);
-            panelServiciosPref.Controls.Add(checkBox7);
-            panelServiciosPref.Controls.Add(checkBox6);
-            panelServiciosPref.Controls.Add(checkBox5);
-            panelServiciosPref.Controls.Add(checkBox4);
-            panelServiciosPref.Controls.Add(checkBox3);
-            panelServiciosPref.Controls.Add(checkBox2);
-            panelServiciosPref.Controls.Add(checkBox1);
-            panelServiciosPref.Dock = DockStyle.Bottom;
-            panelServiciosPref.Location = new Point(0, 329);
-            panelServiciosPref.Name = "panelServiciosPref";
-            panelServiciosPref.Size = new Size(475, 100);
-            panelServiciosPref.TabIndex = 13;
+            flowLayoutPanel1.Controls.Add(cbPinturaReg);
+            flowLayoutPanel1.Controls.Add(cbRubber);
+            flowLayoutPanel1.Controls.Add(cbAcrilico);
+            flowLayoutPanel1.Controls.Add(cbManicura);
+            flowLayoutPanel1.Controls.Add(cbOtro);
+            flowLayoutPanel1.Controls.Add(cbPedicura);
+            flowLayoutPanel1.Controls.Add(cbFacial);
+            flowLayoutPanel1.Controls.Add(cbPinturaGel);
+            flowLayoutPanel1.Location = new Point(45, 346);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(394, 88);
+            flowLayoutPanel1.TabIndex = 13;
             // 
-            // checkBox8
+            // cbPinturaReg
             // 
-            checkBox8.AutoSize = true;
-            checkBox8.Location = new Point(260, 41);
-            checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(73, 23);
-            checkBox8.TabIndex = 7;
-            checkBox8.Text = "Rubber";
-            checkBox8.UseVisualStyleBackColor = true;
+            cbPinturaReg.AutoSize = true;
+            cbPinturaReg.Location = new Point(3, 3);
+            cbPinturaReg.Name = "cbPinturaReg";
+            cbPinturaReg.Size = new Size(126, 23);
+            cbPinturaReg.TabIndex = 10;
+            cbPinturaReg.Text = "Pintura Regular";
+            cbPinturaReg.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // cbRubber
             // 
-            checkBox7.AutoSize = true;
-            checkBox7.Font = new Font("Impact", 10F);
-            checkBox7.Location = new Point(362, 3);
-            checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(113, 22);
-            checkBox7.TabIndex = 6;
-            checkBox7.Text = "Limpieza Facial";
-            checkBox7.UseVisualStyleBackColor = true;
-            checkBox7.CheckedChanged += checkBox7_CheckedChanged;
+            cbRubber.AutoSize = true;
+            cbRubber.Location = new Point(135, 3);
+            cbRubber.Name = "cbRubber";
+            cbRubber.Size = new Size(73, 23);
+            cbRubber.TabIndex = 15;
+            cbRubber.Text = "Rubber";
+            cbRubber.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // cbAcrilico
             // 
-            checkBox6.AutoSize = true;
-            checkBox6.Location = new Point(260, 3);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(74, 23);
-            checkBox6.TabIndex = 5;
-            checkBox6.Text = "Acrilico";
-            checkBox6.UseVisualStyleBackColor = true;
-            checkBox6.CheckedChanged += checkBox6_CheckedChanged;
+            cbAcrilico.AutoSize = true;
+            cbAcrilico.Location = new Point(214, 3);
+            cbAcrilico.Name = "cbAcrilico";
+            cbAcrilico.Size = new Size(74, 23);
+            cbAcrilico.TabIndex = 13;
+            cbAcrilico.Text = "Acrilico";
+            cbAcrilico.UseVisualStyleBackColor = true;
+            cbAcrilico.CheckedChanged += checkBox6_CheckedChanged_1;
             // 
-            // checkBox5
+            // cbManicura
             // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(362, 41);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(54, 23);
-            checkBox5.TabIndex = 4;
-            checkBox5.Text = "Otro";
-            checkBox5.UseVisualStyleBackColor = true;
+            cbManicura.AutoSize = true;
+            cbManicura.Location = new Point(294, 3);
+            cbManicura.Name = "cbManicura";
+            cbManicura.Size = new Size(87, 23);
+            cbManicura.TabIndex = 11;
+            cbManicura.Text = "Manicura";
+            cbManicura.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // cbOtro
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(26, 3);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(87, 23);
-            checkBox4.TabIndex = 3;
-            checkBox4.Text = "Manicura";
-            checkBox4.UseVisualStyleBackColor = true;
+            cbOtro.AutoSize = true;
+            cbOtro.Location = new Point(3, 32);
+            cbOtro.Name = "cbOtro";
+            cbOtro.Size = new Size(54, 23);
+            cbOtro.TabIndex = 12;
+            cbOtro.Text = "Otro";
+            cbOtro.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // cbPedicura
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(128, 41);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(126, 23);
-            checkBox3.TabIndex = 2;
-            checkBox3.Text = "Pintura Regular";
-            checkBox3.UseVisualStyleBackColor = true;
+            cbPedicura.AutoSize = true;
+            cbPedicura.Location = new Point(63, 32);
+            cbPedicura.Name = "cbPedicura";
+            cbPedicura.Size = new Size(84, 23);
+            cbPedicura.TabIndex = 8;
+            cbPedicura.Text = "Pedicura";
+            cbPedicura.TextImageRelation = TextImageRelation.ImageBeforeText;
+            cbPedicura.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbFacial
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(128, 3);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(97, 23);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "Pintura Gel";
-            checkBox2.UseVisualStyleBackColor = true;
+            cbFacial.AutoSize = true;
+            cbFacial.Font = new Font("Impact", 10F);
+            cbFacial.Location = new Point(153, 32);
+            cbFacial.Name = "cbFacial";
+            cbFacial.Size = new Size(113, 22);
+            cbFacial.TabIndex = 14;
+            cbFacial.Text = "Limpieza Facial";
+            cbFacial.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbPinturaGel
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(28, 41);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(84, 23);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Pedicura";
-            checkBox1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            checkBox1.UseVisualStyleBackColor = true;
+            cbPinturaGel.AutoSize = true;
+            cbPinturaGel.Location = new Point(272, 32);
+            cbPinturaGel.Name = "cbPinturaGel";
+            cbPinturaGel.Size = new Size(97, 23);
+            cbPinturaGel.TabIndex = 9;
+            cbPinturaGel.Text = "Pintura Gel";
+            cbPinturaGel.UseVisualStyleBackColor = true;
+            cbPinturaGel.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // lblServiciosPrefCliente
             // 
@@ -264,16 +265,16 @@
             lblServiciosPrefCliente.TabIndex = 12;
             lblServiciosPrefCliente.Text = "Servicios Preferidos";
             // 
-            // textBox2
+            // txtDireccionCliente
             // 
-            textBox2.Anchor = AnchorStyles.None;
-            textBox2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.FromArgb(213, 70, 189);
-            textBox2.Location = new Point(98, 236);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(320, 37);
-            textBox2.TabIndex = 11;
+            txtDireccionCliente.Anchor = AnchorStyles.None;
+            txtDireccionCliente.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtDireccionCliente.ForeColor = Color.FromArgb(213, 70, 189);
+            txtDireccionCliente.Location = new Point(98, 236);
+            txtDireccionCliente.Multiline = true;
+            txtDireccionCliente.Name = "txtDireccionCliente";
+            txtDireccionCliente.Size = new Size(320, 37);
+            txtDireccionCliente.TabIndex = 11;
             // 
             // lblDireccionCliente
             // 
@@ -287,17 +288,17 @@
             lblDireccionCliente.TabIndex = 10;
             lblDireccionCliente.Text = "Dirección";
             // 
-            // textBox1
+            // txtTelefonoCliente
             // 
-            textBox1.Anchor = AnchorStyles.None;
-            textBox1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.FromArgb(213, 70, 189);
-            textBox1.Location = new Point(98, 150);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(320, 37);
-            textBox1.TabIndex = 9;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtTelefonoCliente.Anchor = AnchorStyles.None;
+            txtTelefonoCliente.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTelefonoCliente.ForeColor = Color.FromArgb(213, 70, 189);
+            txtTelefonoCliente.Location = new Point(98, 150);
+            txtTelefonoCliente.Multiline = true;
+            txtTelefonoCliente.Name = "txtTelefonoCliente";
+            txtTelefonoCliente.Size = new Size(320, 37);
+            txtTelefonoCliente.TabIndex = 9;
+            txtTelefonoCliente.TextChanged += textBox1_TextChanged;
             // 
             // lblTelefonoCliente
             // 
@@ -363,13 +364,14 @@
             tabTodosLosClientes.Controls.Add(dgvClientes);
             tabTodosLosClientes.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabTodosLosClientes.ForeColor = Color.FromArgb(250, 146, 186);
-            tabTodosLosClientes.Location = new Point(4, 27);
+            tabTodosLosClientes.Location = new Point(4, 24);
             tabTodosLosClientes.Name = "tabTodosLosClientes";
             tabTodosLosClientes.Padding = new Padding(3);
-            tabTodosLosClientes.Size = new Size(779, 519);
+            tabTodosLosClientes.Size = new Size(779, 522);
             tabTodosLosClientes.TabIndex = 1;
             tabTodosLosClientes.Text = "Todos los Clientes";
             tabTodosLosClientes.UseVisualStyleBackColor = true;
+            tabTodosLosClientes.Click += tabTodosLosClientes_Click;
             // 
             // btnEliminarCliente
             // 
@@ -378,7 +380,7 @@
             btnEliminarCliente.FlatStyle = FlatStyle.Popup;
             btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarCliente.ForeColor = Color.White;
-            btnEliminarCliente.Location = new Point(6, 465);
+            btnEliminarCliente.Location = new Point(6, 455);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(90, 27);
             btnEliminarCliente.TabIndex = 15;
@@ -392,7 +394,7 @@
             btnModificarCliente.FlatStyle = FlatStyle.Popup;
             btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarCliente.ForeColor = Color.White;
-            btnModificarCliente.Location = new Point(684, 465);
+            btnModificarCliente.Location = new Point(684, 455);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Size = new Size(90, 27);
             btnModificarCliente.TabIndex = 13;
@@ -401,26 +403,33 @@
             // 
             // dgvClientes
             // 
+            dgvClientes.AllowUserToAddRows = false;
+            dgvClientes.AllowUserToDeleteRows = false;
+            dgvClientes.AllowUserToResizeColumns = false;
+            dgvClientes.AllowUserToResizeRows = false;
             dgvClientes.Anchor = AnchorStyles.None;
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.25F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvClientes.DefaultCellStyle = dataGridViewCellStyle1;
-            dgvClientes.Location = new Point(28, 8);
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.25F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvClientes.Location = new Point(28, -2);
             dgvClientes.Name = "dgvClientes";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvClientes.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;
@@ -435,13 +444,14 @@
             ForeColor = Color.FromArgb(250, 146, 186);
             Name = "ClientesForm";
             Text = "Clientes";
+            Load += ClientesForm_Load;
             tabctrlClientes.ResumeLayout(false);
             tabRegistrarCliente.ResumeLayout(false);
             MainPanel.ResumeLayout(false);
             panelForm.ResumeLayout(false);
             panelForm.PerformLayout();
-            panelServiciosPref.ResumeLayout(false);
-            panelServiciosPref.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             panelPic.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCliente).EndInit();
             tabTodosLosClientes.ResumeLayout(false);
@@ -460,24 +470,24 @@
         private Panel panelForm;
         private TextBox txtNombreCliente;
         private Label lblNombreCliente;
-        private TextBox textBox1;
+        private TextBox txtTelefonoCliente;
         private Label lblTelefonoCliente;
-        private TextBox textBox2;
+        private TextBox txtDireccionCliente;
         private Label lblDireccionCliente;
-        private Panel panelServiciosPref;
-        private CheckBox checkBox4;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
         private Label lblServiciosPrefCliente;
-        private CheckBox checkBox8;
-        private CheckBox checkBox7;
-        private CheckBox checkBox6;
-        private CheckBox checkBox5;
         private Button btnCancelarRegistro;
         private Button btnRegistrarCliente;
         private Button btnEliminarCliente;
         private Button btnModificarCliente;
         private DataGridView dgvClientes;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private CheckBox cbPinturaReg;
+        private CheckBox cbRubber;
+        private CheckBox cbAcrilico;
+        private CheckBox cbManicura;
+        private CheckBox cbOtro;
+        private CheckBox cbPedicura;
+        private CheckBox cbFacial;
+        private CheckBox cbPinturaGel;
     }
 }
