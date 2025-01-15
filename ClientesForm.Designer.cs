@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tabctrlClientes = new TabControl();
             tabRegistrarCliente = new TabPage();
             MainPanel = new Panel();
@@ -38,14 +38,14 @@
             btnCancelarRegistro = new Button();
             panelForm = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            checkBox3 = new CheckBox();
-            checkBox8 = new CheckBox();
-            checkBox6 = new CheckBox();
-            checkBox4 = new CheckBox();
-            checkBox5 = new CheckBox();
-            checkBox1 = new CheckBox();
-            checkBox7 = new CheckBox();
-            checkBox2 = new CheckBox();
+            cbPinturaReg = new CheckBox();
+            cbRubber = new CheckBox();
+            cbAcrilico = new CheckBox();
+            cbManicura = new CheckBox();
+            cbOtro = new CheckBox();
+            cbPedicura = new CheckBox();
+            cbFacial = new CheckBox();
+            cbPinturaGel = new CheckBox();
             lblServiciosPrefCliente = new Label();
             txtDireccionCliente = new TextBox();
             lblDireccionCliente = new Label();
@@ -135,6 +135,7 @@
             btnCancelarRegistro.TabIndex = 11;
             btnCancelarRegistro.Text = "Cancelar";
             btnCancelarRegistro.UseVisualStyleBackColor = false;
+            btnCancelarRegistro.Click += btnCancelarRegistro_Click;
             // 
             // panelForm
             // 
@@ -155,100 +156,102 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(checkBox3);
-            flowLayoutPanel1.Controls.Add(checkBox8);
-            flowLayoutPanel1.Controls.Add(checkBox6);
-            flowLayoutPanel1.Controls.Add(checkBox4);
-            flowLayoutPanel1.Controls.Add(checkBox5);
-            flowLayoutPanel1.Controls.Add(checkBox1);
-            flowLayoutPanel1.Controls.Add(checkBox7);
-            flowLayoutPanel1.Controls.Add(checkBox2);
+            flowLayoutPanel1.Controls.Add(cbPinturaReg);
+            flowLayoutPanel1.Controls.Add(cbRubber);
+            flowLayoutPanel1.Controls.Add(cbAcrilico);
+            flowLayoutPanel1.Controls.Add(cbManicura);
+            flowLayoutPanel1.Controls.Add(cbOtro);
+            flowLayoutPanel1.Controls.Add(cbPedicura);
+            flowLayoutPanel1.Controls.Add(cbFacial);
+            flowLayoutPanel1.Controls.Add(cbPinturaGel);
             flowLayoutPanel1.Location = new Point(45, 346);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(394, 88);
             flowLayoutPanel1.TabIndex = 13;
             // 
-            // checkBox3
+            // cbPinturaReg
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(3, 3);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(126, 23);
-            checkBox3.TabIndex = 10;
-            checkBox3.Text = "Pintura Regular";
-            checkBox3.UseVisualStyleBackColor = true;
+            cbPinturaReg.AutoSize = true;
+            cbPinturaReg.Location = new Point(3, 3);
+            cbPinturaReg.Name = "cbPinturaReg";
+            cbPinturaReg.Size = new Size(126, 23);
+            cbPinturaReg.TabIndex = 10;
+            cbPinturaReg.Text = "Pintura Regular";
+            cbPinturaReg.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // cbRubber
             // 
-            checkBox8.AutoSize = true;
-            checkBox8.Location = new Point(135, 3);
-            checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(73, 23);
-            checkBox8.TabIndex = 15;
-            checkBox8.Text = "Rubber";
-            checkBox8.UseVisualStyleBackColor = true;
+            cbRubber.AutoSize = true;
+            cbRubber.Location = new Point(135, 3);
+            cbRubber.Name = "cbRubber";
+            cbRubber.Size = new Size(73, 23);
+            cbRubber.TabIndex = 15;
+            cbRubber.Text = "Rubber";
+            cbRubber.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // cbAcrilico
             // 
-            checkBox6.AutoSize = true;
-            checkBox6.Location = new Point(214, 3);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(74, 23);
-            checkBox6.TabIndex = 13;
-            checkBox6.Text = "Acrilico";
-            checkBox6.UseVisualStyleBackColor = true;
+            cbAcrilico.AutoSize = true;
+            cbAcrilico.Location = new Point(214, 3);
+            cbAcrilico.Name = "cbAcrilico";
+            cbAcrilico.Size = new Size(74, 23);
+            cbAcrilico.TabIndex = 13;
+            cbAcrilico.Text = "Acrilico";
+            cbAcrilico.UseVisualStyleBackColor = true;
+            cbAcrilico.CheckedChanged += checkBox6_CheckedChanged_1;
             // 
-            // checkBox4
+            // cbManicura
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(294, 3);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(87, 23);
-            checkBox4.TabIndex = 11;
-            checkBox4.Text = "Manicura";
-            checkBox4.UseVisualStyleBackColor = true;
+            cbManicura.AutoSize = true;
+            cbManicura.Location = new Point(294, 3);
+            cbManicura.Name = "cbManicura";
+            cbManicura.Size = new Size(87, 23);
+            cbManicura.TabIndex = 11;
+            cbManicura.Text = "Manicura";
+            cbManicura.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // cbOtro
             // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(3, 32);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(54, 23);
-            checkBox5.TabIndex = 12;
-            checkBox5.Text = "Otro";
-            checkBox5.UseVisualStyleBackColor = true;
+            cbOtro.AutoSize = true;
+            cbOtro.Location = new Point(3, 32);
+            cbOtro.Name = "cbOtro";
+            cbOtro.Size = new Size(54, 23);
+            cbOtro.TabIndex = 12;
+            cbOtro.Text = "Otro";
+            cbOtro.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbPedicura
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(63, 32);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(84, 23);
-            checkBox1.TabIndex = 8;
-            checkBox1.Text = "Pedicura";
-            checkBox1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            checkBox1.UseVisualStyleBackColor = true;
+            cbPedicura.AutoSize = true;
+            cbPedicura.Location = new Point(63, 32);
+            cbPedicura.Name = "cbPedicura";
+            cbPedicura.Size = new Size(84, 23);
+            cbPedicura.TabIndex = 8;
+            cbPedicura.Text = "Pedicura";
+            cbPedicura.TextImageRelation = TextImageRelation.ImageBeforeText;
+            cbPedicura.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // cbFacial
             // 
-            checkBox7.AutoSize = true;
-            checkBox7.Font = new Font("Impact", 10F);
-            checkBox7.Location = new Point(153, 32);
-            checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(113, 22);
-            checkBox7.TabIndex = 14;
-            checkBox7.Text = "Limpieza Facial";
-            checkBox7.UseVisualStyleBackColor = true;
+            cbFacial.AutoSize = true;
+            cbFacial.Font = new Font("Impact", 10F);
+            cbFacial.Location = new Point(153, 32);
+            cbFacial.Name = "cbFacial";
+            cbFacial.Size = new Size(113, 22);
+            cbFacial.TabIndex = 14;
+            cbFacial.Text = "Limpieza Facial";
+            cbFacial.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbPinturaGel
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(272, 32);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(97, 23);
-            checkBox2.TabIndex = 9;
-            checkBox2.Text = "Pintura Gel";
-            checkBox2.UseVisualStyleBackColor = true;
+            cbPinturaGel.AutoSize = true;
+            cbPinturaGel.Location = new Point(272, 32);
+            cbPinturaGel.Name = "cbPinturaGel";
+            cbPinturaGel.Size = new Size(97, 23);
+            cbPinturaGel.TabIndex = 9;
+            cbPinturaGel.Text = "Pintura Gel";
+            cbPinturaGel.UseVisualStyleBackColor = true;
+            cbPinturaGel.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // lblServiciosPrefCliente
             // 
@@ -361,10 +364,10 @@
             tabTodosLosClientes.Controls.Add(dgvClientes);
             tabTodosLosClientes.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabTodosLosClientes.ForeColor = Color.FromArgb(250, 146, 186);
-            tabTodosLosClientes.Location = new Point(4, 27);
+            tabTodosLosClientes.Location = new Point(4, 24);
             tabTodosLosClientes.Name = "tabTodosLosClientes";
             tabTodosLosClientes.Padding = new Padding(3);
-            tabTodosLosClientes.Size = new Size(779, 519);
+            tabTodosLosClientes.Size = new Size(779, 522);
             tabTodosLosClientes.TabIndex = 1;
             tabTodosLosClientes.Text = "Todos los Clientes";
             tabTodosLosClientes.UseVisualStyleBackColor = true;
@@ -408,25 +411,25 @@
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.25F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvClientes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.25F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvClientes.Location = new Point(28, -2);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;
@@ -478,13 +481,13 @@
         private Button btnModificarCliente;
         private DataGridView dgvClientes;
         private FlowLayoutPanel flowLayoutPanel1;
-        private CheckBox checkBox3;
-        private CheckBox checkBox8;
-        private CheckBox checkBox6;
-        private CheckBox checkBox4;
-        private CheckBox checkBox5;
-        private CheckBox checkBox1;
-        private CheckBox checkBox7;
-        private CheckBox checkBox2;
+        private CheckBox cbPinturaReg;
+        private CheckBox cbRubber;
+        private CheckBox cbAcrilico;
+        private CheckBox cbManicura;
+        private CheckBox cbOtro;
+        private CheckBox cbPedicura;
+        private CheckBox cbFacial;
+        private CheckBox cbPinturaGel;
     }
 }

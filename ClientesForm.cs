@@ -80,5 +80,32 @@ namespace Umbrella_System
         {
             dgvClientes.DataSource = ClienteRepository.ObtenerTodos();
         }
+
+        private void btnCancelarRegistro_Click(object sender, EventArgs e)
+        {
+            txtNombreCliente.Clear();
+            txtTelefonoCliente.Clear();
+            txtDireccionCliente.Clear();
+            cbAcrilico.Checked = false;
+            cbFacial.Checked = false;
+            cbManicura.Checked = false;
+            cbOtro.Checked = false;
+            cbPedicura.Checked = false;
+            cbOtro.Checked = false;
+            cbPinturaGel.Checked = false;
+            cbPinturaReg.Checked = false;
+            cbRubber.Checked = false;
+            
+        }
+
+        private void checkBox6_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
