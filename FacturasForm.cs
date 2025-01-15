@@ -41,7 +41,7 @@ namespace Umbrella_System
 
         private void CargarServicios()
         {
-            string query = "SELECT idCliente, nombreCliente FROM Clientes";
+            string query = "SELECT idServicio, nombreServicio FROM Servicios";
             using (SqlConnection connection = DBConnection.ObtenerConexion())
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -49,11 +49,13 @@ namespace Umbrella_System
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
-                cmbCliente_fa.DataSource = dt;
-                cmbCliente_fa.DisplayMember = "nombreCliente";
-                cmbCliente_fa.ValueMember = "idCliente";
+                cmbServicio_fa.DataSource = dt;
+                cmbServicio_fa.DisplayMember = "nombreServicio";
+                cmbServicio_fa.ValueMember = "idServicio";
             }
         }
+
+
 
 
 
@@ -67,24 +69,34 @@ namespace Umbrella_System
         {
             if (cmbServicio_fa.SelectedValue != null)
             {
-                string selectedServiceId = cmbServicio_fa.SelectedValue.ToString();
-                using (SqlConnection connection = DBConnection.ObtenerConexion())
+                var selectedRow = cmbServicio_fa.SelectedValue as DataRowView;
+                if (selectedRow != null)
                 {
-                    string query = "SELECT nombreServicio, precioServicio FROM Servicios WHERE idServicio = @idServicio";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@idServicio", selectedServiceId);
-
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
+                    string selectedServiceId = selectedRow["idServicio"].ToString();
+                    using (SqlConnection connection = DBConnection.ObtenerConexion())
                     {
-                        autoNombreServicio.Text = reader["nombreServicio"].ToString();
-                        autoPrecioServicio.Text = reader["precioServicio"].ToString();
+                        if (connection.State != ConnectionState.Open)
+                        {
+                            connection.Open();
+                        }
+
+                        string query = "SELECT nombreServicio, precioServicio FROM Servicios WHERE idServicio = @idServicio";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@idServicio", selectedServiceId);
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            autoNombreServicio.Text = reader["nombreServicio"].ToString();
+                            autoPrecioServicio.Text = reader["precioServicio"].ToString();
+                        }
+                        reader.Close(); // cerrar el reader
                     }
-                    reader.Close(); //  cerrar el reader
                 }
             }
         }
+
+
 
         private void autoPrecioServicio_Click(object sender, EventArgs e)
         {

@@ -169,7 +169,7 @@
             cmbCliente_fa.FormattingEnabled = true;
             cmbCliente_fa.Location = new Point(234, 5);
             cmbCliente_fa.Name = "cmbCliente_fa";
-            cmbCliente_fa.Size = new Size(121, 26);
+            cmbCliente_fa.Size = new Size(210, 26);
             cmbCliente_fa.TabIndex = 27;
             cmbCliente_fa.SelectedIndexChanged += cmbCliente_fa_SelectedIndexChanged;
             // 
@@ -458,7 +458,7 @@
             cmbServicio_fa.FormattingEnabled = true;
             cmbServicio_fa.Location = new Point(241, 37);
             cmbServicio_fa.Name = "cmbServicio_fa";
-            cmbServicio_fa.Size = new Size(167, 26);
+            cmbServicio_fa.Size = new Size(203, 26);
             cmbServicio_fa.TabIndex = 8;
             cmbServicio_fa.SelectedIndexChanged += cmbServicio_SelectedIndexChanged;
             // 
