@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Umbrella_System
 {
-    internal class FacturaRepository
+    public class FacturaRepository
     {
+
     }
 }
