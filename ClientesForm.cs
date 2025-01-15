@@ -54,7 +54,31 @@ namespace Umbrella_System
             {
                 MessageBox.Show("No se pudo registrar el cliente");
             }
+            ActualizarTabla();
 
+
+            txtNombreCliente.Clear();
+            txtTelefonoCliente.Clear();
+            txtDireccionCliente.Clear();
+
+
+
+        }
+
+        private void tabTodosLosClientes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClientesForm_Load(object sender, EventArgs e)
+        {
+            dgvClientes.DataSource = ClienteRepository.ObtenerTodos();
+            ActualizarTabla();
+        }
+
+        public void ActualizarTabla()
+        {
+            dgvClientes.DataSource = ClienteRepository.ObtenerTodos();
         }
     }
 }

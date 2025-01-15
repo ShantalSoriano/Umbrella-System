@@ -24,6 +24,29 @@ namespace Umbrella_System
             }
             return retorno;
         }
-    }
+
+        public static List<Cliente> ObtenerTodos()
+        {
+            List<Cliente> listaClientes = new List<Cliente>();
+            using (SqlConnection conexion = DBConnection.ObtenerConexion())
+            {
+                string query = "SELECT * FROM Clientes;";
+                SqlCommand comando = new SqlCommand(query, conexion);
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Cliente cliente = new Cliente();
+                    cliente.idCliente = reader.GetInt32(0);
+                    cliente.nombre = reader.GetString(1);
+                    cliente.telefono = reader.GetString(2);
+                    cliente.direccion = reader.GetString(3);
+                    listaClientes.Add(cliente);
+                }
+
+                conexion.Close();
+                return listaClientes;
+            }
+        }
     
+    }
 }
