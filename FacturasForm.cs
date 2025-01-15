@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,21 +16,47 @@ namespace Umbrella_System
         public FacturasForm()
         {
             InitializeComponent();
-            for (int i = 0; i < 10; i++)
-            {
-                dgvGestionarFacturas.Rows.Add(i, "Christina Matos ", "12/07/24 ", "1,200 ");
-            }
-
-            for (int i = 0; i < 10; i++)
-            {
-                dgvRecuentoServicios.Rows.Add("Manicura", "3", "100", "300");
-            }
+            
         }
 
         private void FacturasForm_Load(object sender, EventArgs e)
         {
-
+            CargarClientes();
+            CargarServicios();
         }
+
+        private void CargarClientes()
+        {
+            string query = "SELECT idCliente, nombreCliente FROM Clientes";
+            SqlCommand command = new SqlCommand(query, DBConnection.ObtenerConexion());
+           
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            cmbCliente_fa.DataSource = dt;
+            cmbCliente_fa.DisplayMember = "nombreCliente";
+            cmbCliente_fa.ValueMember = "idCliente";
+        }
+
+        private void CargarServicios()
+        {
+            string query = "SELECT idCliente, nombreCliente FROM Clientes";
+            using (SqlConnection connection = DBConnection.ObtenerConexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                cmbCliente_fa.DataSource = dt;
+                cmbCliente_fa.DisplayMember = "nombreCliente";
+                cmbCliente_fa.ValueMember = "idCliente";
+            }
+        }
+
+
+
 
         private void lblServicioFactura_Click(object sender, EventArgs e)
         {
@@ -38,7 +65,25 @@ namespace Umbrella_System
 
         private void cmbServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbServicio_fa.SelectedValue != null)
+            {
+                string selectedServiceId = cmbServicio_fa.SelectedValue.ToString();
+                using (SqlConnection connection = DBConnection.ObtenerConexion())
+                {
+                    string query = "SELECT nombreServicio, precioServicio FROM Servicios WHERE idServicio = @idServicio";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@idServicio", selectedServiceId);
 
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        autoNombreServicio.Text = reader["nombreServicio"].ToString();
+                        autoPrecioServicio.Text = reader["precioServicio"].ToString();
+                    }
+                    reader.Close(); //  cerrar el reader
+                }
+            }
         }
 
         private void autoPrecioServicio_Click(object sender, EventArgs e)
@@ -68,6 +113,11 @@ namespace Umbrella_System
         }
 
         private void Guardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbCliente_fa_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
