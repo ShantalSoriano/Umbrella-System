@@ -29,16 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesForm));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabctrlClientes = new TabControl();
             tabRegistrarCliente = new TabPage();
             MainPanel = new Panel();
             btnRegistrarCliente = new Button();
             btnCancelarRegistro = new Button();
             panelForm = new Panel();
-            flowPanelServicios = new FlowLayoutPanel();
-            lblServiciosPrefCliente = new Label();
             txtDireccionCliente = new TextBox();
             lblDireccionCliente = new Label();
             txtTelefonoCliente = new TextBox();
@@ -132,8 +130,6 @@
             // 
             panelForm.Anchor = AnchorStyles.None;
             panelForm.BackColor = Color.FromArgb(22, 97, 58);
-            panelForm.Controls.Add(flowPanelServicios);
-            panelForm.Controls.Add(lblServiciosPrefCliente);
             panelForm.Controls.Add(txtDireccionCliente);
             panelForm.Controls.Add(lblDireccionCliente);
             panelForm.Controls.Add(txtTelefonoCliente);
@@ -145,34 +141,12 @@
             panelForm.Size = new Size(475, 429);
             panelForm.TabIndex = 0;
             // 
-            // flowPanelServicios
-            // 
-            flowPanelServicios.AutoScroll = true;
-            flowPanelServicios.FlowDirection = FlowDirection.TopDown;
-            flowPanelServicios.Location = new Point(45, 346);
-            flowPanelServicios.Name = "flowPanelServicios";
-            flowPanelServicios.Size = new Size(394, 88);
-            flowPanelServicios.TabIndex = 13;
-            flowPanelServicios.WrapContents = false;
-            // 
-            // lblServiciosPrefCliente
-            // 
-            lblServiciosPrefCliente.Anchor = AnchorStyles.Right;
-            lblServiciosPrefCliente.AutoSize = true;
-            lblServiciosPrefCliente.Font = new Font("Impact", 13F);
-            lblServiciosPrefCliente.ForeColor = Color.FromArgb(250, 146, 186);
-            lblServiciosPrefCliente.Location = new Point(28, 299);
-            lblServiciosPrefCliente.Name = "lblServiciosPrefCliente";
-            lblServiciosPrefCliente.Size = new Size(155, 22);
-            lblServiciosPrefCliente.TabIndex = 12;
-            lblServiciosPrefCliente.Text = "Servicios Preferidos";
-            // 
             // txtDireccionCliente
             // 
             txtDireccionCliente.Anchor = AnchorStyles.None;
             txtDireccionCliente.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtDireccionCliente.ForeColor = Color.FromArgb(213, 70, 189);
-            txtDireccionCliente.Location = new Point(98, 236);
+            txtDireccionCliente.Location = new Point(104, 279);
             txtDireccionCliente.Multiline = true;
             txtDireccionCliente.Name = "txtDireccionCliente";
             txtDireccionCliente.Size = new Size(320, 37);
@@ -184,7 +158,7 @@
             lblDireccionCliente.AutoSize = true;
             lblDireccionCliente.Font = new Font("Impact", 13F);
             lblDireccionCliente.ForeColor = Color.FromArgb(250, 146, 186);
-            lblDireccionCliente.Location = new Point(28, 210);
+            lblDireccionCliente.Location = new Point(34, 253);
             lblDireccionCliente.Name = "lblDireccionCliente";
             lblDireccionCliente.Size = new Size(81, 22);
             lblDireccionCliente.TabIndex = 10;
@@ -195,7 +169,7 @@
             txtTelefonoCliente.Anchor = AnchorStyles.None;
             txtTelefonoCliente.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtTelefonoCliente.ForeColor = Color.FromArgb(213, 70, 189);
-            txtTelefonoCliente.Location = new Point(98, 150);
+            txtTelefonoCliente.Location = new Point(104, 193);
             txtTelefonoCliente.Multiline = true;
             txtTelefonoCliente.Name = "txtTelefonoCliente";
             txtTelefonoCliente.Size = new Size(320, 37);
@@ -208,7 +182,7 @@
             lblTelefonoCliente.AutoSize = true;
             lblTelefonoCliente.Font = new Font("Impact", 13F);
             lblTelefonoCliente.ForeColor = Color.FromArgb(250, 146, 186);
-            lblTelefonoCliente.Location = new Point(28, 124);
+            lblTelefonoCliente.Location = new Point(34, 167);
             lblTelefonoCliente.Name = "lblTelefonoCliente";
             lblTelefonoCliente.Size = new Size(72, 22);
             lblTelefonoCliente.TabIndex = 8;
@@ -219,7 +193,7 @@
             txtNombreCliente.Anchor = AnchorStyles.None;
             txtNombreCliente.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtNombreCliente.ForeColor = Color.FromArgb(213, 70, 189);
-            txtNombreCliente.Location = new Point(98, 61);
+            txtNombreCliente.Location = new Point(104, 104);
             txtNombreCliente.Multiline = true;
             txtNombreCliente.Name = "txtNombreCliente";
             txtNombreCliente.Size = new Size(320, 37);
@@ -232,7 +206,7 @@
             lblNombreCliente.AutoSize = true;
             lblNombreCliente.Font = new Font("Impact", 13F);
             lblNombreCliente.ForeColor = Color.FromArgb(250, 146, 186);
-            lblNombreCliente.Location = new Point(28, 28);
+            lblNombreCliente.Location = new Point(34, 71);
             lblNombreCliente.Name = "lblNombreCliente";
             lblNombreCliente.Size = new Size(138, 22);
             lblNombreCliente.TabIndex = 6;
@@ -266,10 +240,10 @@
             tabTodosLosClientes.Controls.Add(dgvClientes);
             tabTodosLosClientes.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabTodosLosClientes.ForeColor = Color.FromArgb(250, 146, 186);
-            tabTodosLosClientes.Location = new Point(4, 24);
+            tabTodosLosClientes.Location = new Point(4, 27);
             tabTodosLosClientes.Name = "tabTodosLosClientes";
             tabTodosLosClientes.Padding = new Padding(3);
-            tabTodosLosClientes.Size = new Size(779, 522);
+            tabTodosLosClientes.Size = new Size(779, 519);
             tabTodosLosClientes.TabIndex = 1;
             tabTodosLosClientes.Text = "Todos los Clientes";
             tabTodosLosClientes.UseVisualStyleBackColor = true;
@@ -282,7 +256,7 @@
             btnEliminarCliente.FlatStyle = FlatStyle.Popup;
             btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarCliente.ForeColor = Color.White;
-            btnEliminarCliente.Location = new Point(6, 453);
+            btnEliminarCliente.Location = new Point(6, 451);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(90, 27);
             btnEliminarCliente.TabIndex = 15;
@@ -296,7 +270,7 @@
             btnModificarCliente.FlatStyle = FlatStyle.Popup;
             btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarCliente.ForeColor = Color.White;
-            btnModificarCliente.Location = new Point(684, 453);
+            btnModificarCliente.Location = new Point(684, 451);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Size = new Size(90, 27);
             btnModificarCliente.TabIndex = 13;
@@ -313,25 +287,25 @@
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.25F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvClientes.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvClientes.Location = new Point(28, -4);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.25F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvClientes.Location = new Point(28, -6);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(250, 146, 186);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Impact", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 146, 186);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(730, 448);
             dgvClientes.TabIndex = 0;
@@ -375,7 +349,6 @@
         private Label lblTelefonoCliente;
         private TextBox txtDireccionCliente;
         private Label lblDireccionCliente;
-        private Label lblServiciosPrefCliente;
         private Button btnCancelarRegistro;
         private Button btnRegistrarCliente;
         private Button btnEliminarCliente;

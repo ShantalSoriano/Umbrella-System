@@ -40,7 +40,7 @@ namespace Umbrella_System
 
         }
 
-        btnRegistrarCliente_Click(object sender, EventArgs e)
+        private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente();
             cliente.nombre = txtNombreCliente.Text;
@@ -52,7 +52,6 @@ namespace Umbrella_System
             if (result > 0)
             {
                 MessageBox.Show("Cliente registrado correctamente");
-                GuardarPreferenciasServicios(cliente); // Pass the instance of Cliente instead of the type name
             }
             else
             {
@@ -65,11 +64,6 @@ namespace Umbrella_System
             txtDireccionCliente.Clear();
         }
 
-        private void GuardarPreferenciasServicios(Cliente cliente)
-        {
-            // Implementation of the method to save client service preferences
-        }
-
         private void tabTodosLosClientes_Click(object sender, EventArgs e)
         {
 
@@ -77,16 +71,9 @@ namespace Umbrella_System
 
         private void ClientesForm_Load(object sender, EventArgs e)
         {
-            CargarServicios();
             dgvClientes.DataSource = ClienteRepository.ObtenerTodos();
             ActualizarTabla();
-
-
         }
-
-
-
-
 
 
         private void ActualizarTabla()
