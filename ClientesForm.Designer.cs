@@ -256,7 +256,7 @@
             btnEliminarCliente.FlatStyle = FlatStyle.Popup;
             btnEliminarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarCliente.ForeColor = Color.White;
-            btnEliminarCliente.Location = new Point(6, 455);
+            btnEliminarCliente.Location = new Point(6, 445);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(90, 27);
             btnEliminarCliente.TabIndex = 15;
@@ -270,12 +270,13 @@
             btnModificarCliente.FlatStyle = FlatStyle.Popup;
             btnModificarCliente.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnModificarCliente.ForeColor = Color.White;
-            btnModificarCliente.Location = new Point(684, 455);
+            btnModificarCliente.Location = new Point(684, 445);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Size = new Size(90, 27);
             btnModificarCliente.TabIndex = 13;
             btnModificarCliente.Text = "Modificar";
             btnModificarCliente.UseVisualStyleBackColor = false;
+            btnModificarCliente.Click += btnModificarCliente_Click;
             // 
             // dgvClientes
             // 
@@ -295,7 +296,7 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvClientes.DefaultCellStyle = dataGridViewCellStyle1;
-            dgvClientes.Location = new Point(19, 1);
+            dgvClientes.Location = new Point(19, -9);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -309,6 +310,7 @@
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(737, 448);
             dgvClientes.TabIndex = 0;
+            dgvClientes.CellClick += dgvClientes_CellClick;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
             // 
             // ClientesForm

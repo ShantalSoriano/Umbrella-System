@@ -101,13 +101,37 @@ namespace Umbrella_System
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-     
+
         }
 
-        
-        
+        private void btnModificarCliente_Click(object sender, EventArgs e)
+        {
 
+            // Verifica si se ha seleccionado un cliente
+            if (dgvClientes.SelectedRows.Count == 1)
+            {
+                tabctrlClientes.SelectedTab = tabRegistrarCliente;
 
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un cliente para modificar");
+            }
+        }
+
+        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica si se ha seleccionado un cliente
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow filaSeleccionada = dgvClientes.Rows[e.RowIndex];
+                txtNombreCliente.Text = filaSeleccionada.Cells["nombreCliente"].Value.ToString();
+                txtTelefonoCliente.Text = filaSeleccionada.Cells["telefonoCliente"].Value.ToString();
+                txtDireccionCliente.Text = filaSeleccionada.Cells["direccionCliente"].Value.ToString();
+            }
+        }
+
+       
     }
 }
 
