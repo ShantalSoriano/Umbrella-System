@@ -65,6 +65,8 @@ namespace Umbrella_System
             else
             {
                 MessageBox.Show("Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.");
+                txtUsername.Clear(); // Limpiar los campos de texto
+                txtPassword.Clear(); // Limpiar los campos de texto
             }
         }
 
@@ -104,7 +106,7 @@ namespace Umbrella_System
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Evita que la tecla Enter realice la acción borrar los campos
+                btnLogin.PerformClick();
             }
         }
 
@@ -112,7 +114,7 @@ namespace Umbrella_System
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Evita que la tecla Enter realice la acción borrar los campos
+                btnLogin.PerformClick();
             }
         }
     }
