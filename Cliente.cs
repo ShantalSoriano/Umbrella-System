@@ -15,12 +15,12 @@ namespace Umbrella_System
 
         public Cliente() { }
 
-        public Cliente(int idCliente, string nombre, string telefono, string direccion)
+        public Cliente(int idCliente, string nombreCliente, string telefonoCliente, string direccionCliente)
         {
             this.idCliente = idCliente;
-            this.nombre = nombre;
-            this.telefono = telefono;
-            this.direccion = direccion;
+            this.nombre = nombreCliente;
+            this.telefono = telefonoCliente;
+            this.direccion = direccionCliente;
         }
     }
 }

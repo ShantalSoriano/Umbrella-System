@@ -15,6 +15,8 @@ namespace Umbrella_System
 
     public partial class ClientesForm : Form
     {
+        private int? clienteIdSeleccionado = null; // Variable para almacenar el id del cliente seleccionado
+                                                   // Null significa que no hay cliente seleccionado
         public ClientesForm()
         {
             InitializeComponent();
@@ -47,21 +49,37 @@ namespace Umbrella_System
             cliente.telefono = txtTelefonoCliente.Text;
             cliente.direccion = txtDireccionCliente.Text;
 
-            int result = ClienteRepository.AgregarCliente(cliente);
+            int result;
 
-            if (result > 0)
+            if (clienteIdSeleccionado == null) // Registro de un nuevo cliente
             {
-                MessageBox.Show("Cliente registrado correctamente");
+                result = ClienteRepository.AgregarCliente(cliente);
+                if (result > 0)
+                {
+                    MessageBox.Show("Cliente registrado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo registrar el cliente");
+                }
             }
-            else
+            else // Actualización de un cliente existente
             {
-                MessageBox.Show("No se pudo registrar el cliente");
+                cliente.idCliente = clienteIdSeleccionado.Value; 
+                result = new ClienteRepository().ActualizarCliente(cliente); 
+                if (result > 0)
+                {
+                    MessageBox.Show("Cliente actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el cliente");
+                }
+                clienteIdSeleccionado = null;
             }
+
             ActualizarTabla();
-
-            txtNombreCliente.Clear();
-            txtTelefonoCliente.Clear();
-            txtDireccionCliente.Clear();
+            LimpiarCampos();
         }
 
         private void tabTodosLosClientes_Click(object sender, EventArgs e)
@@ -101,12 +119,46 @@ namespace Umbrella_System
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-     
+
         }
 
-        
-        
+        private void btnModificarCliente_Click(object sender, EventArgs e)
+        {
 
+            if (clienteIdSeleccionado != null)
+            {
+                // Cambia a la tab "Registrar Cliente"
+                tabctrlClientes.SelectedTab = tabRegistrarCliente;
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un cliente para modificar.");
+            }
+        }
+
+        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) 
+            {
+                DataGridViewRow filaSeleccionada = this.dgvClientes.Rows[e.RowIndex];
+
+
+
+                // Obtener los datos del cliente seleccionado
+                clienteIdSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["idCliente"].Value); // Ajusta el nombre de la columna al de tu base de datos
+                txtNombreCliente.Text = filaSeleccionada.Cells["nombre"].Value.ToString();
+                txtTelefonoCliente.Text = filaSeleccionada.Cells["telefono"].Value.ToString();
+                txtDireccionCliente.Text = filaSeleccionada.Cells["direccion"].Value.ToString();
+            }
+        }
+
+        private void LimpiarCampos()
+        {
+            txtNombreCliente.Clear();
+            txtTelefonoCliente.Clear();
+            txtDireccionCliente.Clear();
+            clienteIdSeleccionado = null; // Reinicia el estado de selección
+        }
 
     }
 }
