@@ -141,6 +141,35 @@ namespace Umbrella_System
                 }
             }
         }
-    }
 
+        private void btnAgregarServicio_Click(object sender, EventArgs e)
+        {
+            int cantidad = (int)numCantidadServicio.Value;
+            decimal precio = decimal.Parse(autoPrecioServicio.Text);
+            decimal subtotal = cantidad * precio;
+
+            dgvRecuentoServicios.Rows.Add(autoNombreServicio.Text, cantidad, subtotal, subtotal);
+            ActualizarTotal();
+        }
+
+        private void btnEliminarServicio_Click(object sender, EventArgs e)
+        {
+            if (dgvRecuentoServicios.SelectedRows.Count > 0)
+            {
+                dgvRecuentoServicios.Rows.RemoveAt(dgvRecuentoServicios.SelectedRows[0].Index);
+                ActualizarTotal();
+            }
+        }
+
+        private void ActualizarTotal()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow row in dgvRecuentoServicios.Rows)
+            {
+                total += Convert.ToDecimal(row.Cells["subtotalServicio"].Value);
+            }
+            autoTotal.Text = total.ToString("C2");
+        }
+
+    }
 }
