@@ -39,12 +39,11 @@
             btnMinimize = new PictureBox();
             btnClose = new PictureBox();
             loginPanel = new Panel();
-            LinkLBLForgotPass = new LinkLabel();
             btnLogin = new Button();
             pictureBox2 = new PictureBox();
             txtPassword = new TextBox();
             lblPassword = new Label();
-            txtUsuario = new TextBox();
+            txtUsername = new TextBox();
             lblUsuario = new Label();
             imgPanel = new Panel();
             pictureBox1 = new PictureBox();
@@ -116,7 +115,7 @@
             // 
             btnClose3.Anchor = AnchorStyles.None;
             btnClose3.Image = (Image)resources.GetObject("btnClose3.Image");
-            btnClose3.Location = new Point(57, 1);
+            btnClose3.Location = new Point(58, 0);
             btnClose3.Name = "btnClose3";
             btnClose3.Padding = new Padding(0, 0, 20, 0);
             btnClose3.Size = new Size(24, 20);
@@ -175,30 +174,17 @@
             // 
             // loginPanel
             // 
-            loginPanel.Controls.Add(LinkLBLForgotPass);
             loginPanel.Controls.Add(btnLogin);
             loginPanel.Controls.Add(pictureBox2);
             loginPanel.Controls.Add(txtPassword);
             loginPanel.Controls.Add(lblPassword);
-            loginPanel.Controls.Add(txtUsuario);
+            loginPanel.Controls.Add(txtUsername);
             loginPanel.Controls.Add(lblUsuario);
             loginPanel.Dock = DockStyle.Right;
             loginPanel.Location = new Point(358, 0);
             loginPanel.Name = "loginPanel";
             loginPanel.Size = new Size(403, 378);
             loginPanel.TabIndex = 1;
-            // 
-            // LinkLBLForgotPass
-            // 
-            LinkLBLForgotPass.AutoSize = true;
-            LinkLBLForgotPass.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            LinkLBLForgotPass.LinkColor = Color.FromArgb(250, 146, 186);
-            LinkLBLForgotPass.Location = new Point(136, 348);
-            LinkLBLForgotPass.Name = "LinkLBLForgotPass";
-            LinkLBLForgotPass.Size = new Size(126, 17);
-            LinkLBLForgotPass.TabIndex = 6;
-            LinkLBLForgotPass.TabStop = true;
-            LinkLBLForgotPass.Text = "Olvidé mi contraseña\r\n";
             // 
             // btnLogin
             // 
@@ -212,6 +198,7 @@
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // pictureBox2
             // 
@@ -231,8 +218,11 @@
             txtPassword.Location = new Point(54, 235);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(320, 37);
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new Size(305, 37);
             txtPassword.TabIndex = 3;
+            txtPassword.TextChanged += txtPassword_TextChanged;
+            txtPassword.KeyDown += txtPassword_KeyDown;
             // 
             // lblPassword
             // 
@@ -246,16 +236,18 @@
             lblPassword.TabIndex = 2;
             lblPassword.Text = "Contraseña";
             // 
-            // txtUsuario
+            // txtUsername
             // 
-            txtUsuario.Anchor = AnchorStyles.Right;
-            txtUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtUsuario.ForeColor = Color.FromArgb(213, 70, 189);
-            txtUsuario.Location = new Point(54, 128);
-            txtUsuario.Multiline = true;
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(320, 37);
-            txtUsuario.TabIndex = 1;
+            txtUsername.Anchor = AnchorStyles.Right;
+            txtUsername.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtUsername.ForeColor = Color.FromArgb(213, 70, 189);
+            txtUsername.Location = new Point(54, 128);
+            txtUsername.Multiline = true;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(305, 37);
+            txtUsername.TabIndex = 1;
+            txtUsername.TextChanged += txtUsuario_TextChanged;
+            txtUsername.KeyDown += txtUsername_KeyDown;
             // 
             // lblUsuario
             // 
@@ -326,10 +318,9 @@
         private Label lblUsuario;
         private TextBox txtPassword;
         private Label lblPassword;
-        private TextBox txtUsuario;
+        private TextBox txtUsername;
         private PictureBox pictureBox2;
         private Button btnLogin;
-        private LinkLabel LinkLBLForgotPass;
         private Panel titleBarLog;
         private Panel panelControlsTitleBar;
         private PictureBox btnMinimize2;
