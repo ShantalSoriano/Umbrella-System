@@ -16,7 +16,7 @@ namespace Umbrella_System
         public FacturasForm()
         {
             InitializeComponent();
-            
+
         }
 
         private void FacturasForm_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Umbrella_System
         {
             string query = "SELECT idCliente, nombreCliente FROM Clientes";
             SqlCommand command = new SqlCommand(query, DBConnection.ObtenerConexion());
-           
+
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -65,36 +65,6 @@ namespace Umbrella_System
 
         }
 
-        private void cmbServicio_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbServicio_fa.SelectedValue != null)
-            {
-                var selectedRow = cmbServicio_fa.SelectedValue as DataRowView;
-                if (selectedRow != null)
-                {
-                    string selectedServiceId = selectedRow["idServicio"].ToString();
-                    using (SqlConnection connection = DBConnection.ObtenerConexion())
-                    {
-                        if (connection.State != ConnectionState.Open)
-                        {
-                            connection.Open();
-                        }
-
-                        string query = "SELECT nombreServicio, precioServicio FROM Servicios WHERE idServicio = @idServicio";
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@idServicio", selectedServiceId);
-
-                        SqlDataReader reader = command.ExecuteReader();
-                        if (reader.Read())
-                        {
-                            autoNombreServicio.Text = reader["nombreServicio"].ToString();
-                            autoPrecioServicio.Text = reader["precioServicio"].ToString();
-                        }
-                        reader.Close(); // cerrar el reader
-                    }
-                }
-            }
-        }
 
 
 
@@ -133,5 +103,44 @@ namespace Umbrella_System
         {
 
         }
+
+        private void cmbServicio_fa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbServicio_fa.SelectedItem != null)
+            {
+                // Obtenemos el DataRowView seleccionado
+                DataRowView selectedRow = cmbServicio_fa.SelectedItem as DataRowView;
+
+                if (selectedRow != null)
+                {
+                    // Obtenemos el valor del idServicio de la fila seleccionada
+                    string selectedServiceId = selectedRow["idServicio"].ToString();
+
+                    // Usamos using para asegurar que la conexión se cierre automáticamente
+                    using (SqlConnection connection = DBConnection.ObtenerConexion())
+                    {
+                        if (connection.State == ConnectionState.Closed)
+                        {
+                            connection.Open();
+                        }
+
+                        string query = "SELECT nombreServicio, precioServicio FROM Servicios WHERE idServicio = @idServicio";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@idServicio", selectedServiceId);
+
+                        // Ejecutamos la consulta y leemos los resultados
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                autoNombreServicio.Text = reader["nombreServicio"].ToString();
+                                autoPrecioServicio.Text = reader["precioServicio"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+
 }
