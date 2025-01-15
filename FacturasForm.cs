@@ -16,14 +16,21 @@ namespace Umbrella_System
         public FacturasForm()
         {
             InitializeComponent();
-
         }
 
         private void FacturasForm_Load(object sender, EventArgs e)
         {
             CargarClientes();
             CargarServicios();
+            CargarFacturas();
         }
+
+        private void CargarFacturas()
+        {
+            var facturas = new FacturaRepository().ObtenerFacturas();
+            dgvGestionarFacturas.DataSource = facturas;
+        }
+
 
         private void CargarClientes()
         {
@@ -55,18 +62,15 @@ namespace Umbrella_System
             }
         }
 
-
-
-
-
+        private void ObtenerFacturas()
+        {
+            // Implementation for ObtenerFacturas method
+        }
 
         private void lblServicioFactura_Click(object sender, EventArgs e)
         {
 
         }
-
-
-
 
         private void autoPrecioServicio_Click(object sender, EventArgs e)
         {
@@ -171,5 +175,14 @@ namespace Umbrella_System
             autoTotal.Text = total.ToString("C2");
         }
 
+        private void txtEfectivo_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtEfectivo.Text, out decimal efectivo))
+            {
+                decimal total = decimal.Parse(autoTotal.Text, System.Globalization.NumberStyles.Currency);
+                decimal devuelta = efectivo - total;
+                autoDevuelta.Text = devuelta.ToString("C2");
+            }
+        }
     }
 }

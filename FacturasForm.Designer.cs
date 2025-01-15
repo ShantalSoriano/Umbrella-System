@@ -40,8 +40,6 @@
             cmbCliente_fa = new ComboBox();
             lblClienteFactura = new Label();
             btnGuardarFac = new Button();
-            lblDigito3 = new Label();
-            lblDigito2 = new Label();
             autoDevuelta = new Label();
             lblDevuelta = new Label();
             txtEfectivo = new TextBox();
@@ -136,8 +134,6 @@
             innerPanelCrearFactura.Controls.Add(cmbCliente_fa);
             innerPanelCrearFactura.Controls.Add(lblClienteFactura);
             innerPanelCrearFactura.Controls.Add(btnGuardarFac);
-            innerPanelCrearFactura.Controls.Add(lblDigito3);
-            innerPanelCrearFactura.Controls.Add(lblDigito2);
             innerPanelCrearFactura.Controls.Add(autoDevuelta);
             innerPanelCrearFactura.Controls.Add(lblDevuelta);
             innerPanelCrearFactura.Controls.Add(txtEfectivo);
@@ -200,34 +196,12 @@
             btnGuardarFac.UseVisualStyleBackColor = false;
             btnGuardarFac.Click += Guardar_Click;
             // 
-            // lblDigito3
-            // 
-            lblDigito3.AutoSize = true;
-            lblDigito3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDigito3.ForeColor = Color.FromArgb(22, 97, 58);
-            lblDigito3.Location = new Point(511, 330);
-            lblDigito3.Name = "lblDigito3";
-            lblDigito3.Size = new Size(16, 18);
-            lblDigito3.TabIndex = 24;
-            lblDigito3.Text = "$";
-            // 
-            // lblDigito2
-            // 
-            lblDigito2.AutoSize = true;
-            lblDigito2.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDigito2.ForeColor = Color.FromArgb(22, 97, 58);
-            lblDigito2.Location = new Point(503, 203);
-            lblDigito2.Name = "lblDigito2";
-            lblDigito2.Size = new Size(16, 18);
-            lblDigito2.TabIndex = 23;
-            lblDigito2.Text = "$";
-            // 
             // autoDevuelta
             // 
             autoDevuelta.AutoSize = true;
             autoDevuelta.Font = new Font("Microsoft Sans Serif", 11.25F);
             autoDevuelta.ForeColor = Color.FromArgb(22, 97, 58);
-            autoDevuelta.Location = new Point(525, 330);
+            autoDevuelta.Location = new Point(523, 328);
             autoDevuelta.Name = "autoDevuelta";
             autoDevuelta.Size = new Size(13, 18);
             autoDevuelta.TabIndex = 22;
@@ -253,6 +227,7 @@
             txtEfectivo.Name = "txtEfectivo";
             txtEfectivo.Size = new Size(100, 24);
             txtEfectivo.TabIndex = 20;
+            txtEfectivo.TextChanged += txtEfectivo_TextChanged;
             // 
             // lblEfectivo
             // 
@@ -627,8 +602,6 @@
         private Label lblEfectivo;
         private Label autoTotal;
         private Label lblTotal;
-        private Label lblDigito3;
-        private Label lblDigito2;
         private ComboBox cmbCliente_fa;
         private Label lblClienteFactura;
         private Button btnGuardarFac;
