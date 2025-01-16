@@ -65,6 +65,8 @@
             lblServicioFactura = new Label();
             cmbServicio_fa = new ComboBox();
             tabGestionarFacturas = new TabPage();
+            btnEliminarFac = new Button();
+            btnModificarFac = new Button();
             dgvGestionarFacturas = new DataGridView();
             tabctrlFacturas.SuspendLayout();
             tabCrearFactura.SuspendLayout();
@@ -465,6 +467,8 @@
             // 
             // tabGestionarFacturas
             // 
+            tabGestionarFacturas.Controls.Add(btnEliminarFac);
+            tabGestionarFacturas.Controls.Add(btnModificarFac);
             tabGestionarFacturas.Controls.Add(dgvGestionarFacturas);
             tabGestionarFacturas.Location = new Point(4, 27);
             tabGestionarFacturas.Name = "tabGestionarFacturas";
@@ -473,6 +477,36 @@
             tabGestionarFacturas.TabIndex = 1;
             tabGestionarFacturas.Text = "Gestionar Facturas";
             tabGestionarFacturas.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarFac
+            // 
+            btnEliminarFac.Anchor = AnchorStyles.None;
+            btnEliminarFac.BackColor = Color.FromArgb(250, 146, 186);
+            btnEliminarFac.FlatStyle = FlatStyle.Popup;
+            btnEliminarFac.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnEliminarFac.ForeColor = Color.White;
+            btnEliminarFac.Location = new Point(8, 486);
+            btnEliminarFac.Name = "btnEliminarFac";
+            btnEliminarFac.Size = new Size(90, 27);
+            btnEliminarFac.TabIndex = 30;
+            btnEliminarFac.Text = "Eliminar";
+            btnEliminarFac.UseVisualStyleBackColor = false;
+            btnEliminarFac.Click += btnEliminarFac_Click;
+            // 
+            // btnModificarFac
+            // 
+            btnModificarFac.Anchor = AnchorStyles.None;
+            btnModificarFac.BackColor = Color.FromArgb(250, 146, 186);
+            btnModificarFac.FlatStyle = FlatStyle.Popup;
+            btnModificarFac.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnModificarFac.ForeColor = Color.White;
+            btnModificarFac.Location = new Point(665, 484);
+            btnModificarFac.Name = "btnModificarFac";
+            btnModificarFac.Size = new Size(90, 27);
+            btnModificarFac.TabIndex = 29;
+            btnModificarFac.Text = "Modificar";
+            btnModificarFac.UseVisualStyleBackColor = false;
+            btnModificarFac.Click += btnModificarFac_Click;
             // 
             // dgvGestionarFacturas
             // 
@@ -502,7 +536,6 @@
             dgvGestionarFacturas.EnableHeadersVisualStyles = false;
             dgvGestionarFacturas.Location = new Point(8, 6);
             dgvGestionarFacturas.Name = "dgvGestionarFacturas";
-            dgvGestionarFacturas.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Impact", 11.25F);
@@ -575,5 +608,7 @@
         private DataGridViewTextBoxColumn cantidadServicio;
         private DataGridViewTextBoxColumn subtotalServicio;
         private DataGridViewTextBoxColumn totalServicio;
+        private Button btnEliminarFac;
+        private Button btnModificarFac;
     }
 }

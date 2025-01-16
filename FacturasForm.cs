@@ -45,47 +45,63 @@ namespace Umbrella_System
             CargarClientes();
             CargarServicios();
             CargarFacturasDGV();
+            ConfigurarDataGridView();
         }
 
-        
-   
-            private void CargarFacturasDGV()
+        private void ConfigurarDataGridView()
+        {
+            dgvGestionarFacturas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvGestionarFacturas.ReadOnly = false; 
+            dgvGestionarFacturas.Enabled = true;
+            dgvGestionarFacturas.AllowUserToAddRows = false;
+            dgvGestionarFacturas.AllowUserToDeleteRows = true;
+        }
+
+        private void CargarFacturasDGV()
         {
             try
             {
                 FacturaRepository repository = new FacturaRepository();
                 List<Factura> facturas = repository.ObtenerFacturas();
 
-                // Crear una lista de facturas con el nombre del cliente
-                var facturasConNombres = facturas.Select(f => new
+                dgvGestionarFacturas.AutoGenerateColumns = false;
+                dgvGestionarFacturas.DataSource = facturas;
+
+                dgvGestionarFacturas.Columns.Clear();
+
+                dgvGestionarFacturas.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    f.IdFactura,
-                    f.FechaFactura,
-                    f.TotalFactura,
-                    Cliente = GetNombreCliente(f.IdCliente),  // Obtener el nombre del cliente
-                    f.IdCliente
-                }).ToList();
+                    DataPropertyName = "IdFactura",
+                    HeaderText = "Número Factura",
+                    Name = "IdFactura"
+                });
 
-                // Asignar los datos al DataGridView
-                dgvGestionarFacturas.DataSource = facturasConNombres;
+                dgvGestionarFacturas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "FechaFactura",
+                    HeaderText = "Fecha",
+                    Name = "Fecha"
+                });
 
-                // Asignar los encabezados correctamente (si es necesario)
-                dgvGestionarFacturas.Columns["TotalFactura"].HeaderText = "Total";
-                dgvGestionarFacturas.Columns["FechaFactura"].HeaderText = "Fecha";
-                dgvGestionarFacturas.Columns["Cliente"].HeaderText = "Cliente";
-                dgvGestionarFacturas.Columns["IdFactura"].HeaderText = "NumeroFactura";
+                dgvGestionarFacturas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "TotalFactura",
+                    HeaderText = "Total",
+                    Name = "Total"
+                });
 
-                // Ocultar la columna IdCliente si no la quieres mostrar
-                dgvGestionarFacturas.Columns["IdCliente"].Visible = false;
+                dgvGestionarFacturas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "IdCliente",
+                    HeaderText = "Cliente",
+                    Name = "Cliente"
+                });
             }
             catch (Exception ex)
             {
-                // Manejar cualquier error
                 MessageBox.Show("Ocurrió un error al cargar las facturas: " + ex.Message);
             }
-        
         }
-
 
 
 
@@ -144,8 +160,8 @@ namespace Umbrella_System
 
         private void dgvGestionarFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-            
+
+
         }
 
         private void Guardar_Click(object? sender, EventArgs e) // Add nullable reference type for sender
@@ -214,7 +230,7 @@ namespace Umbrella_System
                     command.Parameters.AddWithValue("@cantidadDetalle", cantidad);
                     command.Parameters.AddWithValue("@subtotalDetalle", subtotal);
 
-                    
+
                     command.ExecuteNonQuery();  // Ejecutar el comando para insertar el servicio
                 }
             }
@@ -325,12 +341,111 @@ namespace Umbrella_System
                 string query = "SELECT nombreCliente FROM Clientes WHERE idCliente = @idCliente";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@idCliente", idCliente);
-              
+
                 nombreCliente = (string)command.ExecuteScalar();
             }
 
             return nombreCliente;
         }
 
+
+
+        private bool ActualizarFactura(int idFactura, DateTime fechaFactura, decimal totalFactura, int idCliente)
+        {
+            try
+            {
+                using (SqlConnection connection = DBConnection.ObtenerConexion())
+                {
+                    string query = "UPDATE Facturas SET FechaFactura = @FechaFactura, TotalFactura = @TotalFactura, IdCliente = @IdCliente WHERE IdFactura = @IdFactura";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@IdFactura", idFactura);
+                    command.Parameters.AddWithValue("@FechaFactura", fechaFactura);
+                    command.Parameters.AddWithValue("@TotalFactura", totalFactura);
+                    command.Parameters.AddWithValue("@IdCliente", idCliente);
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al actualizar la factura: " + ex.Message);
+                return false;
+            }
+        }
+
+        private void btnEliminarFac_Click(object sender, EventArgs e)
+        {
+            if (dgvGestionarFacturas.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvGestionarFacturas.SelectedRows[0];
+                int idFactura = Convert.ToInt32(selectedRow.Cells["IdFactura"].Value);
+
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar esta factura?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Llamar al método para eliminar la factura en la base de datos
+                    FacturaRepository repository = new FacturaRepository();
+                    bool eliminado = repository.EliminarFactura(idFactura);
+
+                    if (eliminado)
+                    {
+                        // Eliminar la factura de la lista de facturas (suponiendo que 'facturas' es una lista local)
+                        List<Factura> facturas = (List<Factura>)dgvGestionarFacturas.DataSource;
+                        Factura facturaAEliminar = facturas.FirstOrDefault(f => f.IdFactura == idFactura);
+                        if (facturaAEliminar != null)
+                        {
+                            facturas.Remove(facturaAEliminar);
+                        }
+
+                        // Actualizar la fuente de datos del DataGridView
+                        dgvGestionarFacturas.DataSource = null;
+                        dgvGestionarFacturas.DataSource = facturas;
+
+                        MessageBox.Show("Factura eliminada con éxito.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar la factura.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una fila para eliminar.");
+            }
+        }
+
+        private void btnModificarFac_Click(object sender, EventArgs e)
+        {
+            if (dgvGestionarFacturas.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvGestionarFacturas.SelectedRows[0];
+                int idFactura = Convert.ToInt32(selectedRow.Cells["IdFactura"].Value);
+                DateTime fechaFactura = Convert.ToDateTime(selectedRow.Cells["Fecha"].Value);
+                decimal totalFactura = Convert.ToDecimal(selectedRow.Cells["Total"].Value);
+                int idCliente = Convert.ToInt32(selectedRow.Cells["Cliente"].Value); // Asegúrate de que esté correctamente mapeado
+
+                // Instanciar FacturaRepository
+                FacturaRepository repository = new FacturaRepository();
+                
+                // Llamar al método para actualizar la factura en la base de datos
+                bool actualizado = repository.ActualizarFactura(idFactura, fechaFactura, totalFactura, idCliente);
+
+                if (actualizado)
+                {
+                    MessageBox.Show("Factura actualizada con éxito.");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar la factura.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una fila para modificar.");
+            }
+        }
     }
 }

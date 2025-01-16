@@ -101,6 +101,55 @@ namespace Umbrella_System
             }
         }
 
+        public bool EliminarFactura(int idFactura)
+        {
+            try
+            {
+                using (SqlConnection connection = DBConnection.ObtenerConexion())
+                {
+                    string query = "DELETE FROM Facturas WHERE idFactura = @idFactura";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@idFactura", idFactura);
+
+                    
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (puedes registrar el error o mostrar un mensaje)
+                Console.WriteLine($"Error eliminando factura: {ex.Message}");
+                return false;
+            }
+        }
+        
+        public bool ActualizarFactura(int idFactura, DateTime fechaFactura, decimal totalFactura, int idCliente)
+{
+    try
+    {
+        using (SqlConnection connection = DBConnection.ObtenerConexion())
+        {
+            string query = "UPDATE Facturas SET fechaFactura = @fechaFactura, totalFactura = @totalFactura, idCliente = @idCliente WHERE idFactura = @idFactura";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@idFactura", idFactura);
+            command.Parameters.AddWithValue("@fechaFactura", fechaFactura);
+            command.Parameters.AddWithValue("@totalFactura", totalFactura);
+            command.Parameters.AddWithValue("@idCliente", idCliente);
+
+            
+            int rowsAffected = command.ExecuteNonQuery();
+            return rowsAffected > 0;
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error al actualizar la factura: " + ex.Message);
+        return false;
+    }
+}
+
 
 
     }
