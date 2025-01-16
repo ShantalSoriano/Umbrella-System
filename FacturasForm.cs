@@ -4,46 +4,79 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Umbrella_System
 {
     public partial class FacturasForm : Form
     {
+        private Button Guardar; // Add this line to declare the 'Guardar' button
+
         public FacturasForm()
         {
             InitializeComponent();
+            Guardar = new Button(); // Initialize the 'Guardar' button
+            Guardar.Click += new EventHandler(Guardar_Click);
         }
+
+        private void CargarFacturas()
+        {
+            try
+            {
+                FacturaRepository repository = new FacturaRepository();
+                //List<Factura> facturas = repository.ObtenerFacturas();
+                //dgvGestionarFacturas.DataSource = facturas;
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier error
+                MessageBox.Show("Ocurrió un error al cargar las facturas: " + ex.Message);
+            }
+        }
+
 
         private void FacturasForm_Load(object sender, EventArgs e)
         {
             CargarClientes();
             CargarServicios();
-            CargarFacturas();
+            //CargarFacturasDGV();
         }
 
-        private void CargarFacturas()
-        {
-            var facturas = new FacturaRepository().ObtenerFacturas();
-            dgvGestionarFacturas.DataSource = facturas;
-        }
+        //private void CargarFacturasDGV()
+        //{
+        //    try
+        //    {
+        //        FacturaRepository repository = new FacturaRepository();
+        //        List<Factura> facturas = repository.ObtenerFacturas();
+        //        dgvGestionarFacturas.DataSource = facturas;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Manejar cualquier error
+        //        MessageBox.Show("Ocurrió un error al cargar las facturas: " + ex.Message);
+        //    }
+        //}
 
 
         private void CargarClientes()
         {
             string query = "SELECT idCliente, nombreCliente FROM Clientes";
-            SqlCommand command = new SqlCommand(query, DBConnection.ObtenerConexion());
+            using (SqlConnection connection = DBConnection.ObtenerConexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-
-            cmbCliente_fa.DataSource = dt;
-            cmbCliente_fa.DisplayMember = "nombreCliente";
-            cmbCliente_fa.ValueMember = "idCliente";
+                cmbCliente_fa.DataSource = dt;
+                cmbCliente_fa.DisplayMember = "nombreCliente";
+                cmbCliente_fa.ValueMember = "idCliente";
+            }
         }
 
         private void CargarServicios()
@@ -98,10 +131,84 @@ namespace Umbrella_System
             }
         }
 
-        private void Guardar_Click(object sender, EventArgs e)
+        private void Guardar_Click(object? sender, EventArgs e) // Add nullable reference type for sender
         {
+            // Obtener el valor total de la factura y asegurarse de que es válido
+            decimal totalFactura;
+            string totalFacturaString = autoTotal.Text;
 
+            // Eliminar el símbolo '$' y las comas (si están presentes)
+            totalFacturaString = totalFacturaString.Replace("$", "").Replace(",", "");
+
+            // Intentar convertir el valor totalFacturaString a decimal
+            if (!decimal.TryParse(totalFacturaString, System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture, out totalFactura))
+            {
+                MessageBox.Show("El formato del total es incorrecto.");
+                return;
+            }
+
+            // Crear una nueva instancia de factura
+            Factura nuevaFactura = new Factura
+            {
+                FechaFactura = DateTime.Now,  // Usar la fecha actual o la fecha que el usuario elija
+                TotalFactura = totalFactura,  // Asignar el total convertido
+                IdCliente = Convert.ToInt32(cmbCliente_fa.SelectedValue)  // ID del cliente seleccionado
+            };
+
+            // Crear la factura en la base de datos
+            FacturaRepository facturaRepository = new FacturaRepository();
+            int idFacturaCreada = facturaRepository.CrearFactura(nuevaFactura);
+
+            // Guardar los servicios asociados a la factura
+            foreach (DataGridViewRow row in dgvRecuentoServicios.Rows)
+            {
+                if (row.IsNewRow) continue;  // Evitar intentar guardar la fila vacía
+
+                // Validar los valores del servicio antes de guardarlos
+                if (row.Cells["idServicio"].Value == null ||
+                    row.Cells["cantidadServicio"].Value == null ||
+                    row.Cells["subtotalServicio"].Value == null)
+                {
+                    MessageBox.Show("Uno o más valores de los servicios no son válidos.");
+                    return;
+                }
+
+                int idServicio = Convert.ToInt32(row.Cells["nombreServicio"].Value);
+                int cantidad = Convert.ToInt32(row.Cells["cantidadServicio"].Value);
+                decimal subtotal = Convert.ToDecimal(row.Cells["subtotalServicio"].Value);
+
+                // Verificar si los valores son válidos
+                if (idServicio <= 0 || cantidad <= 0 || subtotal <= 0)
+                {
+                    MessageBox.Show("Uno o más valores de los servicios no son válidos.");
+                    return;
+                }
+
+                // Guardar cada servicio relacionado con la factura
+                string queryInsertarServicio = "INSERT INTO DetalleFactura (idFactura, idServicio, cantidadDetalle, subtotalDetalle) " +
+                                                "VALUES (@idFactura, @idServicio, @cantidadDetalle, @subtotalDetalle)";
+
+                using (SqlConnection connection = DBConnection.ObtenerConexion())
+                {
+                    SqlCommand command = new SqlCommand(queryInsertarServicio, connection);
+                    command.Parameters.AddWithValue("@idFactura", idFacturaCreada);
+                    command.Parameters.AddWithValue("@idServicio", idServicio);
+                    command.Parameters.AddWithValue("@cantidadDetalle", cantidad);
+                    command.Parameters.AddWithValue("@subtotalDetalle", subtotal);
+
+                    
+                    command.ExecuteNonQuery();  // Ejecutar el comando para insertar el servicio
+                }
+            }
+
+            // Mostrar mensaje de éxito o realizar alguna otra acción
+            MessageBox.Show("Factura guardada exitosamente.");
         }
+
+
+
+
 
         private void cmbCliente_fa_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -179,9 +286,16 @@ namespace Umbrella_System
         {
             if (decimal.TryParse(txtEfectivo.Text, out decimal efectivo))
             {
-                decimal total = decimal.Parse(autoTotal.Text, System.Globalization.NumberStyles.Currency);
-                decimal devuelta = efectivo - total;
-                autoDevuelta.Text = devuelta.ToString("C2");
+                if (decimal.TryParse(autoTotal.Text, System.Globalization.NumberStyles.Currency, null, out decimal total))
+                {
+                    decimal devuelta = efectivo - total;
+                    autoDevuelta.Text = devuelta.ToString("C2");
+                }
+                else
+                {
+                    // Handle the case where autoTotal.Text is not a valid decimal
+                    autoDevuelta.Text = "Invalid total";
+                }
             }
         }
     }
