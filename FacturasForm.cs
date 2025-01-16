@@ -29,8 +29,8 @@ namespace Umbrella_System
             try
             {
                 FacturaRepository repository = new FacturaRepository();
-                //List<Factura> facturas = repository.ObtenerFacturas();
-                //dgvGestionarFacturas.DataSource = facturas;
+                List<Factura> facturas = repository.ObtenerFacturas();
+                dgvGestionarFacturas.DataSource = facturas;
             }
             catch (Exception ex)
             {
@@ -44,23 +44,49 @@ namespace Umbrella_System
         {
             CargarClientes();
             CargarServicios();
-            //CargarFacturasDGV();
+            CargarFacturasDGV();
         }
 
-        //private void CargarFacturasDGV()
-        //{
-        //    try
-        //    {
-        //        FacturaRepository repository = new FacturaRepository();
-        //        List<Factura> facturas = repository.ObtenerFacturas();
-        //        dgvGestionarFacturas.DataSource = facturas;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Manejar cualquier error
-        //        MessageBox.Show("Ocurrió un error al cargar las facturas: " + ex.Message);
-        //    }
-        //}
+        
+   
+            private void CargarFacturasDGV()
+        {
+            try
+            {
+                FacturaRepository repository = new FacturaRepository();
+                List<Factura> facturas = repository.ObtenerFacturas();
+
+                // Crear una lista de facturas con el nombre del cliente
+                var facturasConNombres = facturas.Select(f => new
+                {
+                    f.IdFactura,
+                    f.FechaFactura,
+                    f.TotalFactura,
+                    Cliente = GetNombreCliente(f.IdCliente),  // Obtener el nombre del cliente
+                    f.IdCliente
+                }).ToList();
+
+                // Asignar los datos al DataGridView
+                dgvGestionarFacturas.DataSource = facturasConNombres;
+
+                // Asignar los encabezados correctamente (si es necesario)
+                dgvGestionarFacturas.Columns["TotalFactura"].HeaderText = "Total";
+                dgvGestionarFacturas.Columns["FechaFactura"].HeaderText = "Fecha";
+                dgvGestionarFacturas.Columns["Cliente"].HeaderText = "Cliente";
+                dgvGestionarFacturas.Columns["IdFactura"].HeaderText = "NumeroFactura";
+
+                // Ocultar la columna IdCliente si no la quieres mostrar
+                dgvGestionarFacturas.Columns["IdCliente"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier error
+                MessageBox.Show("Ocurrió un error al cargar las facturas: " + ex.Message);
+            }
+        
+        }
+
+
 
 
         private void CargarClientes()
@@ -95,10 +121,6 @@ namespace Umbrella_System
             }
         }
 
-        private void ObtenerFacturas()
-        {
-            // Implementation for ObtenerFacturas method
-        }
 
         private void lblServicioFactura_Click(object sender, EventArgs e)
         {
@@ -122,13 +144,8 @@ namespace Umbrella_System
 
         private void dgvGestionarFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verifica si el índice de la columna corresponde a la columna de la imagen
-            if (e.ColumnIndex == dgvGestionarFacturas.Columns["iconVerDetallesFactura"].Index && e.RowIndex >= 0)
-            {
-                // Abre el formulario de detalles
-                FacturaDetallesForm facturaDetallesForm = new FacturaDetallesForm();
-                facturaDetallesForm.Show();
-            }
+           
+            
         }
 
         private void Guardar_Click(object? sender, EventArgs e) // Add nullable reference type for sender
@@ -298,5 +315,22 @@ namespace Umbrella_System
                 }
             }
         }
+
+        private string GetNombreCliente(int idCliente)
+        {
+            string nombreCliente = "";
+
+            using (SqlConnection connection = DBConnection.ObtenerConexion())
+            {
+                string query = "SELECT nombreCliente FROM Clientes WHERE idCliente = @idCliente";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@idCliente", idCliente);
+              
+                nombreCliente = (string)command.ExecuteScalar();
+            }
+
+            return nombreCliente;
+        }
+
     }
 }

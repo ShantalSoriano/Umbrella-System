@@ -38,43 +38,43 @@ namespace Umbrella_System
 
 
         // Método para obtener todas las facturas
-        //public List<Factura> ObtenerFacturas()
-        //{
-        //    List<Factura> facturas = new List<Factura>();
+        public List<Factura> ObtenerFacturas()
+        {
+            List<Factura> facturas = new List<Factura>();
 
-        //    try
-        //    {
-        //        using (SqlConnection connection = DBConnection.ObtenerConexion())
-        //        {
-        //            string query = "SELECT idFactura, fechaFactura, totalFactura, idCliente FROM Facturas";
-        //            SqlCommand command = new SqlCommand(query, connection);
-                    
+            try
+            {
+                using (SqlConnection connection = DBConnection.ObtenerConexion())
+                {
+                    string query = "SELECT idFactura, fechaFactura, totalFactura, idCliente FROM Facturas";
+                    SqlCommand command = new SqlCommand(query, connection);
 
-        //            using (SqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    Factura factura = new Factura
-        //                    {
-        //                        IdFactura = (int)reader["idFactura"],
-        //                        FechaFactura = (DateTime)reader["fechaFactura"],
-        //                        TotalFactura = (decimal)reader["totalFactura"],
-        //                        IdCliente = (int)reader["idCliente"]
-        //                    };
-        //                    facturas.Add(factura);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception (you can replace this with your logging mechanism)
-        //        Console.WriteLine($"An error occurred: {ex.Message}");
-        //        throw;
-        //    }
 
-        //    return facturas;
-        //}
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Factura factura = new Factura
+                            {
+                                IdFactura = (int)reader["idFactura"],
+                                FechaFactura = (DateTime)reader["fechaFactura"],
+                                TotalFactura = (decimal)reader["totalFactura"],
+                                IdCliente = (int)reader["idCliente"]
+                            };
+                            facturas.Add(factura);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (you can replace this with your logging mechanism)
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
+            }
+
+            return facturas;
+        }
 
         public void GuardarServicioFactura(int idFactura, int idServicio, int cantidad, decimal subtotal)
         {
