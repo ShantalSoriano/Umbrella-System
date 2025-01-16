@@ -31,17 +31,16 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturasForm));
             tabctrlFacturas = new TabControl();
             tabCrearFactura = new TabPage();
             Cancelar = new Button();
             panel1 = new Panel();
             innerPanelCrearFactura = new Panel();
-            comboBox1 = new ComboBox();
+            lblFecha = new Label();
+            dtpFechaFactura = new DateTimePicker();
+            cmbCliente_fa = new ComboBox();
             lblClienteFactura = new Label();
-            Guardar = new Button();
-            lblDigito3 = new Label();
-            lblDigito2 = new Label();
+            btnGuardarFac = new Button();
             autoDevuelta = new Label();
             lblDevuelta = new Label();
             txtEfectivo = new TextBox();
@@ -49,6 +48,7 @@
             autoTotal = new Label();
             lblTotal = new Label();
             dgvRecuentoServicios = new DataGridView();
+            idServicio = new DataGridViewTextBoxColumn();
             nombreServicio = new DataGridViewTextBoxColumn();
             cantidadServicio = new DataGridViewTextBoxColumn();
             subtotalServicio = new DataGridViewTextBoxColumn();
@@ -63,16 +63,11 @@
             autoPrecioServicio = new Label();
             lblPrecioServicio = new Label();
             lblServicioFactura = new Label();
-            cmbServicio = new ComboBox();
+            cmbServicio_fa = new ComboBox();
             tabGestionarFacturas = new TabPage();
+            btnEliminarFac = new Button();
+            btnModificarFac = new Button();
             dgvGestionarFacturas = new DataGridView();
-            NumeroFactura = new DataGridViewTextBoxColumn();
-            Cliente = new DataGridViewTextBoxColumn();
-            Fecha = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
-            iconVerDetallesFactura = new DataGridViewImageColumn();
-            iconEditar = new DataGridViewImageColumn();
-            iconEliminarFactura = new DataGridViewImageColumn();
             tabctrlFacturas.SuspendLayout();
             tabCrearFactura.SuspendLayout();
             panel1.SuspendLayout();
@@ -133,11 +128,11 @@
             // 
             // innerPanelCrearFactura
             // 
-            innerPanelCrearFactura.Controls.Add(comboBox1);
+            innerPanelCrearFactura.Controls.Add(lblFecha);
+            innerPanelCrearFactura.Controls.Add(dtpFechaFactura);
+            innerPanelCrearFactura.Controls.Add(cmbCliente_fa);
             innerPanelCrearFactura.Controls.Add(lblClienteFactura);
-            innerPanelCrearFactura.Controls.Add(Guardar);
-            innerPanelCrearFactura.Controls.Add(lblDigito3);
-            innerPanelCrearFactura.Controls.Add(lblDigito2);
+            innerPanelCrearFactura.Controls.Add(btnGuardarFac);
             innerPanelCrearFactura.Controls.Add(autoDevuelta);
             innerPanelCrearFactura.Controls.Add(lblDevuelta);
             innerPanelCrearFactura.Controls.Add(txtEfectivo);
@@ -155,22 +150,43 @@
             innerPanelCrearFactura.Controls.Add(autoPrecioServicio);
             innerPanelCrearFactura.Controls.Add(lblPrecioServicio);
             innerPanelCrearFactura.Controls.Add(lblServicioFactura);
-            innerPanelCrearFactura.Controls.Add(cmbServicio);
+            innerPanelCrearFactura.Controls.Add(cmbServicio_fa);
             innerPanelCrearFactura.Location = new Point(16, 18);
             innerPanelCrearFactura.Name = "innerPanelCrearFactura";
             innerPanelCrearFactura.Size = new Size(661, 408);
             innerPanelCrearFactura.TabIndex = 10;
             innerPanelCrearFactura.Paint += innerPanelCrearFactura_Paint;
             // 
-            // comboBox1
+            // lblFecha
             // 
-            comboBox1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
-            comboBox1.ForeColor = Color.FromArgb(22, 97, 58);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(234, 5);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 26);
-            comboBox1.TabIndex = 27;
+            lblFecha.Anchor = AnchorStyles.Right;
+            lblFecha.AutoSize = true;
+            lblFecha.Font = new Font("Impact", 13F);
+            lblFecha.ForeColor = Color.FromArgb(250, 146, 186);
+            lblFecha.Location = new Point(556, 75);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(53, 22);
+            lblFecha.TabIndex = 29;
+            lblFecha.Text = "Fecha";
+            // 
+            // dtpFechaFactura
+            // 
+            dtpFechaFactura.Format = DateTimePickerFormat.Short;
+            dtpFechaFactura.Location = new Point(515, 104);
+            dtpFechaFactura.Name = "dtpFechaFactura";
+            dtpFechaFactura.Size = new Size(122, 24);
+            dtpFechaFactura.TabIndex = 28;
+            // 
+            // cmbCliente_fa
+            // 
+            cmbCliente_fa.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            cmbCliente_fa.ForeColor = Color.FromArgb(22, 97, 58);
+            cmbCliente_fa.FormattingEnabled = true;
+            cmbCliente_fa.Location = new Point(189, 5);
+            cmbCliente_fa.Name = "cmbCliente_fa";
+            cmbCliente_fa.Size = new Size(210, 26);
+            cmbCliente_fa.TabIndex = 27;
+            cmbCliente_fa.SelectedIndexChanged += cmbCliente_fa_SelectedIndexChanged;
             // 
             // lblClienteFactura
             // 
@@ -178,54 +194,33 @@
             lblClienteFactura.AutoSize = true;
             lblClienteFactura.Font = new Font("Impact", 13F);
             lblClienteFactura.ForeColor = Color.FromArgb(250, 146, 186);
-            lblClienteFactura.Location = new Point(166, 9);
+            lblClienteFactura.Location = new Point(121, 9);
             lblClienteFactura.Name = "lblClienteFactura";
             lblClienteFactura.Size = new Size(62, 22);
             lblClienteFactura.TabIndex = 26;
             lblClienteFactura.Text = "Cliente";
             // 
-            // Guardar
+            // btnGuardarFac
             // 
-            Guardar.Anchor = AnchorStyles.None;
-            Guardar.BackColor = Color.FromArgb(250, 146, 186);
-            Guardar.FlatStyle = FlatStyle.Popup;
-            Guardar.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            Guardar.ForeColor = Color.White;
-            Guardar.Location = new Point(525, 364);
-            Guardar.Name = "Guardar";
-            Guardar.Size = new Size(90, 27);
-            Guardar.TabIndex = 25;
-            Guardar.Text = "Guardar";
-            Guardar.UseVisualStyleBackColor = false;
-            // 
-            // lblDigito3
-            // 
-            lblDigito3.AutoSize = true;
-            lblDigito3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDigito3.ForeColor = Color.FromArgb(22, 97, 58);
-            lblDigito3.Location = new Point(511, 330);
-            lblDigito3.Name = "lblDigito3";
-            lblDigito3.Size = new Size(16, 18);
-            lblDigito3.TabIndex = 24;
-            lblDigito3.Text = "$";
-            // 
-            // lblDigito2
-            // 
-            lblDigito2.AutoSize = true;
-            lblDigito2.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDigito2.ForeColor = Color.FromArgb(22, 97, 58);
-            lblDigito2.Location = new Point(503, 203);
-            lblDigito2.Name = "lblDigito2";
-            lblDigito2.Size = new Size(16, 18);
-            lblDigito2.TabIndex = 23;
-            lblDigito2.Text = "$";
+            btnGuardarFac.Anchor = AnchorStyles.None;
+            btnGuardarFac.BackColor = Color.FromArgb(250, 146, 186);
+            btnGuardarFac.FlatStyle = FlatStyle.Popup;
+            btnGuardarFac.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnGuardarFac.ForeColor = Color.White;
+            btnGuardarFac.Location = new Point(525, 364);
+            btnGuardarFac.Name = "btnGuardarFac";
+            btnGuardarFac.Size = new Size(90, 27);
+            btnGuardarFac.TabIndex = 25;
+            btnGuardarFac.Text = "Guardar";
+            btnGuardarFac.UseVisualStyleBackColor = false;
+            btnGuardarFac.Click += Guardar_Click;
             // 
             // autoDevuelta
             // 
             autoDevuelta.AutoSize = true;
             autoDevuelta.Font = new Font("Microsoft Sans Serif", 11.25F);
             autoDevuelta.ForeColor = Color.FromArgb(22, 97, 58);
-            autoDevuelta.Location = new Point(525, 330);
+            autoDevuelta.Location = new Point(523, 328);
             autoDevuelta.Name = "autoDevuelta";
             autoDevuelta.Size = new Size(13, 18);
             autoDevuelta.TabIndex = 22;
@@ -251,6 +246,7 @@
             txtEfectivo.Name = "txtEfectivo";
             txtEfectivo.Size = new Size(100, 24);
             txtEfectivo.TabIndex = 20;
+            txtEfectivo.TextChanged += txtEfectivo_TextChanged;
             // 
             // lblEfectivo
             // 
@@ -293,12 +289,19 @@
             dgvRecuentoServicios.AllowUserToDeleteRows = false;
             dgvRecuentoServicios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvRecuentoServicios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRecuentoServicios.Columns.AddRange(new DataGridViewColumn[] { nombreServicio, cantidadServicio, subtotalServicio, totalServicio });
+            dgvRecuentoServicios.Columns.AddRange(new DataGridViewColumn[] { idServicio, nombreServicio, cantidadServicio, subtotalServicio, totalServicio });
             dgvRecuentoServicios.Location = new Point(7, 168);
             dgvRecuentoServicios.Name = "dgvRecuentoServicios";
             dgvRecuentoServicios.ReadOnly = true;
             dgvRecuentoServicios.Size = new Size(483, 233);
             dgvRecuentoServicios.TabIndex = 16;
+            // 
+            // idServicio
+            // 
+            idServicio.HeaderText = "idServicio";
+            idServicio.Name = "idServicio";
+            idServicio.ReadOnly = true;
+            idServicio.Width = 107;
             // 
             // nombreServicio
             // 
@@ -335,18 +338,19 @@
             btnEliminarServicio.FlatStyle = FlatStyle.Popup;
             btnEliminarServicio.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnEliminarServicio.ForeColor = Color.White;
-            btnEliminarServicio.Location = new Point(437, 109);
+            btnEliminarServicio.Location = new Point(392, 109);
             btnEliminarServicio.Name = "btnEliminarServicio";
             btnEliminarServicio.Size = new Size(90, 27);
             btnEliminarServicio.TabIndex = 13;
             btnEliminarServicio.Text = "Eliminar";
             btnEliminarServicio.UseVisualStyleBackColor = false;
+            btnEliminarServicio.Click += btnEliminarServicio_Click;
             // 
             // numCantidadServicio
             // 
             numCantidadServicio.Font = new Font("Microsoft Sans Serif", 11.25F);
             numCantidadServicio.ForeColor = Color.FromArgb(22, 97, 58);
-            numCantidadServicio.Location = new Point(247, 136);
+            numCantidadServicio.Location = new Point(202, 136);
             numCantidadServicio.Name = "numCantidadServicio";
             numCantidadServicio.Size = new Size(47, 24);
             numCantidadServicio.TabIndex = 15;
@@ -359,12 +363,13 @@
             btnAgregarServicio.FlatStyle = FlatStyle.Popup;
             btnAgregarServicio.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnAgregarServicio.ForeColor = Color.White;
-            btnAgregarServicio.Location = new Point(437, 76);
+            btnAgregarServicio.Location = new Point(392, 76);
             btnAgregarServicio.Name = "btnAgregarServicio";
             btnAgregarServicio.Size = new Size(90, 27);
             btnAgregarServicio.TabIndex = 14;
             btnAgregarServicio.Text = "Agregar";
             btnAgregarServicio.UseVisualStyleBackColor = false;
+            btnAgregarServicio.Click += btnAgregarServicio_Click;
             // 
             // lblCantidadServicio
             // 
@@ -372,7 +377,7 @@
             lblCantidadServicio.AutoSize = true;
             lblCantidadServicio.Font = new Font("Impact", 13F);
             lblCantidadServicio.ForeColor = Color.FromArgb(250, 146, 186);
-            lblCantidadServicio.Location = new Point(166, 138);
+            lblCantidadServicio.Location = new Point(121, 138);
             lblCantidadServicio.Name = "lblCantidadServicio";
             lblCantidadServicio.Size = new Size(75, 22);
             lblCantidadServicio.TabIndex = 14;
@@ -383,7 +388,7 @@
             autoNombreServicio.AutoSize = true;
             autoNombreServicio.Font = new Font("Microsoft Sans Serif", 11.25F);
             autoNombreServicio.ForeColor = Color.FromArgb(22, 97, 58);
-            autoNombreServicio.Location = new Point(242, 76);
+            autoNombreServicio.Location = new Point(197, 76);
             autoNombreServicio.Name = "autoNombreServicio";
             autoNombreServicio.Size = new Size(69, 18);
             autoNombreServicio.TabIndex = 13;
@@ -395,7 +400,7 @@
             lblNombreServicio.AutoSize = true;
             lblNombreServicio.Font = new Font("Impact", 13F);
             lblNombreServicio.ForeColor = Color.FromArgb(250, 146, 186);
-            lblNombreServicio.Location = new Point(166, 74);
+            lblNombreServicio.Location = new Point(121, 74);
             lblNombreServicio.Name = "lblNombreServicio";
             lblNombreServicio.Size = new Size(66, 22);
             lblNombreServicio.TabIndex = 12;
@@ -406,7 +411,7 @@
             lblDigito1.AutoSize = true;
             lblDigito1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDigito1.ForeColor = Color.FromArgb(22, 97, 58);
-            lblDigito1.Location = new Point(229, 108);
+            lblDigito1.Location = new Point(184, 108);
             lblDigito1.Name = "lblDigito1";
             lblDigito1.Size = new Size(16, 18);
             lblDigito1.TabIndex = 11;
@@ -417,7 +422,7 @@
             autoPrecioServicio.AutoSize = true;
             autoPrecioServicio.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             autoPrecioServicio.ForeColor = Color.FromArgb(22, 97, 58);
-            autoPrecioServicio.Location = new Point(242, 108);
+            autoPrecioServicio.Location = new Point(197, 108);
             autoPrecioServicio.Name = "autoPrecioServicio";
             autoPrecioServicio.Size = new Size(13, 18);
             autoPrecioServicio.TabIndex = 10;
@@ -430,7 +435,7 @@
             lblPrecioServicio.AutoSize = true;
             lblPrecioServicio.Font = new Font("Impact", 13F);
             lblPrecioServicio.ForeColor = Color.FromArgb(250, 146, 186);
-            lblPrecioServicio.Location = new Point(166, 106);
+            lblPrecioServicio.Location = new Point(121, 106);
             lblPrecioServicio.Name = "lblPrecioServicio";
             lblPrecioServicio.Size = new Size(57, 22);
             lblPrecioServicio.TabIndex = 9;
@@ -442,26 +447,28 @@
             lblServicioFactura.AutoSize = true;
             lblServicioFactura.Font = new Font("Impact", 13F);
             lblServicioFactura.ForeColor = Color.FromArgb(250, 146, 186);
-            lblServicioFactura.Location = new Point(166, 41);
+            lblServicioFactura.Location = new Point(121, 41);
             lblServicioFactura.Name = "lblServicioFactura";
             lblServicioFactura.Size = new Size(69, 22);
             lblServicioFactura.TabIndex = 7;
             lblServicioFactura.Text = "Servicio";
             lblServicioFactura.Click += lblServicioFactura_Click;
             // 
-            // cmbServicio
+            // cmbServicio_fa
             // 
-            cmbServicio.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
-            cmbServicio.ForeColor = Color.FromArgb(22, 97, 58);
-            cmbServicio.FormattingEnabled = true;
-            cmbServicio.Location = new Point(241, 37);
-            cmbServicio.Name = "cmbServicio";
-            cmbServicio.Size = new Size(167, 26);
-            cmbServicio.TabIndex = 8;
-            cmbServicio.SelectedIndexChanged += cmbServicio_SelectedIndexChanged;
+            cmbServicio_fa.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            cmbServicio_fa.ForeColor = Color.FromArgb(22, 97, 58);
+            cmbServicio_fa.FormattingEnabled = true;
+            cmbServicio_fa.Location = new Point(196, 37);
+            cmbServicio_fa.Name = "cmbServicio_fa";
+            cmbServicio_fa.Size = new Size(203, 26);
+            cmbServicio_fa.TabIndex = 8;
+            cmbServicio_fa.SelectedIndexChanged += cmbServicio_fa_SelectedIndexChanged;
             // 
             // tabGestionarFacturas
             // 
+            tabGestionarFacturas.Controls.Add(btnEliminarFac);
+            tabGestionarFacturas.Controls.Add(btnModificarFac);
             tabGestionarFacturas.Controls.Add(dgvGestionarFacturas);
             tabGestionarFacturas.Location = new Point(4, 27);
             tabGestionarFacturas.Name = "tabGestionarFacturas";
@@ -471,13 +478,42 @@
             tabGestionarFacturas.Text = "Gestionar Facturas";
             tabGestionarFacturas.UseVisualStyleBackColor = true;
             // 
+            // btnEliminarFac
+            // 
+            btnEliminarFac.Anchor = AnchorStyles.None;
+            btnEliminarFac.BackColor = Color.FromArgb(250, 146, 186);
+            btnEliminarFac.FlatStyle = FlatStyle.Popup;
+            btnEliminarFac.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnEliminarFac.ForeColor = Color.White;
+            btnEliminarFac.Location = new Point(8, 486);
+            btnEliminarFac.Name = "btnEliminarFac";
+            btnEliminarFac.Size = new Size(90, 27);
+            btnEliminarFac.TabIndex = 30;
+            btnEliminarFac.Text = "Eliminar";
+            btnEliminarFac.UseVisualStyleBackColor = false;
+            btnEliminarFac.Click += btnEliminarFac_Click;
+            // 
+            // btnModificarFac
+            // 
+            btnModificarFac.Anchor = AnchorStyles.None;
+            btnModificarFac.BackColor = Color.FromArgb(250, 146, 186);
+            btnModificarFac.FlatStyle = FlatStyle.Popup;
+            btnModificarFac.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            btnModificarFac.ForeColor = Color.White;
+            btnModificarFac.Location = new Point(665, 484);
+            btnModificarFac.Name = "btnModificarFac";
+            btnModificarFac.Size = new Size(90, 27);
+            btnModificarFac.TabIndex = 29;
+            btnModificarFac.Text = "Modificar";
+            btnModificarFac.UseVisualStyleBackColor = false;
+            btnModificarFac.Click += btnModificarFac_Click;
+            // 
             // dgvGestionarFacturas
             // 
             dgvGestionarFacturas.AllowUserToAddRows = false;
-            dgvGestionarFacturas.AllowUserToDeleteRows = false;
             dgvGestionarFacturas.AllowUserToResizeColumns = false;
             dgvGestionarFacturas.AllowUserToResizeRows = false;
-            dgvGestionarFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvGestionarFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGestionarFacturas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -489,7 +525,6 @@
             dgvGestionarFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvGestionarFacturas.ColumnHeadersHeight = 30;
             dgvGestionarFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvGestionarFacturas.Columns.AddRange(new DataGridViewColumn[] { NumeroFactura, Cliente, Fecha, Total, iconVerDetallesFactura, iconEditar, iconEliminarFactura });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
@@ -501,7 +536,6 @@
             dgvGestionarFacturas.EnableHeadersVisualStyles = false;
             dgvGestionarFacturas.Location = new Point(8, 6);
             dgvGestionarFacturas.Name = "dgvGestionarFacturas";
-            dgvGestionarFacturas.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Impact", 11.25F);
@@ -511,71 +545,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvGestionarFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvGestionarFacturas.RowHeadersVisible = false;
-            dgvGestionarFacturas.Size = new Size(765, 505);
+            dgvGestionarFacturas.ShowCellToolTips = false;
+            dgvGestionarFacturas.Size = new Size(765, 469);
             dgvGestionarFacturas.TabIndex = 0;
             dgvGestionarFacturas.CellContentClick += dgvGestionarFacturas_CellContentClick;
-            // 
-            // NumeroFactura
-            // 
-            NumeroFactura.FillWeight = 355.223877F;
-            NumeroFactura.HeaderText = "Numero de Factura";
-            NumeroFactura.Name = "NumeroFactura";
-            NumeroFactura.ReadOnly = true;
-            NumeroFactura.Resizable = DataGridViewTriState.True;
-            NumeroFactura.Width = 136;
-            // 
-            // Cliente
-            // 
-            Cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Cliente.FillWeight = 14.925374F;
-            Cliente.HeaderText = "Cliente";
-            Cliente.Name = "Cliente";
-            Cliente.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            Fecha.FillWeight = 14.925374F;
-            Fecha.HeaderText = "Fecha";
-            Fecha.Name = "Fecha";
-            Fecha.ReadOnly = true;
-            Fecha.Width = 65;
-            // 
-            // Total
-            // 
-            Total.FillWeight = 14.925374F;
-            Total.HeaderText = "Total";
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Width = 59;
-            // 
-            // iconVerDetallesFactura
-            // 
-            iconVerDetallesFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            iconVerDetallesFactura.FillWeight = 20F;
-            iconVerDetallesFactura.HeaderText = "";
-            iconVerDetallesFactura.Image = (Image)resources.GetObject("iconVerDetallesFactura.Image");
-            iconVerDetallesFactura.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            iconVerDetallesFactura.Name = "iconVerDetallesFactura";
-            iconVerDetallesFactura.ReadOnly = true;
-            iconVerDetallesFactura.Width = 5;
-            // 
-            // iconEditar
-            // 
-            iconEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            iconEditar.HeaderText = "";
-            iconEditar.Image = (Image)resources.GetObject("iconEditar.Image");
-            iconEditar.Name = "iconEditar";
-            iconEditar.ReadOnly = true;
-            iconEditar.Width = 5;
-            // 
-            // iconEliminarFactura
-            // 
-            iconEliminarFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            iconEliminarFactura.HeaderText = "";
-            iconEliminarFactura.Image = (Image)resources.GetObject("iconEliminarFactura.Image");
-            iconEliminarFactura.Name = "iconEliminarFactura";
-            iconEliminarFactura.ReadOnly = true;
-            iconEliminarFactura.Width = 5;
             // 
             // FacturasForm
             // 
@@ -607,7 +580,7 @@
         private Label lblServicioFactura;
         private Button btnAgregarServicio;
         private Button btnEliminarServicio;
-        private ComboBox cmbServicio;
+        private ComboBox cmbServicio_fa;
         private Label lblPrecioServicio;
         private Panel innerPanelCrearFactura;
         private Label lblDigito1;
@@ -623,23 +596,19 @@
         private Label lblEfectivo;
         private Label autoTotal;
         private Label lblTotal;
-        private Label lblDigito3;
-        private Label lblDigito2;
-        private ComboBox comboBox1;
+        private ComboBox cmbCliente_fa;
         private Label lblClienteFactura;
-        private Button Guardar;
+        private Button btnGuardarFac;
         private Button Cancelar;
         private DataGridView dgvGestionarFacturas;
+        private Label lblFecha;
+        private DateTimePicker dtpFechaFactura;
+        private DataGridViewTextBoxColumn idServicio;
         private DataGridViewTextBoxColumn nombreServicio;
         private DataGridViewTextBoxColumn cantidadServicio;
         private DataGridViewTextBoxColumn subtotalServicio;
         private DataGridViewTextBoxColumn totalServicio;
-        private DataGridViewTextBoxColumn NumeroFactura;
-        private DataGridViewTextBoxColumn Cliente;
-        private DataGridViewTextBoxColumn Fecha;
-        private DataGridViewTextBoxColumn Total;
-        private DataGridViewImageColumn iconVerDetallesFactura;
-        private DataGridViewImageColumn iconEditar;
-        private DataGridViewImageColumn iconEliminarFactura;
+        private Button btnEliminarFac;
+        private Button btnModificarFac;
     }
 }
